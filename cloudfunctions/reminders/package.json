@@ -1,0 +1,9 @@
+{
+  "name": "wefile-reminders",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "ajv": "8.17.1",
+    "wx-server-sdk": "3.0.1"
+  }
+}

@@ -1,0 +1,16 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url);
+const appid=JSON.parse(fs.readFileSync('project.config.json','utf8')).appid;
+const envId=require('../miniprogram/config').cloudEnv;
+if(!/^wx[0-9a-f]{16}$/.test(appid)||!envId)throw Error('Configure authorized AppID and environment first');
+const target='artifacts/deploy/wefile_init';fs.mkdirSync(target,{recursive:true});
+const token=crypto.randomBytes(32).toString('hex');
+fs.writeFileSync('artifacts/deploy-access.json',JSON.stringify({envId,appid,token}));
+fs.writeFileSync(`${target}/access.json`,JSON.stringify({envId,appid,tokenHash:crypto.createHash('sha256').update(token).digest('hex'),expiresAt:Date.now()+3600000}));
+const read=f=>JSON.parse(fs.readFileSync(f,'utf8'));
+fs.writeFileSync(`${target}/manifest.json`,JSON.stringify({collections:read('database/collections.json'),indexes:read('database/indexes.json').indexes,storage:read('storage/rules.json'),functions:read('cloudfunctions/invoke-rules.json')}));
+fs.copyFileSync('scripts/cloud-init.cjs',`${target}/index.js`);
+fs.writeFileSync(`${target}/package.json`,JSON.stringify({name:'wefile-init',version:'1.0.0',private:true,main:'index.js',dependencies:{'wx-server-sdk':'3.0.1','@cloudbase/manager-node':'5.9.0'}},null,2));
+console.log('Staged expiring initializer for the configured environment. Deploy explicitly; no cloud changes made. Access token saved only under ignored artifacts/. Delete initializer after use.');

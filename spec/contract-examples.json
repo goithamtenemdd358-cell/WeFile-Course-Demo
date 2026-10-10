@@ -1,0 +1,108 @@
+[
+  {
+    "id": "submit-overwrite-valid",
+    "definition": "req_submission_submit",
+    "valid": true,
+    "value": {
+      "taskId": "t1",
+      "revisionId": "r2",
+      "mode": "OVERWRITE",
+      "baseVersionId": "v1",
+      "expectedVersionRevision": 1,
+      "expectedTaskRevision": 3
+    }
+  },
+  {
+    "id": "submit-overwrite-missing-base",
+    "definition": "req_submission_submit",
+    "valid": false,
+    "value": {
+      "taskId": "t1",
+      "revisionId": "r2",
+      "mode": "OVERWRITE",
+      "expectedTaskRevision": 3
+    }
+  },
+  {
+    "id": "extra-role-rejected",
+    "definition": "req_review_approve",
+    "valid": false,
+    "value": {
+      "submissionId": "s1",
+      "expectedTaskRevision": 3,
+      "role": "LEADER"
+    }
+  },
+  {
+    "id": "read-by-review-valid",
+    "definition": "req_notification_read",
+    "valid": true,
+    "value": {
+      "reviewId": "rv1"
+    }
+  },
+  {
+    "id": "read-both-ids-invalid",
+    "definition": "req_notification_read",
+    "valid": false,
+    "value": {
+      "reviewId": "rv1",
+      "notificationId": "n1"
+    }
+  },
+  {
+    "id": "edit-context-needs-project",
+    "definition": "req_project_draftOpen",
+    "valid": false,
+    "value": {
+      "mode": "EDIT"
+    }
+  },
+  {
+    "id": "draft-first-mode-present",
+    "definition": "req_submission_saveDraft",
+    "valid": true,
+    "value": {
+      "taskId": "t1",
+      "revisionId": "r1",
+      "mode": "FIRST",
+      "expectedTaskRevision": 1
+    }
+  },
+  {
+    "id": "future-role-summary-leak",
+    "definition": "TaskSummaryDTO",
+    "valid": false,
+    "value": {
+      "view": "SUMMARY",
+      "taskId": "t",
+      "projectId": "p",
+      "title": "任务",
+      "assigneeDisplayName": "B",
+      "effectiveDueAt": 1,
+      "state": "TODO",
+      "isOverdue": false,
+      "hasSubmitted": false,
+      "reason": "私有意见"
+    }
+  },
+  {
+    "id": "timestamp-readall-invalid",
+    "definition": "req_notification_readAll",
+    "valid": false,
+    "value": {
+      "watermark": 1760000000000
+    }
+  },
+  {
+    "id": "signed-seq-readall-valid",
+    "definition": "req_notification_readAll",
+    "valid": true,
+    "value": {
+      "watermark": {
+        "throughSeq": 12,
+        "token": "example-not-a-real-signature"
+      }
+    }
+  }
+]

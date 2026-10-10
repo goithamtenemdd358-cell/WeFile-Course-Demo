@@ -1,0 +1,13 @@
+node_modules/
+cloudfunctions/*/_shared/
+miniprogram/config.local.js
+project.private.config.json
+.env
+artifacts/
+backups/
+*.log
+
+__pycache__/
+*.pyc
+
+server-data/

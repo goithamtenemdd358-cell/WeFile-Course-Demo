@@ -1,0 +1,3329 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:wefile:contracts:v0.3.1",
+  "title": "WeFile wire-contract specification (not an implemented API)",
+  "$defs": {
+    "Id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "Cursor": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "Time": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "Count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "Revision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "Role": {
+      "enum": [
+        "LEADER",
+        "MEMBER"
+      ]
+    },
+    "TaskState": {
+      "enum": [
+        "TODO",
+        "DOING",
+        "SUBMITTED",
+        "CHANGES_REQUESTED",
+        "DONE"
+      ]
+    },
+    "Mode": {
+      "enum": [
+        "FIRST",
+        "KEEP",
+        "OVERWRITE"
+      ]
+    },
+    "DraftMode": {
+      "enum": [
+        "NEW",
+        "EDIT"
+      ]
+    },
+    "Category": {
+      "enum": [
+        "REQUIREMENT",
+        "REFERENCE",
+        "DATA",
+        "IMAGE",
+        "OTHER"
+      ]
+    },
+    "Priority": {
+      "enum": [
+        "NORMAL",
+        "IMPORTANT",
+        "URGENT"
+      ]
+    },
+    "TaskFilter": {
+      "enum": [
+        "ALL",
+        "PENDING",
+        "SUBMITTED",
+        "CHANGES_REQUESTED",
+        "DONE",
+        "OVERDUE"
+      ]
+    },
+    "PageInput": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "pageSize": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "ProjectFields": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "unifiedRequirements": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "finalRequirements": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "dueAt": {
+          "$ref": "#/$defs/Time"
+        },
+        "timezone": {
+          "const": "Asia/Shanghai"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "ProjectFieldsDraft": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "unifiedRequirements": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "finalRequirements": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "dueAt": {
+          "$ref": "#/$defs/Time"
+        },
+        "timezone": {
+          "const": "Asia/Shanghai"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "TaskFields": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "assigneeId": {
+          "$ref": "#/$defs/Id"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 8000
+        },
+        "requirements": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "dueAt": {
+          "$ref": "#/$defs/Time"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "TaskFieldsDraft": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "assigneeId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 8000
+        },
+        "requirements": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "dueAt": {
+          "$ref": "#/$defs/Time"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "ReferenceInput": {
+      "type": "object",
+      "properties": {
+        "referenceId": {
+          "$ref": "#/$defs/Id"
+        },
+        "revisionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "category": {
+          "$ref": "#/$defs/Category"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "revisionId",
+        "category",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "UserDTO": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "$ref": "#/$defs/Id"
+        },
+        "displayName": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "avatarReadRef": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "profileComplete": {
+          "type": "boolean"
+        },
+        "revision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "userId",
+        "displayName",
+        "avatarReadRef",
+        "profileComplete",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "ProjectStatsDTO": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "$ref": "#/$defs/Count"
+        },
+        "completed": {
+          "$ref": "#/$defs/Count"
+        },
+        "unfinished": {
+          "$ref": "#/$defs/Count"
+        },
+        "pending": {
+          "$ref": "#/$defs/Count"
+        },
+        "awaitingReview": {
+          "$ref": "#/$defs/Count"
+        },
+        "changesRequested": {
+          "$ref": "#/$defs/Count"
+        },
+        "overdue": {
+          "$ref": "#/$defs/Count"
+        },
+        "progress": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      },
+      "required": [
+        "total",
+        "completed",
+        "unfinished",
+        "pending",
+        "awaitingReview",
+        "changesRequested",
+        "overdue",
+        "progress"
+      ],
+      "additionalProperties": false
+    },
+    "HomeDTO": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/$defs/UserDTO"
+        },
+        "view": {
+          "enum": [
+            "LEADER",
+            "MEMBER",
+            "EMPTY"
+          ]
+        },
+        "awaitingReview": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Count"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pending": {
+          "$ref": "#/$defs/Count"
+        },
+        "changesRequested": {
+          "$ref": "#/$defs/Count"
+        },
+        "overdue": {
+          "$ref": "#/$defs/Count"
+        },
+        "hasProjects": {
+          "type": "boolean"
+        },
+        "unreadCount": {
+          "$ref": "#/$defs/Count"
+        }
+      },
+      "required": [
+        "user",
+        "view",
+        "awaitingReview",
+        "pending",
+        "changesRequested",
+        "overdue",
+        "hasProjects",
+        "unreadCount"
+      ],
+      "additionalProperties": false
+    },
+    "ProjectCardDTO": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "myRole": {
+          "$ref": "#/$defs/Role"
+        },
+        "dueAt": {
+          "$ref": "#/$defs/Time"
+        },
+        "progress": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "statusText": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "status": {
+          "enum": [
+            "ACTIVE",
+            "ARCHIVED"
+          ]
+        }
+      },
+      "required": [
+        "projectId",
+        "name",
+        "myRole",
+        "dueAt",
+        "progress",
+        "statusText",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "ProjectDTO": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "myRole": {
+          "$ref": "#/$defs/Role"
+        },
+        "ownerId": {
+          "$ref": "#/$defs/Id"
+        },
+        "ownerDisplayName": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "fields": {
+          "$ref": "#/$defs/ProjectFields"
+        },
+        "status": {
+          "enum": [
+            "ACTIVE",
+            "ARCHIVED"
+          ]
+        },
+        "inviteCode": {
+          "type": "string",
+          "pattern": "^[A-Z2-9]{6}$"
+        },
+        "coverRevisionId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "createdAt": {
+          "$ref": "#/$defs/Time"
+        },
+        "revision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "statistics": {
+          "$ref": "#/$defs/ProjectStatsDTO"
+        }
+      },
+      "required": [
+        "projectId",
+        "myRole",
+        "ownerId",
+        "ownerDisplayName",
+        "fields",
+        "status",
+        "inviteCode",
+        "coverRevisionId",
+        "createdAt",
+        "revision",
+        "statistics"
+      ],
+      "additionalProperties": false
+    },
+    "ProjectDraftDTO": {
+      "type": "object",
+      "properties": {
+        "draftId": {
+          "$ref": "#/$defs/Id"
+        },
+        "draftKey": {
+          "$ref": "#/$defs/Id"
+        },
+        "mode": {
+          "$ref": "#/$defs/DraftMode"
+        },
+        "projectId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "saved": {
+          "type": "boolean"
+        },
+        "fields": {
+          "$ref": "#/$defs/ProjectFieldsDraft"
+        },
+        "coverRevisionId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "referenceInputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReferenceInput"
+          }
+        },
+        "draftRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "baseProjectRevision": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Revision"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "draftId",
+        "draftKey",
+        "mode",
+        "projectId",
+        "saved",
+        "fields",
+        "coverRevisionId",
+        "referenceInputs",
+        "draftRevision",
+        "baseProjectRevision"
+      ],
+      "additionalProperties": false
+    },
+    "InvitePreviewDTO": {
+      "type": "object",
+      "properties": {
+        "projectName": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "ownerDisplayName": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "dueAt": {
+          "$ref": "#/$defs/Time"
+        }
+      },
+      "required": [
+        "projectName",
+        "description",
+        "ownerDisplayName",
+        "dueAt"
+      ],
+      "additionalProperties": false
+    },
+    "MemberOptionDTO": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "$ref": "#/$defs/Id"
+        },
+        "displayName": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "role": {
+          "$ref": "#/$defs/Role"
+        }
+      },
+      "required": [
+        "userId",
+        "displayName",
+        "role"
+      ],
+      "additionalProperties": false
+    },
+    "ReferenceDTO": {
+      "type": "object",
+      "properties": {
+        "referenceId": {
+          "$ref": "#/$defs/Id"
+        },
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "revisionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "extension": {
+          "type": "string",
+          "maxLength": 16
+        },
+        "size": {
+          "$ref": "#/$defs/Count"
+        },
+        "category": {
+          "$ref": "#/$defs/Category"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "uploadedBy": {
+          "$ref": "#/$defs/Id"
+        },
+        "uploaderDisplayName": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "uploadedAt": {
+          "$ref": "#/$defs/Time"
+        },
+        "revision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "referenceId",
+        "projectId",
+        "revisionId",
+        "name",
+        "extension",
+        "size",
+        "category",
+        "description",
+        "uploadedBy",
+        "uploaderDisplayName",
+        "uploadedAt",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "TaskSummaryDTO": {
+      "type": "object",
+      "properties": {
+        "view": {
+          "const": "SUMMARY"
+        },
+        "taskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "assigneeDisplayName": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "effectiveDueAt": {
+          "$ref": "#/$defs/Time"
+        },
+        "state": {
+          "$ref": "#/$defs/TaskState"
+        },
+        "isOverdue": {
+          "type": "boolean",
+          "description": "E12：未交/需修改按serverNow>effectiveDueAt；待审核/已完成按当前有效提交submittedLate快照。不得把按时提交因审核延迟标成逾期。"
+        },
+        "hasSubmitted": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "view",
+        "taskId",
+        "projectId",
+        "title",
+        "assigneeDisplayName",
+        "effectiveDueAt",
+        "state",
+        "isOverdue",
+        "hasSubmitted"
+      ],
+      "additionalProperties": false
+    },
+    "TaskDraftDTO": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "$ref": "#/$defs/DraftMode"
+        },
+        "draftTaskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "taskId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "fields": {
+          "$ref": "#/$defs/TaskFieldsDraft"
+        },
+        "draftRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "baseTaskRevision": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Revision"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "mode",
+        "draftTaskId",
+        "taskId",
+        "projectId",
+        "fields",
+        "draftRevision",
+        "baseTaskRevision"
+      ],
+      "additionalProperties": false
+    },
+    "Capabilities": {
+      "type": "object",
+      "properties": {
+        "canFirstUpload": {
+          "type": "boolean"
+        },
+        "canSaveDraft": {
+          "type": "boolean"
+        },
+        "canSubmit": {
+          "type": "boolean"
+        },
+        "canResubmit": {
+          "type": "boolean"
+        },
+        "canViewFile": {
+          "type": "boolean"
+        },
+        "canViewHistory": {
+          "type": "boolean"
+        },
+        "canViewFeedback": {
+          "type": "boolean"
+        },
+        "canManage": {
+          "type": "boolean"
+        },
+        "canApprove": {
+          "type": "boolean"
+        },
+        "canReject": {
+          "type": "boolean"
+        },
+        "canDelete": {
+          "type": "boolean"
+        },
+        "canRemind": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "canFirstUpload",
+        "canSaveDraft",
+        "canSubmit",
+        "canResubmit",
+        "canViewFile",
+        "canViewHistory",
+        "canViewFeedback",
+        "canManage",
+        "canApprove",
+        "canReject",
+        "canDelete",
+        "canRemind"
+      ],
+      "additionalProperties": false
+    },
+    "SavedSubmissionDraft": {
+      "type": "object",
+      "properties": {
+        "revisionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "mode": {
+          "$ref": "#/$defs/Mode"
+        },
+        "note": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "baseVersionId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "baseVersionRevision": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Revision"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "assignmentEpoch": {
+          "$ref": "#/$defs/Count"
+        },
+        "savedBy": {
+          "$ref": "#/$defs/Id"
+        },
+        "savedAt": {
+          "$ref": "#/$defs/Time"
+        },
+        "draftRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "revisionId",
+        "mode",
+        "note",
+        "baseVersionId",
+        "baseVersionRevision",
+        "assignmentEpoch",
+        "savedBy",
+        "savedAt",
+        "draftRevision"
+      ],
+      "additionalProperties": false
+    },
+    "VisibleVersionDTO": {
+      "type": "object",
+      "properties": {
+        "visibleVersionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "displayNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "revisionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "size": {
+          "$ref": "#/$defs/Count"
+        },
+        "submittedBy": {
+          "$ref": "#/$defs/Id"
+        },
+        "submittedAt": {
+          "$ref": "#/$defs/Time"
+        },
+        "versionRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "visibleVersionId",
+        "displayNumber",
+        "revisionId",
+        "name",
+        "size",
+        "submittedBy",
+        "submittedAt",
+        "versionRevision"
+      ],
+      "additionalProperties": false
+    },
+    "TaskRequirementsSnapshot": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 8000
+        },
+        "requirements": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "projectUnifiedRequirements": {
+          "type": "string",
+          "maxLength": 4000
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "requirements",
+        "projectUnifiedRequirements"
+      ],
+      "additionalProperties": false
+    },
+    "SubmissionDTO": {
+      "type": "object",
+      "properties": {
+        "submissionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "taskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "assignmentEpoch": {
+          "$ref": "#/$defs/Count"
+        },
+        "submittedBy": {
+          "$ref": "#/$defs/Id"
+        },
+        "visibleVersionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "revisionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "displayNumber": {
+          "$ref": "#/$defs/Count"
+        },
+        "taskRequirementsSnapshot": {
+          "$ref": "#/$defs/TaskRequirementsSnapshot"
+        },
+        "note": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "submittedAt": {
+          "$ref": "#/$defs/Time"
+        },
+        "dueAtSnapshot": {
+          "$ref": "#/$defs/Time"
+        },
+        "submittedLate": {
+          "type": "boolean",
+          "description": "提交时以submittedAt>dueAtSnapshot确定的不可变晚交事实；日后改DDL/审核不得重写。"
+        },
+        "decision": {
+          "enum": [
+            "PENDING",
+            "APPROVED",
+            "REJECTED",
+            "VOIDED"
+          ]
+        },
+        "reviewId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fileAvailability": {
+          "enum": [
+            "VISIBLE",
+            "AUDIT_ONLY",
+            "REMOVED"
+          ]
+        }
+      },
+      "required": [
+        "submissionId",
+        "projectId",
+        "taskId",
+        "assignmentEpoch",
+        "submittedBy",
+        "visibleVersionId",
+        "revisionId",
+        "displayNumber",
+        "taskRequirementsSnapshot",
+        "note",
+        "submittedAt",
+        "dueAtSnapshot",
+        "submittedLate",
+        "decision",
+        "reviewId",
+        "fileAvailability"
+      ],
+      "additionalProperties": false
+    },
+    "FeedbackDTO": {
+      "type": "object",
+      "properties": {
+        "reviewId": {
+          "$ref": "#/$defs/Id"
+        },
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "projectName": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "taskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "taskTitle": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "leaderDisplayName": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "assigneeDisplayName": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "assignmentEpoch": {
+          "$ref": "#/$defs/Count"
+        },
+        "submissionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "displayNumber": {
+          "$ref": "#/$defs/Count"
+        },
+        "originalSubmittedAt": {
+          "$ref": "#/$defs/Time"
+        },
+        "reason": {
+          "type": "string",
+          "maxLength": 8000
+        },
+        "priority": {
+          "$ref": "#/$defs/Priority"
+        },
+        "newDueAt": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "effectiveDueAt": {
+          "$ref": "#/$defs/Time"
+        },
+        "reviewedAt": {
+          "$ref": "#/$defs/Time"
+        },
+        "fileAvailability": {
+          "enum": [
+            "VISIBLE",
+            "AUDIT_ONLY",
+            "REMOVED"
+          ]
+        },
+        "canResubmit": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "reviewId",
+        "projectId",
+        "projectName",
+        "taskId",
+        "taskTitle",
+        "leaderDisplayName",
+        "assigneeDisplayName",
+        "assignmentEpoch",
+        "submissionId",
+        "displayNumber",
+        "originalSubmittedAt",
+        "reason",
+        "priority",
+        "newDueAt",
+        "effectiveDueAt",
+        "reviewedAt",
+        "fileAvailability",
+        "canResubmit"
+      ],
+      "additionalProperties": false
+    },
+    "TaskDetailDTO": {
+      "type": "object",
+      "properties": {
+        "view": {
+          "const": "FULL"
+        },
+        "taskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "assigneeDisplayName": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "effectiveDueAt": {
+          "$ref": "#/$defs/Time"
+        },
+        "state": {
+          "$ref": "#/$defs/TaskState"
+        },
+        "isOverdue": {
+          "type": "boolean",
+          "description": "E12：未交/需修改按serverNow>effectiveDueAt；待审核/已完成按当前有效提交submittedLate快照。不得把按时提交因审核延迟标成逾期。"
+        },
+        "hasSubmitted": {
+          "type": "boolean"
+        },
+        "assigneeId": {
+          "$ref": "#/$defs/Id"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 8000
+        },
+        "requirements": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "assignmentEpoch": {
+          "$ref": "#/$defs/Count"
+        },
+        "revision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "draft": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SavedSubmissionDraft"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "currentSubmission": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SubmissionDTO"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "latestFeedback": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FeedbackDTO"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "capabilities": {
+          "$ref": "#/$defs/Capabilities"
+        },
+        "editDraft": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TaskDraftDTO"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "view",
+        "taskId",
+        "projectId",
+        "title",
+        "assigneeDisplayName",
+        "effectiveDueAt",
+        "state",
+        "isOverdue",
+        "hasSubmitted",
+        "assigneeId",
+        "description",
+        "requirements",
+        "assignmentEpoch",
+        "revision",
+        "draft",
+        "currentSubmission",
+        "latestFeedback",
+        "capabilities",
+        "editDraft"
+      ],
+      "additionalProperties": false
+    },
+    "TaskDTO": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/TaskDetailDTO"
+        },
+        {
+          "$ref": "#/$defs/TaskSummaryDTO"
+        }
+      ]
+    },
+    "MyTodoDTO": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "projectName": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "dueAt": {
+          "$ref": "#/$defs/Time"
+        },
+        "state": {
+          "$ref": "#/$defs/TaskState"
+        },
+        "isOverdue": {
+          "type": "boolean",
+          "description": "E12：未交/需修改按serverNow>effectiveDueAt；待审核/已完成按当前有效提交submittedLate快照。不得把按时提交因审核延迟标成逾期。"
+        },
+        "quickAction": {
+          "enum": [
+            "FIRST_UPLOAD",
+            "RESUBMIT"
+          ]
+        }
+      },
+      "required": [
+        "taskId",
+        "projectId",
+        "projectName",
+        "title",
+        "dueAt",
+        "state",
+        "isOverdue",
+        "quickAction"
+      ],
+      "additionalProperties": false
+    },
+    "ReviewCardDTO": {
+      "type": "object",
+      "properties": {
+        "submission": {
+          "$ref": "#/$defs/SubmissionDTO"
+        },
+        "assigneeDisplayName": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "taskTitle": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "expectedTaskRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "currentState": {
+          "$ref": "#/$defs/TaskState"
+        },
+        "isCurrent": {
+          "type": "boolean"
+        },
+        "canApprove": {
+          "type": "boolean"
+        },
+        "canReject": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "submission",
+        "assigneeDisplayName",
+        "taskTitle",
+        "expectedTaskRevision",
+        "currentState",
+        "isCurrent",
+        "canApprove",
+        "canReject"
+      ],
+      "additionalProperties": false
+    },
+    "ReviewContextDTO": {
+      "type": "object",
+      "properties": {
+        "submission": {
+          "$ref": "#/$defs/SubmissionDTO"
+        },
+        "assigneeDisplayName": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "taskRequirementsSnapshot": {
+          "$ref": "#/$defs/TaskRequirementsSnapshot"
+        },
+        "expectedTaskRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "effectiveDueAt": {
+          "$ref": "#/$defs/Time"
+        },
+        "canReview": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "submission",
+        "assigneeDisplayName",
+        "taskRequirementsSnapshot",
+        "expectedTaskRevision",
+        "effectiveDueAt",
+        "canReview"
+      ],
+      "additionalProperties": false
+    },
+    "NotificationTarget": {
+      "type": "object",
+      "properties": {
+        "pageId": {
+          "enum": [
+            "12",
+            "16",
+            "19"
+          ]
+        },
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "taskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "submissionId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reviewId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "pageId",
+        "projectId",
+        "taskId",
+        "submissionId",
+        "reviewId"
+      ],
+      "additionalProperties": false
+    },
+    "NotificationDTO": {
+      "type": "object",
+      "properties": {
+        "notificationId": {
+          "$ref": "#/$defs/Id"
+        },
+        "noticeSeq": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "category": {
+          "enum": [
+            "TASK",
+            "FEEDBACK",
+            "REVIEW_RESULT"
+          ]
+        },
+        "eventType": {
+          "enum": [
+            "TASK_ASSIGNED",
+            "FIRST_SUBMITTED",
+            "RESUBMITTED",
+            "CHANGES_REQUESTED",
+            "APPROVED",
+            "MANUAL_REMINDER",
+            "DUE_SOON",
+            "OVERDUE",
+            "ASSIGNMENT_CHANGED"
+          ]
+        },
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "projectName": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "taskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "taskTitle": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "senderDisplayName": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "eventAt": {
+          "$ref": "#/$defs/Time"
+        },
+        "isRead": {
+          "type": "boolean"
+        },
+        "target": {
+          "$ref": "#/$defs/NotificationTarget"
+        }
+      },
+      "required": [
+        "notificationId",
+        "noticeSeq",
+        "category",
+        "eventType",
+        "projectId",
+        "projectName",
+        "taskId",
+        "taskTitle",
+        "senderDisplayName",
+        "eventAt",
+        "isRead",
+        "target"
+      ],
+      "additionalProperties": false
+    },
+    "Watermark": {
+      "type": "object",
+      "properties": {
+        "throughSeq": {
+          "$ref": "#/$defs/Count"
+        },
+        "token": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        }
+      },
+      "required": [
+        "throughSeq",
+        "token"
+      ],
+      "additionalProperties": false
+    },
+    "UploadPurpose": {
+      "enum": [
+        "AVATAR",
+        "PROJECT_COVER_DRAFT",
+        "PROJECT_REFERENCE_DRAFT",
+        "PROJECT_REFERENCE",
+        "TASK_DRAFT"
+      ]
+    },
+    "UploadPlanDTO": {
+      "type": "object",
+      "properties": {
+        "uploadSessionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "tempPath": {
+          "type": "string",
+          "maxLength": 2048
+        },
+        "expiresAt": {
+          "$ref": "#/$defs/Time"
+        },
+        "maxBytes": {
+          "$ref": "#/$defs/Count"
+        },
+        "reservedBytes": {
+          "$ref": "#/$defs/Count"
+        }
+      },
+      "required": [
+        "uploadSessionId",
+        "tempPath",
+        "expiresAt",
+        "maxBytes",
+        "reservedBytes"
+      ],
+      "additionalProperties": false
+    },
+    "ReadTarget": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "reference"
+            },
+            "id": {
+              "$ref": "#/$defs/Id"
+            }
+          },
+          "required": [
+            "kind",
+            "id"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "version"
+            },
+            "id": {
+              "$ref": "#/$defs/Id"
+            }
+          },
+          "required": [
+            "kind",
+            "id"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "submission"
+            },
+            "id": {
+              "$ref": "#/$defs/Id"
+            }
+          },
+          "required": [
+            "kind",
+            "id"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "taskDraft"
+            },
+            "id": {
+              "$ref": "#/$defs/Id"
+            }
+          },
+          "required": [
+            "kind",
+            "id"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "avatar"
+            },
+            "id": {
+              "$ref": "#/$defs/Id"
+            }
+          },
+          "required": [
+            "kind",
+            "id"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "cover"
+            },
+            "id": {
+              "$ref": "#/$defs/Id"
+            }
+          },
+          "required": [
+            "kind",
+            "id"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "projectDraft"
+            },
+            "id": {
+              "$ref": "#/$defs/Id"
+            },
+            "revisionId": {
+              "$ref": "#/$defs/Id"
+            }
+          },
+          "required": [
+            "kind",
+            "id",
+            "revisionId"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ReadTicketDTO": {
+      "type": "object",
+      "properties": {
+        "downloadUrl": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expiresAt": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expiryNote": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "size": {
+          "$ref": "#/$defs/Count"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "downloadUrl",
+        "expiresAt",
+        "expiryNote",
+        "name",
+        "size",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "ErrorDTO": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "enum": [
+            "UNAUTHENTICATED",
+            "PROFILE_REQUIRED",
+            "NOT_ACCESSIBLE",
+            "FORBIDDEN",
+            "INVALID_INPUT",
+            "INVALID_STATE",
+            "STALE_REVISION",
+            "VERSION_CONFLICT",
+            "IDEMPOTENCY_CONFLICT",
+            "INVITE_INVALID",
+            "INVITE_INACTIVE",
+            "PROJECT_ARCHIVED",
+            "RATE_LIMITED",
+            "FILE_TOO_LARGE",
+            "UNSUPPORTED_FILE_TYPE",
+            "UPLOAD_NOT_READY",
+            "STORAGE_ERROR",
+            "QUOTA_EXCEEDED",
+            "TRANSACTION_BUDGET_EXCEEDED",
+            "INTERNAL_ERROR"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "retryable": {
+          "type": "boolean"
+        },
+        "field": {
+          "type": "string",
+          "maxLength": 100
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "retryable"
+      ],
+      "additionalProperties": false
+    },
+    "req_auth_bootstrap": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    },
+    "res_auth_bootstrap": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/$defs/UserDTO"
+        },
+        "needsProfile": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "user",
+        "needsProfile"
+      ],
+      "additionalProperties": false
+    },
+    "req_user_get": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    },
+    "res_user_get": {
+      "$ref": "#/$defs/UserDTO"
+    },
+    "req_user_update": {
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "avatarRevisionId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expectedRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "expectedRevision"
+      ],
+      "additionalProperties": false
+    },
+    "res_user_update": {
+      "$ref": "#/$defs/UserDTO"
+    },
+    "req_user_logout": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    },
+    "res_user_logout": {
+      "type": "object",
+      "properties": {
+        "loggedOut": {
+          "const": true
+        }
+      },
+      "required": [
+        "loggedOut"
+      ],
+      "additionalProperties": false
+    },
+    "req_home_get": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    },
+    "res_home_get": {
+      "$ref": "#/$defs/HomeDTO"
+    },
+    "req_project_list": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "pageSize": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "res_project_list": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ProjectCardDTO"
+          }
+        },
+        "nextCursor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "total": {
+          "$ref": "#/$defs/Count"
+        }
+      },
+      "required": [
+        "items",
+        "nextCursor",
+        "total"
+      ],
+      "additionalProperties": false
+    },
+    "req_project_get": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "projectId"
+      ],
+      "additionalProperties": false
+    },
+    "res_project_get": {
+      "$ref": "#/$defs/ProjectDTO"
+    },
+    "req_project_draftOpen": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "$ref": "#/$defs/DraftMode"
+        },
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "mode"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "EDIT"
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          },
+          "then": {
+            "required": [
+              "projectId"
+            ]
+          }
+        }
+      ]
+    },
+    "res_project_draftOpen": {
+      "$ref": "#/$defs/ProjectDraftDTO"
+    },
+    "req_project_draftGet": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "$ref": "#/$defs/DraftMode"
+        },
+        "draftId": {
+          "$ref": "#/$defs/Id"
+        },
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "mode"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "EDIT"
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          },
+          "then": {
+            "required": [
+              "projectId"
+            ]
+          }
+        }
+      ]
+    },
+    "res_project_draftGet": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ProjectDraftDTO"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "req_project_draftSave": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "$ref": "#/$defs/DraftMode"
+        },
+        "draftId": {
+          "$ref": "#/$defs/Id"
+        },
+        "fields": {
+          "$ref": "#/$defs/ProjectFieldsDraft"
+        },
+        "coverRevisionId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "referenceInputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReferenceInput"
+          }
+        },
+        "expectedDraftRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "mode",
+        "draftId",
+        "fields",
+        "referenceInputs",
+        "expectedDraftRevision"
+      ],
+      "additionalProperties": false
+    },
+    "res_project_draftSave": {
+      "$ref": "#/$defs/ProjectDraftDTO"
+    },
+    "req_project_publish": {
+      "type": "object",
+      "properties": {
+        "draftId": {
+          "$ref": "#/$defs/Id"
+        },
+        "expectedDraftRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "draftId",
+        "expectedDraftRevision"
+      ],
+      "additionalProperties": false
+    },
+    "res_project_publish": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "inviteCode": {
+          "type": "string",
+          "pattern": "^[A-Z2-9]{6}$"
+        }
+      },
+      "required": [
+        "projectId",
+        "inviteCode"
+      ],
+      "additionalProperties": false
+    },
+    "req_project_update": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "draftId": {
+          "$ref": "#/$defs/Id"
+        },
+        "expectedDraftRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "expectedRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "projectId",
+        "draftId",
+        "expectedDraftRevision",
+        "expectedRevision"
+      ],
+      "additionalProperties": false
+    },
+    "res_project_update": {
+      "$ref": "#/$defs/ProjectDTO"
+    },
+    "req_invite_lookup": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20
+        }
+      },
+      "required": [
+        "code"
+      ],
+      "additionalProperties": false
+    },
+    "res_invite_lookup": {
+      "$ref": "#/$defs/InvitePreviewDTO"
+    },
+    "req_project_join": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20
+        }
+      },
+      "required": [
+        "code"
+      ],
+      "additionalProperties": false
+    },
+    "res_project_join": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "alreadyJoined": {
+          "type": "boolean"
+        },
+        "member": {
+          "$ref": "#/$defs/MemberOptionDTO"
+        }
+      },
+      "required": [
+        "projectId",
+        "alreadyJoined",
+        "member"
+      ],
+      "additionalProperties": false
+    },
+    "req_member_list": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "cursor": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "pageSize": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        }
+      },
+      "required": [
+        "projectId"
+      ],
+      "additionalProperties": false
+    },
+    "res_member_list": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MemberOptionDTO"
+          }
+        },
+        "nextCursor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "total": {
+          "$ref": "#/$defs/Count"
+        }
+      },
+      "required": [
+        "items",
+        "nextCursor",
+        "total"
+      ],
+      "additionalProperties": false
+    },
+    "req_reference_list": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "category": {
+          "$ref": "#/$defs/Category"
+        },
+        "cursor": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "pageSize": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        }
+      },
+      "required": [
+        "projectId"
+      ],
+      "additionalProperties": false
+    },
+    "res_reference_list": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReferenceDTO"
+          }
+        },
+        "nextCursor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "total": {
+          "$ref": "#/$defs/Count"
+        }
+      },
+      "required": [
+        "items",
+        "nextCursor",
+        "total"
+      ],
+      "additionalProperties": false
+    },
+    "req_reference_create": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "revisionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "category": {
+          "$ref": "#/$defs/Category"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "projectId",
+        "revisionId",
+        "category",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "res_reference_create": {
+      "$ref": "#/$defs/ReferenceDTO"
+    },
+    "req_reference_delete": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "referenceId": {
+          "$ref": "#/$defs/Id"
+        },
+        "expectedRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "projectId",
+        "referenceId",
+        "expectedRevision"
+      ],
+      "additionalProperties": false
+    },
+    "res_reference_delete": {
+      "type": "object",
+      "properties": {
+        "deleted": {
+          "const": true
+        }
+      },
+      "required": [
+        "deleted"
+      ],
+      "additionalProperties": false
+    },
+    "req_task_list": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "filter": {
+          "$ref": "#/$defs/TaskFilter"
+        },
+        "cursor": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "pageSize": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        }
+      },
+      "required": [
+        "projectId",
+        "filter"
+      ],
+      "additionalProperties": false
+    },
+    "res_task_list": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TaskDTO"
+          }
+        },
+        "nextCursor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "total": {
+          "$ref": "#/$defs/Count"
+        },
+        "statistics": {
+          "$ref": "#/$defs/ProjectStatsDTO"
+        }
+      },
+      "required": [
+        "items",
+        "nextCursor",
+        "total",
+        "statistics"
+      ],
+      "additionalProperties": false
+    },
+    "req_task_listMine": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "filter": {
+          "$ref": "#/$defs/TaskFilter"
+        },
+        "cursor": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "pageSize": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        }
+      },
+      "required": [
+        "projectId",
+        "filter"
+      ],
+      "additionalProperties": false
+    },
+    "res_task_listMine": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TaskDetailDTO"
+          }
+        },
+        "nextCursor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "total": {
+          "$ref": "#/$defs/Count"
+        }
+      },
+      "required": [
+        "items",
+        "nextCursor",
+        "total"
+      ],
+      "additionalProperties": false
+    },
+    "req_my_todoList": {
+      "type": "object",
+      "properties": {
+        "tab": {
+          "enum": [
+            "pending",
+            "changes"
+          ]
+        },
+        "cursor": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "pageSize": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        }
+      },
+      "required": [
+        "tab"
+      ],
+      "additionalProperties": false
+    },
+    "res_my_todoList": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MyTodoDTO"
+          }
+        },
+        "nextCursor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "total": {
+          "$ref": "#/$defs/Count"
+        },
+        "pendingCount": {
+          "$ref": "#/$defs/Count"
+        },
+        "changesCount": {
+          "$ref": "#/$defs/Count"
+        },
+        "todoCount": {
+          "$ref": "#/$defs/Count"
+        }
+      },
+      "required": [
+        "items",
+        "nextCursor",
+        "total",
+        "pendingCount",
+        "changesCount",
+        "todoCount"
+      ],
+      "additionalProperties": false
+    },
+    "req_task_get": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "taskId"
+      ],
+      "additionalProperties": false
+    },
+    "res_task_get": {
+      "$ref": "#/$defs/TaskDTO"
+    },
+    "req_task_draftList": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "cursor": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "pageSize": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        }
+      },
+      "required": [
+        "projectId"
+      ],
+      "additionalProperties": false
+    },
+    "res_task_draftList": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TaskDraftDTO"
+          }
+        },
+        "nextCursor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "total": {
+          "$ref": "#/$defs/Count"
+        }
+      },
+      "required": [
+        "items",
+        "nextCursor",
+        "total"
+      ],
+      "additionalProperties": false
+    },
+    "req_task_draftSave": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "$ref": "#/$defs/DraftMode"
+        },
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "draftTaskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "taskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "fields": {
+          "$ref": "#/$defs/TaskFieldsDraft"
+        },
+        "expectedDraftRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "mode",
+        "projectId",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "EDIT"
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          },
+          "then": {
+            "required": [
+              "taskId",
+              "expectedDraftRevision"
+            ]
+          }
+        }
+      ]
+    },
+    "res_task_draftSave": {
+      "$ref": "#/$defs/TaskDraftDTO"
+    },
+    "req_task_publish": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "draftTaskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "fields": {
+          "$ref": "#/$defs/TaskFields"
+        },
+        "expectedDraftRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "projectId",
+        "fields"
+      ],
+      "additionalProperties": false
+    },
+    "res_task_publish": {
+      "$ref": "#/$defs/TaskDetailDTO"
+    },
+    "req_task_update": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "fields": {
+          "$ref": "#/$defs/TaskFields"
+        },
+        "expectedRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "expectedDraftRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "confirmReassign": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "taskId",
+        "fields",
+        "expectedRevision"
+      ],
+      "additionalProperties": false
+    },
+    "res_task_update": {
+      "$ref": "#/$defs/TaskDetailDTO"
+    },
+    "req_task_delete": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "expectedRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "taskId",
+        "expectedRevision"
+      ],
+      "additionalProperties": false
+    },
+    "res_task_delete": {
+      "type": "object",
+      "properties": {
+        "deleted": {
+          "const": true
+        }
+      },
+      "required": [
+        "deleted"
+      ],
+      "additionalProperties": false
+    },
+    "req_task_remind": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "expectedRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "taskId"
+      ],
+      "additionalProperties": false
+    },
+    "res_task_remind": {
+      "type": "object",
+      "properties": {
+        "notificationId": {
+          "$ref": "#/$defs/Id"
+        },
+        "created": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "notificationId",
+        "created"
+      ],
+      "additionalProperties": false
+    },
+    "req_file_beginUpload": {
+      "type": "object",
+      "properties": {
+        "purpose": {
+          "$ref": "#/$defs/UploadPurpose"
+        },
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "draftKey": {
+          "$ref": "#/$defs/Id"
+        },
+        "taskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "sizeHint": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20971520
+        },
+        "mimeHint": {
+          "type": "string",
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "purpose",
+        "name",
+        "sizeHint"
+      ],
+      "additionalProperties": false
+    },
+    "res_file_beginUpload": {
+      "$ref": "#/$defs/UploadPlanDTO"
+    },
+    "req_file_finalizeUpload": {
+      "type": "object",
+      "properties": {
+        "uploadSessionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "tempFileId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        }
+      },
+      "required": [
+        "uploadSessionId",
+        "tempFileId"
+      ],
+      "additionalProperties": false
+    },
+    "res_file_finalizeUpload": {
+      "type": "object",
+      "properties": {
+        "revisionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "size": {
+          "$ref": "#/$defs/Count"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "revisionId",
+        "name",
+        "size",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "req_file_getReadTicket": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "$ref": "#/$defs/ReadTarget"
+        },
+        "expectedRevisionId": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "target"
+      ],
+      "additionalProperties": false
+    },
+    "res_file_getReadTicket": {
+      "$ref": "#/$defs/ReadTicketDTO"
+    },
+    "req_submission_saveDraft": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "revisionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "note": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "mode": {
+          "$ref": "#/$defs/Mode"
+        },
+        "baseVersionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "expectedVersionRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "expectedTaskRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "taskId",
+        "revisionId",
+        "mode",
+        "expectedTaskRevision"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "enum": [
+                  "KEEP",
+                  "OVERWRITE"
+                ]
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          },
+          "then": {
+            "required": [
+              "baseVersionId",
+              "expectedVersionRevision"
+            ]
+          }
+        }
+      ]
+    },
+    "res_submission_saveDraft": {
+      "$ref": "#/$defs/TaskDetailDTO"
+    },
+    "req_submission_submit": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "revisionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "note": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "mode": {
+          "$ref": "#/$defs/Mode"
+        },
+        "baseVersionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "expectedVersionRevision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "expectedTaskRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "taskId",
+        "revisionId",
+        "mode",
+        "expectedTaskRevision"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "enum": [
+                  "KEEP",
+                  "OVERWRITE"
+                ]
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          },
+          "then": {
+            "required": [
+              "baseVersionId",
+              "expectedVersionRevision"
+            ]
+          }
+        }
+      ]
+    },
+    "res_submission_submit": {
+      "type": "object",
+      "properties": {
+        "task": {
+          "$ref": "#/$defs/TaskDetailDTO"
+        },
+        "submission": {
+          "$ref": "#/$defs/SubmissionDTO"
+        },
+        "visibleVersion": {
+          "$ref": "#/$defs/VisibleVersionDTO"
+        }
+      },
+      "required": [
+        "task",
+        "submission",
+        "visibleVersion"
+      ],
+      "additionalProperties": false
+    },
+    "req_version_list": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "assignmentEpoch": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "cursor": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "pageSize": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        }
+      },
+      "required": [
+        "taskId"
+      ],
+      "additionalProperties": false
+    },
+    "res_version_list": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/VisibleVersionDTO"
+          }
+        },
+        "nextCursor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "total": {
+          "$ref": "#/$defs/Count"
+        }
+      },
+      "required": [
+        "items",
+        "nextCursor",
+        "total"
+      ],
+      "additionalProperties": false
+    },
+    "req_review_list": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "$ref": "#/$defs/Id"
+        },
+        "filter": {
+          "enum": [
+            "PENDING",
+            "APPROVED",
+            "REJECTED"
+          ]
+        },
+        "taskId": {
+          "$ref": "#/$defs/Id"
+        },
+        "submissionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "cursor": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "pageSize": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        }
+      },
+      "required": [
+        "projectId",
+        "filter"
+      ],
+      "additionalProperties": false
+    },
+    "res_review_list": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReviewCardDTO"
+          }
+        },
+        "nextCursor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "total": {
+          "$ref": "#/$defs/Count"
+        }
+      },
+      "required": [
+        "items",
+        "nextCursor",
+        "total"
+      ],
+      "additionalProperties": false
+    },
+    "req_review_context": {
+      "type": "object",
+      "properties": {
+        "submissionId": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "submissionId"
+      ],
+      "additionalProperties": false
+    },
+    "res_review_context": {
+      "$ref": "#/$defs/ReviewContextDTO"
+    },
+    "req_review_approve": {
+      "type": "object",
+      "properties": {
+        "submissionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "expectedTaskRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "submissionId",
+        "expectedTaskRevision"
+      ],
+      "additionalProperties": false
+    },
+    "res_review_approve": {
+      "type": "object",
+      "properties": {
+        "task": {
+          "$ref": "#/$defs/TaskDetailDTO"
+        },
+        "reviewId": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "task",
+        "reviewId"
+      ],
+      "additionalProperties": false
+    },
+    "req_review_reject": {
+      "type": "object",
+      "properties": {
+        "submissionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "reason": {
+          "type": "string",
+          "maxLength": 8000
+        },
+        "revisionDueAt": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "priority": {
+          "$ref": "#/$defs/Priority"
+        },
+        "expectedTaskRevision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "submissionId",
+        "revisionDueAt",
+        "priority",
+        "expectedTaskRevision"
+      ],
+      "additionalProperties": false
+    },
+    "res_review_reject": {
+      "type": "object",
+      "properties": {
+        "task": {
+          "$ref": "#/$defs/TaskDetailDTO"
+        },
+        "reviewId": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "task",
+        "reviewId"
+      ],
+      "additionalProperties": false
+    },
+    "req_review_get": {
+      "type": "object",
+      "properties": {
+        "reviewId": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "reviewId"
+      ],
+      "additionalProperties": false
+    },
+    "res_review_get": {
+      "$ref": "#/$defs/FeedbackDTO"
+    },
+    "req_notification_list": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "enum": [
+            "ALL",
+            "TASK",
+            "FEEDBACK",
+            "REVIEW_RESULT"
+          ]
+        },
+        "cursor": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "pageSize": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        }
+      },
+      "required": [
+        "category"
+      ],
+      "additionalProperties": false
+    },
+    "res_notification_list": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/NotificationDTO"
+          }
+        },
+        "nextCursor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "total": {
+          "$ref": "#/$defs/Count"
+        },
+        "watermark": {
+          "$ref": "#/$defs/Watermark"
+        }
+      },
+      "required": [
+        "items",
+        "nextCursor",
+        "total",
+        "watermark"
+      ],
+      "additionalProperties": false
+    },
+    "req_notification_unreadCount": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    },
+    "res_notification_unreadCount": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "$ref": "#/$defs/Count"
+        },
+        "serverNow": {
+          "$ref": "#/$defs/Time"
+        }
+      },
+      "required": [
+        "count",
+        "serverNow"
+      ],
+      "additionalProperties": false
+    },
+    "req_notification_read": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "notificationId": {
+              "$ref": "#/$defs/Id"
+            }
+          },
+          "required": [
+            "notificationId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "reviewId": {
+              "$ref": "#/$defs/Id"
+            }
+          },
+          "required": [
+            "reviewId"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "res_notification_read": {
+      "type": "object",
+      "properties": {
+        "read": {
+          "const": true
+        },
+        "matchedCount": {
+          "$ref": "#/$defs/Count"
+        }
+      },
+      "required": [
+        "read",
+        "matchedCount"
+      ],
+      "additionalProperties": false
+    },
+    "req_notification_readAll": {
+      "type": "object",
+      "properties": {
+        "watermark": {
+          "$ref": "#/$defs/Watermark"
+        }
+      },
+      "required": [
+        "watermark"
+      ],
+      "additionalProperties": false
+    },
+    "res_notification_readAll": {
+      "type": "object",
+      "properties": {
+        "readThroughSeq": {
+          "$ref": "#/$defs/Count"
+        }
+      },
+      "required": [
+        "readThroughSeq"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

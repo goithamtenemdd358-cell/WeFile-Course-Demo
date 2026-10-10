@@ -1,0 +1,161 @@
+{
+  "note": "Create these compound indexes in console; document IDs enforce uniqueness. Queries scan equality group with _id keyset pagination.",
+  "indexes": [
+    {
+      "collection": "project_members",
+      "name": "userId_active_id",
+      "unique": false,
+      "keys": [
+        {
+          "field": "userId",
+          "direction": "asc"
+        },
+        {
+          "field": "active",
+          "direction": "asc"
+        },
+        {
+          "field": "_id",
+          "direction": "asc"
+        }
+      ]
+    },
+    {
+      "collection": "project_members",
+      "name": "projectId_active_id",
+      "unique": false,
+      "keys": [
+        {
+          "field": "projectId",
+          "direction": "asc"
+        },
+        {
+          "field": "active",
+          "direction": "asc"
+        },
+        {
+          "field": "_id",
+          "direction": "asc"
+        }
+      ]
+    },
+    {
+      "collection": "tasks",
+      "name": "projectId_publication_deletedAt_id",
+      "unique": false,
+      "keys": [
+        {
+          "field": "projectId",
+          "direction": "asc"
+        },
+        {
+          "field": "publication",
+          "direction": "asc"
+        },
+        {
+          "field": "deletedAt",
+          "direction": "asc"
+        },
+        {
+          "field": "_id",
+          "direction": "asc"
+        }
+      ]
+    },
+    {
+      "collection": "tasks",
+      "name": "publication_deletedAt_id",
+      "unique": false,
+      "keys": [
+        {
+          "field": "publication",
+          "direction": "asc"
+        },
+        {
+          "field": "deletedAt",
+          "direction": "asc"
+        },
+        {
+          "field": "_id",
+          "direction": "asc"
+        }
+      ]
+    },
+    {
+      "collection": "files",
+      "name": "projectId_scope_deletedAt_id",
+      "unique": false,
+      "keys": [
+        {
+          "field": "projectId",
+          "direction": "asc"
+        },
+        {
+          "field": "scope",
+          "direction": "asc"
+        },
+        {
+          "field": "deletedAt",
+          "direction": "asc"
+        },
+        {
+          "field": "_id",
+          "direction": "asc"
+        }
+      ]
+    },
+    {
+      "collection": "file_versions",
+      "name": "taskId_assignmentEpoch_id",
+      "unique": false,
+      "keys": [
+        {
+          "field": "taskId",
+          "direction": "asc"
+        },
+        {
+          "field": "assignmentEpoch",
+          "direction": "asc"
+        },
+        {
+          "field": "_id",
+          "direction": "asc"
+        }
+      ]
+    },
+    {
+      "collection": "submissions",
+      "name": "projectId_decision_id",
+      "unique": false,
+      "keys": [
+        {
+          "field": "projectId",
+          "direction": "asc"
+        },
+        {
+          "field": "decision",
+          "direction": "asc"
+        },
+        {
+          "field": "_id",
+          "direction": "asc"
+        }
+      ]
+    },
+    {
+      "collection": "notifications",
+      "name": "recipientId_id",
+      "unique": false,
+      "keys": [
+        {
+          "field": "recipientId",
+          "direction": "asc"
+        },
+        {
+          "field": "_id",
+          "direction": "asc"
+        }
+      ]
+    }
+  ]
+}

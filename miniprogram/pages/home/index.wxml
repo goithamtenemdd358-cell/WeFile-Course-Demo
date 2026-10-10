@@ -1,0 +1,37 @@
+<view class="page home-dashboard">
+  <view class="home-head">
+    <view class="home-mark">⌂</view>
+    <view class="home-brand">WeFile</view>
+    <view class="home-message" bindtap="go" data-page="18">消息<view wx:if="{{home.unreadCount}}" class="home-message-dot"></view></view>
+  </view>
+  <view class="home-page-title">首页</view>
+
+  <view wx:if="{{loading}}" class="muted">加载中…</view>
+  <view wx:if="{{error}}" class="error">{{error}}<button class="action-button" bindtap="action" data-action="retry" disabled="{{busy || submissionSucceeded}}">刷新重试</button></view>
+
+  <view class="home-hero">
+    <view class="home-orb home-orb-one"></view><view class="home-orb home-orb-two"></view>
+    <view class="home-hero-copy">
+      <image wx:if="{{avatarUrl}}" src="{{avatarUrl}}" class="home-avatar" mode="aspectFill"/>
+      <view wx:else class="home-avatar home-avatar-fallback">我</view>
+      <view class="home-greeting">你好，{{home.user.displayName}}</view>
+      <view class="home-subtitle">你在不同项目中的角色会不同</view>
+    </view>
+  </view>
+
+  <view class="home-stats">
+    <view class="home-stat"><view class="home-stat-number">{{home.awaitingReview || 0}}</view><text>待审核</text></view>
+    <view class="home-stat"><view class="home-stat-number">{{home.pending}}</view><text>待提交</text></view>
+    <view class="home-stat"><view class="home-stat-number">{{home.changesRequested}}</view><text>需修改</text></view>
+    <view class="home-stat"><view class="home-stat-number">{{home.overdue}}</view><text>已逾期</text></view>
+  </view>
+
+  <view wx:if="{{!home.hasProjects}}" class="home-empty">你还没有参与项目，创建一个项目或输入邀请码加入。</view>
+  <view class="home-actions">
+    <button class="home-primary" bindtap="go" data-page="05">＋ 创建项目</button>
+    <button class="home-secondary" bindtap="go" data-page="04">输入邀请码加入项目</button>
+  </view>
+  <button class="action-button" bindtap="action" data-action="more" wx:if="{{nextCursor}}" disabled="{{busy || submissionSucceeded}}">加载更多</button>
+  <view wx:if="{{busy}}" class="muted">正在处理，请稍候…</view>
+</view>
+<global-nav class="global-nav" active="03"/>

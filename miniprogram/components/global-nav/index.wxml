@@ -1,0 +1,1 @@
+<view class="nav"><view wx:for="{{tabs}}" wx:key="id" class="tab {{active===item.id?'selected':''}}" bindtap="choose" data-id="{{item.id}}"><text>{{item.label}}</text><view wx:if="{{item.id==='18' && unread>0}}" class="dot"/></view></view>

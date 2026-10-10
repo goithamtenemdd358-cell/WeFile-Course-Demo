@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "WeFile",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "global-nav": "/components/global-nav/index"
+  }
+}

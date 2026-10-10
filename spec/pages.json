@@ -1,0 +1,3021 @@
+[
+  {
+    "pageId": "01",
+    "name": "微信快捷登录页",
+    "route": "pages/login/index",
+    "access": "全部用户",
+    "description": "登录身份，不选择项目角色",
+    "apiActions": [
+      "auth.bootstrap"
+    ],
+    "buttons": [
+      {
+        "id": "B-01-01",
+        "label": "微信快捷登录",
+        "sourceId": "SRC-L0163",
+        "sourceText": "1. 微信快捷登录：调用微信登录；首次登录跳转页面02完善个人资料；已有个人资料直接跳转页面03首页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "CONDITIONAL",
+        "targetPageIds": [
+          "02",
+          "03"
+        ],
+        "handler": "bootstrapAndRoute",
+        "apiActions": [
+          "auth.bootstrap"
+        ],
+        "behavior": "真实微信身份；已登录自动跳过；首次未完善去02，已有资料去03",
+        "acceptanceId": "ACT-01-01"
+      },
+      {
+        "id": "B-01-02",
+        "label": "用户协议",
+        "sourceId": "SRC-L0165",
+        "sourceText": "2. 用户协议：弹窗打开协议内容；关闭后停留在页面01。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "openUserAgreement",
+        "apiActions": [],
+        "behavior": "协议弹窗关闭仍在01",
+        "acceptanceId": "ACT-01-02"
+      },
+      {
+        "id": "B-01-03",
+        "label": "隐私政策",
+        "sourceId": "SRC-L0167",
+        "sourceText": "3. 隐私政策：弹窗打开隐私政策；关闭后停留在页面01。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "openPrivacyPolicy",
+        "apiActions": [],
+        "behavior": "隐私弹窗关闭仍在01",
+        "acceptanceId": "ACT-01-03"
+      }
+    ],
+    "source": "第4章／页面01",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0145",
+      "SRC-L0147",
+      "SRC-L0149",
+      "SRC-L0151",
+      "SRC-L0153",
+      "SRC-L0155",
+      "SRC-L0157",
+      "SRC-L0159",
+      "SRC-L0161",
+      "SRC-L0163",
+      "SRC-L0165",
+      "SRC-L0167",
+      "SRC-L0169",
+      "SRC-L0171"
+    ],
+    "layoutRequirements": [
+      "页面布局：页面居中内容；底部协议入口"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0155",
+        "text": "1. 产品名称与简短介绍"
+      },
+      {
+        "sourceId": "SRC-L0157",
+        "text": "2. 微信快捷登录说明"
+      },
+      {
+        "sourceId": "SRC-L0159",
+        "text": "3. 用户协议、隐私政策入口"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0171",
+        "text": "登录仅识别微信身份；组长/组员角色，由创建项目或者邀请码加入项目决定，和登录无关。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：用户打开小程序；已登录用户系统自动跳过本页。"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "02",
+    "name": "完善个人资料页",
+    "route": "pages/profile-edit/index",
+    "access": "首次登录；个人资料编辑",
+    "description": "昵称必填、头像选填；支持默认头像",
+    "apiActions": [
+      "file.beginUpload",
+      "file.finalizeUpload",
+      "user.get",
+      "user.update"
+    ],
+    "buttons": [
+      {
+        "id": "B-02-01",
+        "label": "选择头像",
+        "sourceId": "SRC-L0191",
+        "sourceText": "1. 选择头像：调用微信头像选择，本页面预览，停留在页面02。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "chooseAvatar",
+        "apiActions": [],
+        "behavior": "使用头像选择交互，本地预览；选填；保存前以AVATAR用途封存",
+        "acceptanceId": "ACT-02-01"
+      },
+      {
+        "id": "B-02-02",
+        "label": "填写姓名",
+        "sourceId": "SRC-L0193",
+        "sourceText": "2. 填写姓名：输入项目展示昵称，停留在页面02。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "editDisplayName",
+        "apiActions": [],
+        "behavior": "输入本人展示名；必填校验发生在保存时",
+        "acceptanceId": "ACT-02-02"
+      },
+      {
+        "id": "B-02-03",
+        "label": "保存并进入",
+        "sourceId": "SRC-L0195",
+        "sourceText": "3. 保存并进入：校验姓名（必填）保存个人资料，跳转页面03首页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "03"
+        ],
+        "handler": "saveProfile",
+        "apiActions": [
+          "user.update"
+        ],
+        "behavior": "昵称非空；有头像时先封存，保存成功去03，包括从02-A进入的编辑模式",
+        "acceptanceId": "ACT-02-03"
+      }
+    ],
+    "source": "第4章／页面02",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0173",
+      "SRC-L0175",
+      "SRC-L0177",
+      "SRC-L0179",
+      "SRC-L0181",
+      "SRC-L0183",
+      "SRC-L0185",
+      "SRC-L0187",
+      "SRC-L0189",
+      "SRC-L0191",
+      "SRC-L0193",
+      "SRC-L0195",
+      "SRC-L0197",
+      "SRC-L0199"
+    ],
+    "layoutRequirements": [
+      "页面布局：顶部提示，中间表单区，底部保存按钮"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0183",
+        "text": "1. 头像选择预览区"
+      },
+      {
+        "sourceId": "SRC-L0185",
+        "text": "2. 姓名/昵称输入框"
+      },
+      {
+        "sourceId": "SRC-L0187",
+        "text": "3. 资料用途说明"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0199",
+        "text": "头像选填；姓名必填；Demo版本支持默认头像。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：页面01微信快捷登录，系统检测用户未完善个人资料。"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "03",
+    "name": "首页",
+    "route": "pages/home/index",
+    "access": "已登录且资料完整",
+    "description": "全局统计只读，无项目列表；创建／邀请码入口",
+    "apiActions": [
+      "home.get",
+      "notification.unreadCount"
+    ],
+    "buttons": [
+      {
+        "id": "B-03-01",
+        "label": "右上角铃铛图标",
+        "sourceId": "SRC-L0227",
+        "sourceText": "1. 右上角铃铛图标：跳转页面18消息中心。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "18"
+        ],
+        "handler": "openMessages",
+        "apiActions": [],
+        "behavior": "不将统计数字设为消息链接",
+        "acceptanceId": "ACT-03-01"
+      },
+      {
+        "id": "B-03-02",
+        "label": "+ 创建项目",
+        "sourceId": "SRC-L0229",
+        "sourceText": "2. + 创建项目：跳转页面05创建项目页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "05"
+        ],
+        "handler": "createProject",
+        "apiActions": [],
+        "behavior": "所有已登录且资料完整用户可创建自己的新项目",
+        "acceptanceId": "ACT-03-02"
+      },
+      {
+        "id": "B-03-03",
+        "label": "输入邀请码加入项目",
+        "sourceId": "SRC-L0231",
+        "sourceText": "3. 输入邀请码加入项目：跳转页面04输入邀请码页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "04"
+        ],
+        "handler": "joinByCode",
+        "apiActions": [],
+        "behavior": "去独立邀请码页",
+        "acceptanceId": "ACT-03-03"
+      }
+    ],
+    "source": "第4章／页面03",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0201",
+      "SRC-L0203",
+      "SRC-L0205",
+      "SRC-L0207",
+      "SRC-L0209",
+      "SRC-L0211",
+      "SRC-L0213",
+      "SRC-L0215",
+      "SRC-L0217",
+      "SRC-L0219",
+      "SRC-L0221",
+      "SRC-L0223",
+      "SRC-L0225",
+      "SRC-L0227",
+      "SRC-L0229",
+      "SRC-L0231",
+      "SRC-L0233",
+      "SRC-L0235"
+    ],
+    "layoutRequirements": [
+      "页面布局：顶部用户区 → 模块1全局统计 → 模块2快捷操作按钮 → 底部全局Tab栏"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0213",
+        "text": "1. 顶部区：头像+昵称；小字提示「你在不同项目中的角色会不同」；右上角铃铛图标（消息未读红点）"
+      },
+      {
+        "sourceId": "SRC-L0215",
+        "text": "2. 模块1‑全局聚合统计（聚合全部项目数据）"
+      },
+      {
+        "sourceId": "SRC-L0217",
+        "text": "组长视图：待审核、待提交、需修改、已逾期；纯数字展示，不可点击。"
+      },
+      {
+        "sourceId": "SRC-L0219",
+        "text": "组员视图：待提交、需修改、已逾期；纯数字展示，不可点击。"
+      },
+      {
+        "sourceId": "SRC-L0221",
+        "text": "3. 模块2‑快捷操作：两大操作按钮"
+      },
+      {
+        "sourceId": "SRC-L0223",
+        "text": "4. 空状态：用户无任何项目：统计模块置灰，提示文案：你还没有参与任何项目，可以创建或输入邀请码加入。"
+      }
+    ],
+    "boundaryRequirements": [],
+    "entryRequirements": [
+      "入口来源：页面01登录成功；页面02保存并进入；底部Tab点击【首页】。"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "03-A",
+    "name": "项目列表页",
+    "route": "pages/projects/index",
+    "access": "已登录且资料完整",
+    "description": "全部参与的已发布项目；逐项目角色、DDL、进度",
+    "apiActions": [
+      "project.list"
+    ],
+    "buttons": [
+      {
+        "id": "B-03-A-01",
+        "label": "项目卡片",
+        "sourceId": "SRC-L0255",
+        "sourceText": "1. 项目卡片：点击卡片 → 跳转页面07项目总览页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "07"
+        ],
+        "handler": "openProject",
+        "apiActions": [],
+        "behavior": "传projectId；进入后重新鉴权",
+        "acceptanceId": "ACT-03-A-01"
+      },
+      {
+        "id": "B-03-A-02",
+        "label": "空状态按钮「去首页创建或加入项目」→ 跳转页面03首页。",
+        "sourceId": "SRC-L0257",
+        "sourceText": "2. 空状态按钮「去首页创建或加入项目」→ 跳转页面03首页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "03"
+        ],
+        "handler": "goHome",
+        "apiActions": [],
+        "behavior": "只在无项目空状态显示",
+        "acceptanceId": "ACT-03-A-02"
+      }
+    ],
+    "source": "第4章／页面03-A",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0237",
+      "SRC-L0239",
+      "SRC-L0241",
+      "SRC-L0243",
+      "SRC-L0245",
+      "SRC-L0247",
+      "SRC-L0249",
+      "SRC-L0251",
+      "SRC-L0253",
+      "SRC-L0255",
+      "SRC-L0257",
+      "SRC-L0259",
+      "SRC-L0261"
+    ],
+    "layoutRequirements": [
+      "页面布局：页面顶部标题；中部项目卡片列表；底部全局Tab栏。"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0247",
+        "text": "1. 顶部标题：我的项目"
+      },
+      {
+        "sourceId": "SRC-L0249",
+        "text": "2. 项目卡片列表，每张卡片信息：项目名称、当前项目身份（组长/组员）、总DDL、项目完成进度、项目简短状态提示（如：3项待审核）"
+      },
+      {
+        "sourceId": "SRC-L0251",
+        "text": "3. 空状态：暂无项目；按钮引导跳转页面03首页。"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0261",
+        "text": "页面07项目总览左上角返回箭头返回本页面；无项目时展示空状态。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：底部Tab点击【项目】；页面06项目创建成功页可跳转至此。"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "04",
+    "name": "输入邀请码页",
+    "route": "pages/join/index",
+    "access": "已登录且资料完整",
+    "description": "6位邀请码查找，预览最小信息，明确加入",
+    "apiActions": [
+      "invite.lookup",
+      "project.join"
+    ],
+    "buttons": [
+      {
+        "id": "B-04-01",
+        "label": "查找项目",
+        "sourceId": "SRC-L0279",
+        "sourceText": "1. 查找项目：校验邀请码；有效展示项目信息；无效弹窗提示重新输入，停留在页面04。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "lookupInvite",
+        "apiActions": [
+          "invite.lookup"
+        ],
+        "behavior": "输入变更立即清空旧预览；无效弹窗；已加入/归档/失效分别处理",
+        "acceptanceId": "ACT-04-01"
+      },
+      {
+        "id": "B-04-02",
+        "label": "加入项目",
+        "sourceId": "SRC-L0281",
+        "sourceText": "2. 加入项目：将用户标记为本项目组员；跳转页面07项目总览页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "07"
+        ],
+        "handler": "joinProject",
+        "apiActions": [
+          "project.join"
+        ],
+        "behavior": "确认加入；入组用当前已查验的code而非旧预览；原组长重复加入不得降级",
+        "acceptanceId": "ACT-04-02"
+      },
+      {
+        "id": "B-04-03",
+        "label": "重新输入",
+        "sourceId": "SRC-L0283",
+        "sourceText": "3. 重新输入：清空输入框和查询结果，停留在页面04。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "resetInvite",
+        "apiActions": [],
+        "behavior": "清空输入和查找结果",
+        "acceptanceId": "ACT-04-03"
+      },
+      {
+        "id": "B-04-04",
+        "label": "返回首页",
+        "sourceId": "SRC-L0285",
+        "sourceText": "4. 返回首页：放弃加入，跳转页面03首页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "03"
+        ],
+        "handler": "cancelJoin",
+        "apiActions": [],
+        "behavior": "不写成员关系",
+        "acceptanceId": "ACT-04-04"
+      }
+    ],
+    "source": "第4章／页面04",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0263",
+      "SRC-L0265",
+      "SRC-L0267",
+      "SRC-L0269",
+      "SRC-L0271",
+      "SRC-L0273",
+      "SRC-L0275",
+      "SRC-L0277",
+      "SRC-L0279",
+      "SRC-L0281",
+      "SRC-L0283",
+      "SRC-L0285",
+      "SRC-L0287",
+      "SRC-L0289"
+    ],
+    "layoutRequirements": [
+      "页面布局：顶部返回；中部邀请码输入框；查询结果展示区；底部操作按钮"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0273",
+        "text": "1. 六位邀请码输入框"
+      },
+      {
+        "sourceId": "SRC-L0275",
+        "text": "2. 查询成功后展示：项目名称、项目简介、组长姓名、项目总DDL"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0289",
+        "text": "处理异常场景：邀请码不存在、邀请码失效、用户已加入该项目、项目已归档。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：页面03首页点击「输入邀请码加入项目」"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "05",
+    "name": "创建／编辑项目页",
+    "route": "pages/project-edit/index",
+    "access": "创建：资料完整用户；编辑：本项目组长",
+    "description": "名称、简介、统一要求、总DDL、成果要求、封面、参考文档、草稿",
+    "apiActions": [
+      "file.beginUpload",
+      "file.finalizeUpload",
+      "project.draftGet",
+      "project.draftOpen",
+      "project.draftSave",
+      "project.get",
+      "project.publish",
+      "project.update"
+    ],
+    "buttons": [
+      {
+        "id": "B-05-01",
+        "label": "上传项目封面",
+        "sourceId": "SRC-L0305",
+        "sourceText": "1. 上传项目封面：选择图片预览，停留在页面05。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "stageProjectCover",
+        "apiActions": [
+          "project.draftOpen",
+          "file.beginUpload",
+          "file.finalizeUpload"
+        ],
+        "behavior": "图片选择预览；只进入当前编辑上下文，尚不改公开项目",
+        "acceptanceId": "ACT-05-01"
+      },
+      {
+        "id": "B-05-02",
+        "label": "上传参考文档",
+        "sourceId": "SRC-L0307",
+        "sourceText": "2. 上传参考文档：支持Word/PDF/PPT/Excel/图片，填写文件说明；上传后列表刷新停留在页面05。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "stageProjectReference",
+        "apiActions": [
+          "project.draftOpen",
+          "file.beginUpload",
+          "file.finalizeUpload"
+        ],
+        "behavior": "保持全部原文件类型；说明和分类；当前编辑上下文暂存",
+        "acceptanceId": "ACT-05-02"
+      },
+      {
+        "id": "B-05-03",
+        "label": "保存草稿",
+        "sourceId": "SRC-L0309",
+        "sourceText": "3. 保存草稿：保存表单，不生成邀请码，跳转页面03首页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "03"
+        ],
+        "handler": "saveProjectDraft",
+        "apiActions": [
+          "project.draftSave"
+        ],
+        "behavior": "NEW保存私有新建草稿；EDIT保存隔离编辑草稿；不改公开字段、不新建邀请码",
+        "acceptanceId": "ACT-05-03"
+      },
+      {
+        "id": "B-05-04",
+        "label": "创建项目",
+        "sourceId": "SRC-L0311",
+        "sourceText": "4. 创建项目：校验必填项；生成项目、邀请码，设置当前用户为组长，跳转页面06项目创建成功页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "06"
+        ],
+        "handler": "publishProject",
+        "apiActions": [
+          "project.draftOpen",
+          "project.draftSave",
+          "project.publish"
+        ],
+        "behavior": "NEW才显示；字段与素材关联验证通过后一次发布；失败留05；处理器先保存此表单快照再以draftId发布，不多生成项目。",
+        "acceptanceId": "ACT-05-04"
+      },
+      {
+        "id": "B-05-EDIT",
+        "label": "保存项目编辑",
+        "sourceId": "SRC-L0405",
+        "sourceText": "4. 编辑项目信息（组长才可见）：打开页面05编辑模式，保存完成返回页面08。",
+        "basis": "SOURCE_WITH_DECLARED_DEFAULT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "08"
+        ],
+        "handler": "commitProjectEdit",
+        "apiActions": [
+          "project.draftSave",
+          "project.update"
+        ],
+        "behavior": "编辑08来源保存回08；07来源暂按E16回08；成功才替换公开字段/素材，邀请码不变",
+        "acceptanceId": "ACT-05-EDIT"
+      }
+    ],
+    "source": "第4章／页面05及页面08",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0291",
+      "SRC-L0293",
+      "SRC-L0295",
+      "SRC-L0297",
+      "SRC-L0299",
+      "SRC-L0301",
+      "SRC-L0303",
+      "SRC-L0305",
+      "SRC-L0307",
+      "SRC-L0309",
+      "SRC-L0311",
+      "SRC-L0313",
+      "SRC-L0315"
+    ],
+    "layoutRequirements": [
+      "页面布局：顶部标题+草稿标记；中间表单输入区；素材上传区；底部操作按钮"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0301",
+        "text": "项目名称、项目简介、项目统一要求、项目总DDL、最终成果要求；项目封面上传区；参考文档上传列表。"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0315",
+        "text": "创建项目阶段不需要预先录入组员，组员后续凭邀请码加入；编辑模式下回填原有项目数据。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：页面03首页点击【创建项目】；页面08项目简介页组长编辑项目（编辑模式）"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "06",
+    "name": "项目创建成功页",
+    "route": "pages/project-created/index",
+    "access": "本项目组长",
+    "description": "复制6位邀请码；不生成分享卡片",
+    "apiActions": [
+      "project.get"
+    ],
+    "buttons": [
+      {
+        "id": "B-06-01",
+        "label": "复制邀请码",
+        "sourceId": "SRC-L0331",
+        "sourceText": "1. 复制邀请码：复制剪贴板，停留在页面06。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "copyInvite",
+        "apiActions": [],
+        "behavior": "复制服务端返回六位码，成功前不提示已复制",
+        "acceptanceId": "ACT-06-01"
+      },
+      {
+        "id": "B-06-02",
+        "label": "创建第一个任务",
+        "sourceId": "SRC-L0333",
+        "sourceText": "2. 创建第一个任务：跳转页面14组长创建任务页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "14"
+        ],
+        "handler": "createFirstTask",
+        "apiActions": [],
+        "behavior": "无组员只能存草稿，不造虚拟成员",
+        "acceptanceId": "ACT-06-02"
+      },
+      {
+        "id": "B-06-03",
+        "label": "进入项目",
+        "sourceId": "SRC-L0335",
+        "sourceText": "3. 进入项目：跳转页面07项目总览页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "07"
+        ],
+        "handler": "enterCreatedProject",
+        "apiActions": [],
+        "behavior": "带projectId",
+        "acceptanceId": "ACT-06-03"
+      },
+      {
+        "id": "B-06-04",
+        "label": "返回项目列表",
+        "sourceId": "SRC-L0337",
+        "sourceText": "4. 返回项目列表：跳转页面03‑A项目列表页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "03-A"
+        ],
+        "handler": "backToProjects",
+        "apiActions": [],
+        "behavior": "明确目的地优先",
+        "acceptanceId": "ACT-06-04"
+      }
+    ],
+    "source": "第4章／页面06",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0317",
+      "SRC-L0319",
+      "SRC-L0321",
+      "SRC-L0323",
+      "SRC-L0325",
+      "SRC-L0327",
+      "SRC-L0329",
+      "SRC-L0331",
+      "SRC-L0333",
+      "SRC-L0335",
+      "SRC-L0337",
+      "SRC-L0339",
+      "SRC-L0341"
+    ],
+    "layoutRequirements": [
+      "页面布局：顶部返回；项目信息展示；邀请码复制区域；底部操作按钮。"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0327",
+        "text": "项目名称；6位可复制邀请码；项目总DDL；邀请码使用说明。"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0341",
+        "text": "MVP不生成分享卡片，仅支持复制邀请码文本。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：页面05点击【创建项目】执行成功。"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "07",
+    "name": "项目总览页",
+    "route": "pages/project-overview/index",
+    "access": "项目成员，按项目角色分权",
+    "description": "项目信息、邀请码、DDL、统计、参考摘要、公开分工摘要",
+    "apiActions": [
+      "project.get",
+      "reference.list",
+      "task.list"
+    ],
+    "buttons": [
+      {
+        "id": "B-07-01",
+        "label": "查看项目简介",
+        "sourceId": "SRC-L0361",
+        "sourceText": "1. 查看项目简介：跳转页面08项目简介页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "08"
+        ],
+        "handler": "openProjectInfo",
+        "apiActions": [],
+        "behavior": "全员",
+        "acceptanceId": "ACT-07-01"
+      },
+      {
+        "id": "B-07-02",
+        "label": "查看参考文档",
+        "sourceId": "SRC-L0363",
+        "sourceText": "2. 查看参考文档：跳转页面09参考文档页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "09"
+        ],
+        "handler": "openReferences",
+        "apiActions": [],
+        "behavior": "全员",
+        "acceptanceId": "ACT-07-02"
+      },
+      {
+        "id": "B-07-03",
+        "label": "查看总体任务",
+        "sourceId": "SRC-L0365",
+        "sourceText": "3. 查看总体任务：跳转页面10总体任务页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "10"
+        ],
+        "handler": "openAllTasks",
+        "apiActions": [],
+        "behavior": "全员",
+        "acceptanceId": "ACT-07-03"
+      },
+      {
+        "id": "B-07-04",
+        "label": "查看我的任务",
+        "sourceId": "SRC-L0369",
+        "sourceText": "1. 查看我的任务：跳转页面11我的任务页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "11"
+        ],
+        "handler": "openMyTasks",
+        "apiActions": [],
+        "behavior": "按原文组员入口；仅当前项目",
+        "acceptanceId": "ACT-07-04"
+      },
+      {
+        "id": "B-07-05",
+        "label": "创建任务",
+        "sourceId": "SRC-L0373",
+        "sourceText": "1. 创建任务：跳转页面14组长创建任务页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "14"
+        ],
+        "handler": "createTask",
+        "apiActions": [],
+        "behavior": "仅本项目组长",
+        "acceptanceId": "ACT-07-05"
+      },
+      {
+        "id": "B-07-06",
+        "label": "查看任务概况",
+        "sourceId": "SRC-L0375",
+        "sourceText": "2. 查看任务概况：跳转页面15组长任务概况页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "15"
+        ],
+        "handler": "openLeaderTasks",
+        "apiActions": [],
+        "behavior": "仅本项目组长",
+        "acceptanceId": "ACT-07-06"
+      },
+      {
+        "id": "B-07-07",
+        "label": "审核与反馈",
+        "sourceId": "SRC-L0377",
+        "sourceText": "3. 审核与反馈：跳转页面16审核与反馈页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "16"
+        ],
+        "handler": "openReviewQueue",
+        "apiActions": [],
+        "behavior": "仅本项目组长",
+        "acceptanceId": "ACT-07-07"
+      },
+      {
+        "id": "B-07-08",
+        "label": "编辑项目",
+        "sourceId": "SRC-L0379",
+        "sourceText": "4. 编辑项目：打开页面05编辑模式。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "05"
+        ],
+        "handler": "editProject",
+        "apiActions": [],
+        "behavior": "EDIT模式，带projectId及来源07",
+        "acceptanceId": "ACT-07-08"
+      },
+      {
+        "id": "B-07-COPY",
+        "label": "复制邀请码",
+        "sourceId": "SRC-L0355",
+        "sourceText": "项目名称、简介、统一要求；可复制邀请码；总DDL与剩余时间、逾期提示；任务统计（总任务、已完成、未完成、待审核、需修改、已逾期）；项目完成度；公开分工摘要。",
+        "basis": "SOURCE_IMPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "copyProjectInvite",
+        "apiActions": [],
+        "behavior": "所有已加入成员可复制当前项目显示的六位码；不生成分享卡片",
+        "acceptanceId": "ACT-07-COPY"
+      }
+    ],
+    "source": "第4章／页面07",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0343",
+      "SRC-L0345",
+      "SRC-L0347",
+      "SRC-L0349",
+      "SRC-L0351",
+      "SRC-L0353",
+      "SRC-L0355",
+      "SRC-L0357",
+      "SRC-L0359",
+      "SRC-L0361",
+      "SRC-L0363",
+      "SRC-L0365",
+      "SRC-L0367",
+      "SRC-L0369",
+      "SRC-L0371",
+      "SRC-L0373",
+      "SRC-L0375",
+      "SRC-L0377",
+      "SRC-L0379",
+      "SRC-L0381",
+      "SRC-L0383"
+    ],
+    "layoutRequirements": [
+      "页面布局：顶部返回箭头；项目头部信息；任务进度统计；操作按钮区；参考文档摘要；公开分工摘要；底部全局Tab。"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0355",
+        "text": "项目名称、简介、统一要求；可复制邀请码；总DDL与剩余时间、逾期提示；任务统计（总任务、已完成、未完成、待审核、需修改、已逾期）；项目完成度；公开分工摘要。"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0383",
+        "text": "公共信息全员可见；管理按钮服务端鉴权，不可仅前端隐藏。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：页面03‑A点击项目卡片；页面04加入项目成功；页面06点击进入项目；消息跳转项目。"
+    ],
+    "backPolicy": {
+      "kind": "FIXED",
+      "pageId": "03-A"
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "08",
+    "name": "项目简介页",
+    "route": "pages/project-info/index",
+    "access": "项目成员",
+    "description": "背景、统一要求、成果要求、DDL、组长、创建时间；组员只读",
+    "apiActions": [
+      "project.get"
+    ],
+    "buttons": [
+      {
+        "id": "B-08-01",
+        "label": "查看总体任务",
+        "sourceId": "SRC-L0399",
+        "sourceText": "1. 查看总体任务：跳转页面10总体任务页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "10"
+        ],
+        "handler": "openAllTasks",
+        "apiActions": [],
+        "behavior": "全员",
+        "acceptanceId": "ACT-08-01"
+      },
+      {
+        "id": "B-08-02",
+        "label": "查看参考文档",
+        "sourceId": "SRC-L0401",
+        "sourceText": "2. 查看参考文档：跳转页面09参考文档页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "09"
+        ],
+        "handler": "openReferences",
+        "apiActions": [],
+        "behavior": "全员",
+        "acceptanceId": "ACT-08-02"
+      },
+      {
+        "id": "B-08-03",
+        "label": "返回项目",
+        "sourceId": "SRC-L0403",
+        "sourceText": "3. 返回项目：跳转页面07项目总览页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "07"
+        ],
+        "handler": "returnProject",
+        "apiActions": [],
+        "behavior": "固定07",
+        "acceptanceId": "ACT-08-03"
+      },
+      {
+        "id": "B-08-04",
+        "label": "编辑项目信息（组长才可见）",
+        "sourceId": "SRC-L0405",
+        "sourceText": "4. 编辑项目信息（组长才可见）：打开页面05编辑模式，保存完成返回页面08。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "05"
+        ],
+        "handler": "editProjectFromInfo",
+        "apiActions": [],
+        "behavior": "EDIT模式，保存明确回08",
+        "acceptanceId": "ACT-08-04"
+      }
+    ],
+    "source": "第4章／页面08",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0385",
+      "SRC-L0387",
+      "SRC-L0389",
+      "SRC-L0391",
+      "SRC-L0393",
+      "SRC-L0395",
+      "SRC-L0397",
+      "SRC-L0399",
+      "SRC-L0401",
+      "SRC-L0403",
+      "SRC-L0405",
+      "SRC-L0407",
+      "SRC-L0409"
+    ],
+    "layoutRequirements": [
+      "页面布局：返回箭头；项目完整信息展示；底部操作按钮。"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0395",
+        "text": "项目名称、背景简介、统一要求、最终成果要求、项目总DDL、组长姓名、创建时间。"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0409",
+        "text": "组员只读；组长拥有编辑权限。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：页面07点击查看项目简介。"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "09",
+    "name": "参考文档页",
+    "route": "pages/references/index",
+    "access": "项目成员；写操作仅组长",
+    "description": "项目要求／参考资料／数据资料／图片素材／其他；说明、上传信息",
+    "apiActions": [
+      "file.beginUpload",
+      "file.finalizeUpload",
+      "file.getReadTicket",
+      "reference.create",
+      "reference.delete",
+      "reference.list"
+    ],
+    "buttons": [
+      {
+        "id": "B-09-01",
+        "label": "查看或预览",
+        "sourceId": "SRC-L0425",
+        "sourceText": "1. 查看或预览：打开文件预览；关闭弹窗停留在页面09。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "previewReference",
+        "apiActions": [
+          "file.getReadTicket"
+        ],
+        "behavior": "关闭预览恢复09；非成员不能取票据",
+        "acceptanceId": "ACT-09-01"
+      },
+      {
+        "id": "B-09-02",
+        "label": "下载文件",
+        "sourceId": "SRC-L0427",
+        "sourceText": "2. 下载文件：调用微信下载能力，停留在页面09。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "downloadReference",
+        "apiActions": [
+          "file.getReadTicket"
+        ],
+        "behavior": "下载原文件，留09；不以预览替代",
+        "acceptanceId": "ACT-09-02"
+      },
+      {
+        "id": "B-09-03",
+        "label": "上传参考文档（组长可见）",
+        "sourceId": "SRC-L0429",
+        "sourceText": "3. 上传参考文档（组长可见）：选择文件填写分类说明，上传后刷新本页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "uploadReference",
+        "apiActions": [
+          "file.beginUpload",
+          "file.finalizeUpload",
+          "reference.create"
+        ],
+        "behavior": "仅组长；选择文件、分类说明；09上传确认才对项目成员公开",
+        "acceptanceId": "ACT-09-03"
+      },
+      {
+        "id": "B-09-04",
+        "label": "删除文档（组长可见）",
+        "sourceId": "SRC-L0431",
+        "sourceText": "4. 删除文档（组长可见）：二次确认弹窗，确认后删除刷新页面09。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "deleteReference",
+        "apiActions": [
+          "reference.delete"
+        ],
+        "behavior": "二次确认；取消无变更；成功刷新09",
+        "acceptanceId": "ACT-09-04"
+      },
+      {
+        "id": "B-09-05",
+        "label": "返回项目",
+        "sourceId": "SRC-L0433",
+        "sourceText": "5. 返回项目：跳转页面07项目总览页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "07"
+        ],
+        "handler": "returnProject",
+        "apiActions": [],
+        "behavior": "固定07",
+        "acceptanceId": "ACT-09-05"
+      },
+      {
+        "id": "B-09-FILTER",
+        "label": "文件分类筛选",
+        "sourceId": "SRC-L0421",
+        "sourceText": "文件分类：项目要求、参考资料、数据资料、图片素材、其他；每条文件：名称、格式、说明、上传者、上传时间。",
+        "basis": "SOURCE_IMPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "filterReferences",
+        "apiActions": [
+          "reference.list"
+        ],
+        "behavior": "原文五个分类；列表稳定分页；不混入任务稿件",
+        "acceptanceId": "ACT-09-FILTER"
+      }
+    ],
+    "source": "第4章／页面09",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0411",
+      "SRC-L0413",
+      "SRC-L0415",
+      "SRC-L0417",
+      "SRC-L0419",
+      "SRC-L0421",
+      "SRC-L0423",
+      "SRC-L0425",
+      "SRC-L0427",
+      "SRC-L0429",
+      "SRC-L0431",
+      "SRC-L0433",
+      "SRC-L0435",
+      "SRC-L0437"
+    ],
+    "layoutRequirements": [
+      "页面布局：返回箭头；文件分类筛选；文件列表；操作按钮。"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0421",
+        "text": "文件分类：项目要求、参考资料、数据资料、图片素材、其他；每条文件：名称、格式、说明、上传者、上传时间。"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0437",
+        "text": "MVP不支持在线Office编辑，只做上传、预览、下载。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：页面07、页面08点击查看参考文档。"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "10",
+    "name": "总体任务页",
+    "route": "pages/tasks-all/index",
+    "access": "项目成员",
+    "description": "全员公开分工；其他组员只有摘要，无修改意见／交付文件",
+    "apiActions": [
+      "task.get",
+      "task.list"
+    ],
+    "buttons": [
+      {
+        "id": "B-10-01",
+        "label": "状态筛选Tab",
+        "sourceId": "SRC-L0453",
+        "sourceText": "1. 状态筛选Tab：全部 / 待完成 / 待审核 / 需修改 / 已完成 / 已逾期。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "filterAllTasks",
+        "apiActions": [
+          "task.list"
+        ],
+        "behavior": "原筛选枚举；待完成如何包含进行中见E22已选定规则",
+        "acceptanceId": "ACT-10-01"
+      },
+      {
+        "id": "B-10-02",
+        "label": "点击自己任务卡片",
+        "sourceId": "SRC-L0455",
+        "sourceText": "2. 点击自己任务卡片：跳转页面12任务详情页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "12"
+        ],
+        "handler": "openOwnTask",
+        "apiActions": [],
+        "behavior": "新建导航帧；来源10与筛选快照",
+        "acceptanceId": "ACT-10-02"
+      },
+      {
+        "id": "B-10-03",
+        "label": "点击他人任务卡片",
+        "sourceId": "SRC-L0457",
+        "sourceText": "3. 点击他人任务卡片：组员进入只读任务摘要；组长跳转页面12任务详情（带管理审核按钮）。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "12"
+        ],
+        "handler": "openOtherTask",
+        "apiActions": [
+          "task.get"
+        ],
+        "behavior": "普通组员返回摘要，组长完整；不先下发全文再隐藏",
+        "acceptanceId": "ACT-10-03"
+      },
+      {
+        "id": "B-10-04",
+        "label": "创建任务（组长可见）",
+        "sourceId": "SRC-L0459",
+        "sourceText": "4. 创建任务（组长可见）：跳转页面14组长创建任务页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "14"
+        ],
+        "handler": "createTask",
+        "apiActions": [],
+        "behavior": "仅组长",
+        "acceptanceId": "ACT-10-04"
+      },
+      {
+        "id": "B-10-05",
+        "label": "返回项目",
+        "sourceId": "SRC-L0461",
+        "sourceText": "5. 返回项目：跳转页面07项目总览页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "07"
+        ],
+        "handler": "returnProject",
+        "apiActions": [],
+        "behavior": "固定07",
+        "acceptanceId": "ACT-10-05"
+      }
+    ],
+    "source": "第4章／页面10",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0439",
+      "SRC-L0441",
+      "SRC-L0443",
+      "SRC-L0445",
+      "SRC-L0447",
+      "SRC-L0449",
+      "SRC-L0451",
+      "SRC-L0453",
+      "SRC-L0455",
+      "SRC-L0457",
+      "SRC-L0459",
+      "SRC-L0461",
+      "SRC-L0463",
+      "SRC-L0465"
+    ],
+    "layoutRequirements": [
+      "页面布局：返回箭头；顶部统计；状态筛选Tab；任务卡片列表；操作按钮。"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0449",
+        "text": "任务总数，项目完成度；全员任务卡片，卡片包含负责人姓名、任务名称、DDL、任务状态、提交标记。"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0465",
+        "text": "所有成员可见分工状态；组员看不到别人任务的修改意见，不能替他人提交文件。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：页面07、页面08点击查看总体任务。"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "11",
+    "name": "我的任务页",
+    "route": "pages/tasks-mine/index",
+    "access": "当前项目任务负责人",
+    "description": "仅当前项目自己的任务；全局待办不放这里",
+    "apiActions": [
+      "task.listMine"
+    ],
+    "buttons": [
+      {
+        "id": "B-11-01",
+        "label": "状态筛选Tab",
+        "sourceId": "SRC-L0481",
+        "sourceText": "1. 状态筛选Tab：待完成 / 待审核 / 需修改 / 已完成 / 已逾期。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "filterOwnTasks",
+        "apiActions": [
+          "task.listMine"
+        ],
+        "behavior": "仅本项目本人任务；筛选保留原文项",
+        "acceptanceId": "ACT-11-01"
+      },
+      {
+        "id": "B-11-02",
+        "label": "任务卡片",
+        "sourceId": "SRC-L0483",
+        "sourceText": "2. 任务卡片：点击跳转页面12任务详情页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "12"
+        ],
+        "handler": "openTask",
+        "apiActions": [],
+        "behavior": "来源11",
+        "acceptanceId": "ACT-11-02"
+      },
+      {
+        "id": "B-11-03",
+        "label": "上传文件",
+        "sourceId": "SRC-L0485",
+        "sourceText": "3. 上传文件：选中任务跳转页面13首次上传与提交页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "13"
+        ],
+        "handler": "firstUploadShortcut",
+        "apiActions": [],
+        "behavior": "首次允许状态；记录13完成后12返回11",
+        "acceptanceId": "ACT-11-03"
+      },
+      {
+        "id": "B-11-04",
+        "label": "返回项目",
+        "sourceId": "SRC-L0487",
+        "sourceText": "4. 返回项目：跳转页面07项目总览页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "07"
+        ],
+        "handler": "returnProject",
+        "apiActions": [],
+        "behavior": "固定07",
+        "acceptanceId": "ACT-11-04"
+      }
+    ],
+    "source": "第4章／页面11",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0467",
+      "SRC-L0469",
+      "SRC-L0471",
+      "SRC-L0473",
+      "SRC-L0475",
+      "SRC-L0477",
+      "SRC-L0479",
+      "SRC-L0481",
+      "SRC-L0483",
+      "SRC-L0485",
+      "SRC-L0487",
+      "SRC-L0489",
+      "SRC-L0491"
+    ],
+    "layoutRequirements": [
+      "页面布局：返回箭头；状态筛选Tab；个人任务卡片列表。"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0477",
+        "text": "当前用户在此项目内的任务列表；项目名称、任务名称、DDL、状态、版本、修改提示。"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0491",
+        "text": "该页面仅展示当前这一个项目下我的任务；全局跨项目待办统一放在02‑A「我的」页面。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：页面07项目总览点击查看我的任务。"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "12",
+    "name": "任务详情页",
+    "route": "pages/task-detail/index",
+    "access": "负责人／组长完整；其他成员摘要",
+    "description": "任务、当前提交、版本、最新意见；按钮随角色和状态改变",
+    "apiActions": [
+      "file.getReadTicket",
+      "submission.saveDraft",
+      "submission.submit",
+      "task.delete",
+      "task.get",
+      "version.list"
+    ],
+    "buttons": [
+      {
+        "id": "B-12-01",
+        "label": "上传文件",
+        "sourceId": "SRC-L0511",
+        "sourceText": "1. 上传文件：跳转页面13首次上传提交页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "13"
+        ],
+        "handler": "firstUpload",
+        "apiActions": [],
+        "behavior": "当前负责人，首次待完成/进行中",
+        "acceptanceId": "ACT-12-01"
+      },
+      {
+        "id": "B-12-02",
+        "label": "保存但不提交",
+        "sourceId": "SRC-L0513",
+        "sourceText": "2. 保存但不提交：保存文件，停留在页面12，任务状态变为进行中。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "saveTaskDraft",
+        "apiActions": [
+          "submission.saveDraft"
+        ],
+        "behavior": "首次变进行中；需修改稿遵循20专门规则仍需修改；模式和基线版本一并保存",
+        "acceptanceId": "ACT-12-02"
+      },
+      {
+        "id": "B-12-03",
+        "label": "提交审核",
+        "sourceId": "SRC-L0515",
+        "sourceText": "3. 提交审核：状态变更待审核，推送组长消息；刷新停留在页面12。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "submitSavedDraft",
+        "apiActions": [
+          "submission.submit"
+        ],
+        "behavior": "存在本人本轮有效草稿；使用服务端保存的mode/base；完成后刷新12而非跳离",
+        "acceptanceId": "ACT-12-03"
+      },
+      {
+        "id": "B-12-04",
+        "label": "查看修改意见",
+        "sourceId": "SRC-L0517",
+        "sourceText": "4. 查看修改意见：跳转页面19修改意见详情页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "19"
+        ],
+        "handler": "openFeedback",
+        "apiActions": [],
+        "behavior": "传明确reviewId，不能用任务最新意见替代历史通知意见",
+        "acceptanceId": "ACT-12-04"
+      },
+      {
+        "id": "B-12-05",
+        "label": "重新提交",
+        "sourceId": "SRC-L0519",
+        "sourceText": "5. 重新提交：跳转页面20重新提交文件页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "20"
+        ],
+        "handler": "resubmit",
+        "apiActions": [],
+        "behavior": "当前负责人且需修改",
+        "acceptanceId": "ACT-12-05"
+      },
+      {
+        "id": "B-12-06",
+        "label": "查看文件",
+        "sourceId": "SRC-L0523",
+        "sourceText": "1. 查看文件：预览文件；关闭弹窗回到页面12。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "previewTaskFile",
+        "apiActions": [
+          "file.getReadTicket"
+        ],
+        "behavior": "按明确submission或visibleVersion读取；关闭回同一12实例",
+        "acceptanceId": "ACT-12-06"
+      },
+      {
+        "id": "B-12-07",
+        "label": "下载文件",
+        "sourceId": "SRC-L0525",
+        "sourceText": "2. 下载文件：下载当前版本，停留在页面12。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "downloadTaskFile",
+        "apiActions": [
+          "file.getReadTicket"
+        ],
+        "behavior": "下载当前可访问版本；非负责人组员禁用且服务端拒绝",
+        "acceptanceId": "ACT-12-07"
+      },
+      {
+        "id": "B-12-08",
+        "label": "查看历史版本",
+        "sourceId": "SRC-L0527",
+        "sourceText": "3. 查看历史版本：展开版本记录弹窗。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "showVisibleHistory",
+        "apiActions": [
+          "version.list"
+        ],
+        "behavior": "版本弹窗；不泄漏被覆盖的审计字节",
+        "acceptanceId": "ACT-12-08"
+      },
+      {
+        "id": "B-12-09",
+        "label": "编辑任务",
+        "sourceId": "SRC-L0531",
+        "sourceText": "1. 编辑任务：打开页面14编辑模式。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "14"
+        ],
+        "handler": "editTask",
+        "apiActions": [],
+        "behavior": "组长EDIT模式，原任务回填",
+        "acceptanceId": "ACT-12-09"
+      },
+      {
+        "id": "B-12-10",
+        "label": "修改负责人；修改DDL。",
+        "sourceId": "SRC-L0533",
+        "sourceText": "2. 修改负责人；修改DDL。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "14"
+        ],
+        "handler": "editAssigneeOrDeadline",
+        "apiActions": [],
+        "behavior": "组长同一编辑页聚焦对应字段；换人E10为已选定产品规则",
+        "acceptanceId": "ACT-12-10"
+      },
+      {
+        "id": "B-12-11",
+        "label": "开始审核",
+        "sourceId": "SRC-L0535",
+        "sourceText": "3. 开始审核：跳转页面16审核与反馈页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "16"
+        ],
+        "handler": "reviewTask",
+        "apiActions": [],
+        "behavior": "组长；携带taskId及明确submissionId定位，不误审",
+        "acceptanceId": "ACT-12-11"
+      },
+      {
+        "id": "B-12-12",
+        "label": "删除任务",
+        "sourceId": "SRC-L0537",
+        "sourceText": "4. 删除任务：二次确认弹窗，确认跳转页面15组长任务概况页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "15"
+        ],
+        "handler": "deleteTask",
+        "apiActions": [
+          "task.delete"
+        ],
+        "behavior": "组长二次确认；软删及取消待审；成功回15",
+        "acceptanceId": "ACT-12-12"
+      }
+    ],
+    "source": "第4章／页面12及3.2",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0493",
+      "SRC-L0495",
+      "SRC-L0497",
+      "SRC-L0499",
+      "SRC-L0501",
+      "SRC-L0503",
+      "SRC-L0505",
+      "SRC-L0507",
+      "SRC-L0509",
+      "SRC-L0511",
+      "SRC-L0513",
+      "SRC-L0515",
+      "SRC-L0517",
+      "SRC-L0519",
+      "SRC-L0521",
+      "SRC-L0523",
+      "SRC-L0525",
+      "SRC-L0527",
+      "SRC-L0529",
+      "SRC-L0531",
+      "SRC-L0533",
+      "SRC-L0535",
+      "SRC-L0537",
+      "SRC-L0539",
+      "SRC-L0541"
+    ],
+    "layoutRequirements": [
+      "页面布局：左上角返回箭头（溯源返回）；任务基础信息；DDL逾期标识；提交文件&版本记录；最新修改意见；操作按钮区。"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0503",
+        "text": "任务名称、负责人、任务描述、成果要求；DDL、状态逾期标识；提交文件、版本历史；最新修改意见。"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0541",
+        "text": "左上角返回根据来源回到对应页面，不写死跳转地址。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：页面10、页面11点击任务卡片；消息中心点击任务通知；02‑A我的页面点击待办任务卡片。"
+    ],
+    "backPolicy": {
+      "kind": "TASK_ORIGIN",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "13",
+    "name": "首次上传与提交页",
+    "route": "pages/submit-first/index",
+    "access": "当前任务负责人",
+    "description": "选择文件、说明、进度；保存不分配可见版本；首次正式提交V1",
+    "apiActions": [
+      "file.beginUpload",
+      "file.finalizeUpload",
+      "submission.saveDraft",
+      "submission.submit"
+    ],
+    "buttons": [
+      {
+        "id": "B-13-01",
+        "label": "选择文件",
+        "sourceId": "SRC-L0557",
+        "sourceText": "1. 选择文件：调用微信文件选择，页面预览文件信息。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "chooseFirstFile",
+        "apiActions": [],
+        "behavior": "只选择/预览不算保存，取消选择不变任务",
+        "acceptanceId": "ACT-13-01"
+      },
+      {
+        "id": "B-13-02",
+        "label": "重新选择",
+        "sourceId": "SRC-L0559",
+        "sourceText": "2. 重新选择：清除当前文件，重新选择，停留在页面13。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "reselectFirstFile",
+        "apiActions": [],
+        "behavior": "清当前本地选择，旧已保存草稿不删除",
+        "acceptanceId": "ACT-13-02"
+      },
+      {
+        "id": "B-13-03",
+        "label": "保存但不提交",
+        "sourceId": "SRC-L0561",
+        "sourceText": "3. 保存但不提交：上传保存版本，任务状态进行中；跳转页面12任务详情。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "TASK_ANCHOR",
+        "targetPageIds": [
+          "12"
+        ],
+        "handler": "saveFirstDraft",
+        "apiActions": [
+          "file.beginUpload",
+          "file.finalizeUpload",
+          "submission.saveDraft"
+        ],
+        "behavior": "保存成功去12；无可见V号；来源保留",
+        "acceptanceId": "ACT-13-03"
+      },
+      {
+        "id": "B-13-04",
+        "label": "上传并提交审核",
+        "sourceId": "SRC-L0563",
+        "sourceText": "4. 上传并提交审核：生成V1版本，任务改为待审核，推送组长消息；提交成功toast，跳转页面12任务详情。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "TASK_ANCHOR",
+        "targetPageIds": [
+          "12"
+        ],
+        "handler": "submitFirst",
+        "apiActions": [
+          "file.beginUpload",
+          "file.finalizeUpload",
+          "submission.submit"
+        ],
+        "behavior": "FIRST；服务端成功才原文toast2–3秒并去12；失败原文toast留13",
+        "acceptanceId": "ACT-13-04"
+      },
+      {
+        "id": "B-13-05",
+        "label": "取消",
+        "sourceId": "SRC-L0565",
+        "sourceText": "5. 取消：不保存，返回页面12任务详情。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "TASK_ANCHOR",
+        "targetPageIds": [
+          "12"
+        ],
+        "handler": "cancelFirstUpload",
+        "apiActions": [],
+        "behavior": "原文明确取消去12；不附着此次未保存文件",
+        "acceptanceId": "ACT-13-05"
+      }
+    ],
+    "source": "第4章／页面13及3.3、3.5",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0543",
+      "SRC-L0545",
+      "SRC-L0547",
+      "SRC-L0549",
+      "SRC-L0551",
+      "SRC-L0553",
+      "SRC-L0555",
+      "SRC-L0557",
+      "SRC-L0559",
+      "SRC-L0561",
+      "SRC-L0563",
+      "SRC-L0565",
+      "SRC-L0567",
+      "SRC-L0569"
+    ],
+    "layoutRequirements": [
+      "页面布局：返回箭头；任务所属信息；文件选择区；提交说明输入；上传进度；底部按钮。"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0553",
+        "text": "所属项目、任务名称；选中文件名称大小；提交说明；上传进度。"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0569",
+        "text": "提示上传失败、格式不支持、文件过大；提交成功失败交互遵从全局提交规则。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：页面11、页面12点击上传文件。"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "14",
+    "name": "组长创建／编辑任务页",
+    "route": "pages/task-edit/index",
+    "access": "本项目组长",
+    "description": "单一已加入组员负责人；任务、说明、成果要求、个人DDL；草稿",
+    "apiActions": [
+      "member.list",
+      "task.draftSave",
+      "task.get",
+      "task.publish",
+      "task.update"
+    ],
+    "buttons": [
+      {
+        "id": "B-14-01",
+        "label": "选择负责人",
+        "sourceId": "SRC-L0585",
+        "sourceText": "1. 选择负责人：从本项目已加入组员列表选择一人。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "chooseAssignee",
+        "apiActions": [
+          "member.list"
+        ],
+        "behavior": "只能单个已加入组员；本人组长是否可选按E17已选定解释",
+        "acceptanceId": "ACT-14-01"
+      },
+      {
+        "id": "B-14-02",
+        "label": "保存草稿",
+        "sourceId": "SRC-L0587",
+        "sourceText": "2. 保存草稿：保存表单，不发布，跳转页面15组长任务概况页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "15"
+        ],
+        "handler": "saveTaskFormDraft",
+        "apiActions": [
+          "task.draftSave"
+        ],
+        "behavior": "NEW不发布；EDIT写隔离编辑草稿，不撤回现有任务或覆盖实况",
+        "acceptanceId": "ACT-14-02"
+      },
+      {
+        "id": "B-14-03",
+        "label": "创建并发布",
+        "sourceId": "SRC-L0589",
+        "sourceText": "3. 创建并发布：发布任务，推送组员新任务消息；跳转页面15组长任务概况页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "15"
+        ],
+        "handler": "publishTask",
+        "apiActions": [
+          "task.publish"
+        ],
+        "behavior": "NEW发布；单负责人待完成+新任务通知；EDIT改用task.update，见补充按钮",
+        "acceptanceId": "ACT-14-03"
+      },
+      {
+        "id": "B-14-04",
+        "label": "保存并继续创建",
+        "sourceId": "SRC-L0591",
+        "sourceText": "4. 保存并继续创建：发布当前任务，清空表单，停留在页面14继续新建任务。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "publishAndContinue",
+        "apiActions": [
+          "task.publish"
+        ],
+        "behavior": "仅NEW；成功才清表单；失败保留全部数据；下一次新的requestId",
+        "acceptanceId": "ACT-14-04"
+      },
+      {
+        "id": "B-14-05",
+        "label": "取消",
+        "sourceId": "SRC-L0593",
+        "sourceText": "5. 取消：放弃编辑返回上一级页面。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "SOURCE",
+        "targetPageIds": [],
+        "handler": "cancelTaskEdit",
+        "apiActions": [],
+        "behavior": "返回实际上一级；未保存变更不写公开任务",
+        "acceptanceId": "ACT-14-05"
+      },
+      {
+        "id": "B-14-EDIT",
+        "label": "保存任务编辑",
+        "sourceId": "SRC-L0603",
+        "sourceText": "入口来源：页面07点击查看任务概况；任务创建、编辑、删除完成后跳转至此。",
+        "basis": "SOURCE_WITH_DECLARED_DEFAULT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "15"
+        ],
+        "handler": "commitTaskEdit",
+        "apiActions": [
+          "task.update"
+        ],
+        "behavior": "保留当前publication和五态，实际换人按已选定E10；成功回15",
+        "acceptanceId": "ACT-14-EDIT"
+      }
+    ],
+    "source": "第4章／页面14、15",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0571",
+      "SRC-L0573",
+      "SRC-L0575",
+      "SRC-L0577",
+      "SRC-L0579",
+      "SRC-L0581",
+      "SRC-L0583",
+      "SRC-L0585",
+      "SRC-L0587",
+      "SRC-L0589",
+      "SRC-L0591",
+      "SRC-L0593",
+      "SRC-L0595",
+      "SRC-L0597"
+    ],
+    "layoutRequirements": [
+      "页面布局：返回箭头；表单区；负责人选择；任务信息输入；底部操作按钮。"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0581",
+        "text": "负责人选择下拉；任务名称；任务详细描述；成果要求；个人DDL。"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0597",
+        "text": "MVP一个任务只支持单一负责人，不做多人员共同任务；编辑模式回填旧任务数据。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：页面06创建第一个任务；页面07、页面10、页面12点击创建任务/编辑任务。"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "15",
+    "name": "组长任务概况页",
+    "route": "pages/leader-tasks/index",
+    "access": "本项目组长",
+    "description": "人员任务、状态筛选、最新提交、站内提醒；私有草稿找回入口为工程补全",
+    "apiActions": [
+      "file.getReadTicket",
+      "task.draftList",
+      "task.list",
+      "task.remind"
+    ],
+    "buttons": [
+      {
+        "id": "B-15-01",
+        "label": "状态筛选Tab",
+        "sourceId": "SRC-L0613",
+        "sourceText": "1. 状态筛选Tab：全部 / 未提交 / 待审核 / 需修改 / 已完成 / 已逾期。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "filterLeaderTasks",
+        "apiActions": [
+          "task.list"
+        ],
+        "behavior": "组长筛选含全部/未提交/待审核/需修改/已完成/已逾期",
+        "acceptanceId": "ACT-15-01"
+      },
+      {
+        "id": "B-15-02",
+        "label": "查看任务",
+        "sourceId": "SRC-L0615",
+        "sourceText": "2. 查看任务：跳转页面12任务详情页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "12"
+        ],
+        "handler": "viewTask",
+        "apiActions": [],
+        "behavior": "来源15；历史与当前分开",
+        "acceptanceId": "ACT-15-02"
+      },
+      {
+        "id": "B-15-03",
+        "label": "修改任务",
+        "sourceId": "SRC-L0617",
+        "sourceText": "3. 修改任务：打开页面14编辑模式。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "14"
+        ],
+        "handler": "modifyTask",
+        "apiActions": [],
+        "behavior": "EDIT",
+        "acceptanceId": "ACT-15-03"
+      },
+      {
+        "id": "B-15-04",
+        "label": "查看文件",
+        "sourceId": "SRC-L0619",
+        "sourceText": "4. 查看文件：预览最新提交文件。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "previewLatestSubmission",
+        "apiActions": [
+          "file.getReadTicket"
+        ],
+        "behavior": "取最新正式提交，不拿未交草稿冒充已提交",
+        "acceptanceId": "ACT-15-04"
+      },
+      {
+        "id": "B-15-05",
+        "label": "开始审核",
+        "sourceId": "SRC-L0621",
+        "sourceText": "5. 开始审核：跳转页面16审核与反馈页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "16"
+        ],
+        "handler": "startReview",
+        "apiActions": [],
+        "behavior": "定位明确提交",
+        "acceptanceId": "ACT-15-05"
+      },
+      {
+        "id": "B-15-06",
+        "label": "提醒提交",
+        "sourceId": "SRC-L0623",
+        "sourceText": "6. 提醒提交：向组员发送站内提醒消息，停留在页面15。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "remindSubmission",
+        "apiActions": [
+          "task.remind"
+        ],
+        "behavior": "站内提醒；未交/需修改限制和频控是已选定规则",
+        "acceptanceId": "ACT-15-06"
+      },
+      {
+        "id": "B-15-07",
+        "label": "创建任务",
+        "sourceId": "SRC-L0625",
+        "sourceText": "7. 创建任务：跳转页面14组长创建任务页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "14"
+        ],
+        "handler": "createTask",
+        "apiActions": [],
+        "behavior": "NEW",
+        "acceptanceId": "ACT-15-07"
+      },
+      {
+        "id": "B-15-08",
+        "label": "返回项目",
+        "sourceId": "SRC-L0627",
+        "sourceText": "8. 返回项目：跳转页面07项目总览页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "07"
+        ],
+        "handler": "returnProject",
+        "apiActions": [],
+        "behavior": "固定07",
+        "acceptanceId": "ACT-15-08"
+      }
+    ],
+    "source": "第4章／页面15",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0599",
+      "SRC-L0601",
+      "SRC-L0603",
+      "SRC-L0605",
+      "SRC-L0607",
+      "SRC-L0609",
+      "SRC-L0611",
+      "SRC-L0613",
+      "SRC-L0615",
+      "SRC-L0617",
+      "SRC-L0619",
+      "SRC-L0621",
+      "SRC-L0623",
+      "SRC-L0625",
+      "SRC-L0627",
+      "SRC-L0629",
+      "SRC-L0631"
+    ],
+    "layoutRequirements": [
+      "页面布局：返回箭头；顶部任务统计；状态筛选Tab；人员任务卡片列表；操作按钮。"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0609",
+        "text": "总任务、未提交、待审核、需修改、已完成、已逾期统计；任务卡片：组员姓名、任务、DDL、状态、提交版本。"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0631",
+        "text": "全部写操作必须校验组长服务端权限。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：页面07点击查看任务概况；任务创建、编辑、删除完成后跳转至此。"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "16",
+    "name": "审核与反馈页",
+    "route": "pages/reviews/index",
+    "access": "本项目组长",
+    "description": "待审核／已通过／已退回；明确submission与版本；仅待审核可决策",
+    "apiActions": [
+      "file.getReadTicket",
+      "review.approve",
+      "review.list"
+    ],
+    "buttons": [
+      {
+        "id": "B-16-01",
+        "label": "审核分类Tab切换。",
+        "sourceId": "SRC-L0647",
+        "sourceText": "1. 审核分类Tab切换。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "filterReviewQueue",
+        "apiActions": [
+          "review.list"
+        ],
+        "behavior": "待审核/已通过/已退回按提交记录分类",
+        "acceptanceId": "ACT-16-01"
+      },
+      {
+        "id": "B-16-02",
+        "label": "查看文件",
+        "sourceId": "SRC-L0649",
+        "sourceText": "2. 查看文件：预览下载文件，关闭弹窗回到页面16。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "viewReviewFile",
+        "apiActions": [
+          "file.getReadTicket"
+        ],
+        "behavior": "查看本卡片的准确提交；覆盖旧件只提示审计不可读",
+        "acceptanceId": "ACT-16-02"
+      },
+      {
+        "id": "B-16-03",
+        "label": "通过",
+        "sourceId": "SRC-L0651",
+        "sourceText": "3. 通过：二次确认弹窗；任务更新为已完成，更新项目进度，推送组员审核通过消息；停留在页面16。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "approveSubmission",
+        "apiActions": [
+          "review.approve"
+        ],
+        "behavior": "仅当前待审核；二次确认；成功刷新16及统计通知",
+        "acceptanceId": "ACT-16-03"
+      },
+      {
+        "id": "B-16-04",
+        "label": "不通过",
+        "sourceId": "SRC-L0653",
+        "sourceText": "4. 不通过：跳转页面17填写修改意见页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "17"
+        ],
+        "handler": "rejectSubmission",
+        "apiActions": [],
+        "behavior": "仅当前待审核；传submissionId和taskRevision",
+        "acceptanceId": "ACT-16-04"
+      },
+      {
+        "id": "B-16-05",
+        "label": "返回任务概况",
+        "sourceId": "SRC-L0655",
+        "sourceText": "5. 返回任务概况：跳转页面15组长任务概况页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "15"
+        ],
+        "handler": "returnLeaderTasks",
+        "apiActions": [],
+        "behavior": "固定15",
+        "acceptanceId": "ACT-16-05"
+      }
+    ],
+    "source": "第4章／页面16",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0633",
+      "SRC-L0635",
+      "SRC-L0637",
+      "SRC-L0639",
+      "SRC-L0641",
+      "SRC-L0643",
+      "SRC-L0645",
+      "SRC-L0647",
+      "SRC-L0649",
+      "SRC-L0651",
+      "SRC-L0653",
+      "SRC-L0655",
+      "SRC-L0657",
+      "SRC-L0659"
+    ],
+    "layoutRequirements": [
+      "页面布局：返回箭头；审核分类Tab；待审核卡片列表；操作按钮。"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0643",
+        "text": "分类：待审核 / 已通过 / 已退回；卡片信息：提交组员姓名、任务、文件版本、提交时间、逾期情况；任务原始要求，组员提交说明。"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0659",
+        "text": "只有待审核状态任务展示【通过/不通过】按钮。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：页面07审核与反馈；页面15点击开始审核；组长点击文件提交通知消息。"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "17",
+    "name": "填写修改意见页",
+    "route": "pages/review-reject/index",
+    "access": "本项目组长",
+    "description": "意见、修改DDL、重要程度；绑定项目／任务／不可变文件修订",
+    "apiActions": [
+      "review.context",
+      "review.reject"
+    ],
+    "buttons": [
+      {
+        "id": "B-17-01",
+        "label": "发送修改意见",
+        "sourceId": "SRC-L0675",
+        "sourceText": "1. 发送修改意见：任务状态改为需修改；保存意见绑定项目‑任务‑文件版本；推送组员未读消息；跳转页面16审核反馈页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "16"
+        ],
+        "handler": "sendRevisionRequest",
+        "apiActions": [
+          "review.reject"
+        ],
+        "behavior": "意见与具体提交绑定；DDL/重要程度按契约；取消不写",
+        "acceptanceId": "ACT-17-01"
+      },
+      {
+        "id": "B-17-02",
+        "label": "取消",
+        "sourceId": "SRC-L0677",
+        "sourceText": "2. 取消：不保存意见，返回页面16审核反馈页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "16"
+        ],
+        "handler": "cancelRevisionRequest",
+        "apiActions": [],
+        "behavior": "不保存；回16恢复原筛选",
+        "acceptanceId": "ACT-17-02"
+      }
+    ],
+    "source": "第4章／页面17",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0661",
+      "SRC-L0663",
+      "SRC-L0665",
+      "SRC-L0667",
+      "SRC-L0669",
+      "SRC-L0671",
+      "SRC-L0673",
+      "SRC-L0675",
+      "SRC-L0677",
+      "SRC-L0679",
+      "SRC-L0681"
+    ],
+    "layoutRequirements": [
+      "页面布局：返回箭头；任务与文件信息；意见输入表单；底部按钮。"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0671",
+        "text": "组员姓名、任务名称、原始任务要求；当前提交文件版本；修改意见输入框；修改DDL；重要程度。"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0681",
+        "text": "修改意见必须绑定项目、任务、文件版本，避免意见归属混淆。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：页面16点击不通过。"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "18",
+    "name": "消息中心",
+    "route": "pages/messages/index",
+    "access": "已登录且资料完整",
+    "description": "纯通知流；未读计数、全部已读、分类；没有任务卡片",
+    "apiActions": [
+      "notification.list",
+      "notification.read",
+      "notification.readAll",
+      "notification.unreadCount"
+    ],
+    "buttons": [
+      {
+        "id": "B-18-01",
+        "label": "全部已读",
+        "sourceId": "SRC-L0705",
+        "sourceText": "1. 全部已读：标记全部消息已读，停留在页面18。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "markAllRead",
+        "apiActions": [
+          "notification.readAll"
+        ],
+        "behavior": "使用此列表服务端签发快照watermark，不用客户端当前时间",
+        "acceptanceId": "ACT-18-01"
+      },
+      {
+        "id": "B-18-02",
+        "label": "新任务消息",
+        "sourceId": "SRC-L0707",
+        "sourceText": "2. 新任务消息：点击跳转页面12任务详情页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "12"
+        ],
+        "handler": "openNewTaskNotice",
+        "apiActions": [],
+        "behavior": "来源18",
+        "acceptanceId": "ACT-18-02"
+      },
+      {
+        "id": "B-18-03",
+        "label": "修改意见消息",
+        "sourceId": "SRC-L0709",
+        "sourceText": "3. 修改意见消息：点击跳转页面19修改意见详情页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "19"
+        ],
+        "handler": "openFeedbackNotice",
+        "apiActions": [],
+        "behavior": "明确reviewId；带当前notificationId",
+        "acceptanceId": "ACT-18-03"
+      },
+      {
+        "id": "B-18-04",
+        "label": "文件提交消息（组长）",
+        "sourceId": "SRC-L0711",
+        "sourceText": "4. 文件提交消息（组长）：点击跳转页面16审核与反馈页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "16"
+        ],
+        "handler": "openSubmissionNotice",
+        "apiActions": [],
+        "behavior": "组长；明确submissionId定位，不能静默跳到同任务的新提交",
+        "acceptanceId": "ACT-18-04"
+      },
+      {
+        "id": "B-18-FILTER",
+        "label": "消息分类筛选",
+        "sourceId": "SRC-L0695",
+        "sourceText": "未读消息数量；消息分类：全部 / 任务通知 / 修改意见 / 审核结果。",
+        "basis": "SOURCE_IMPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "filterNotifications",
+        "apiActions": [
+          "notification.list"
+        ],
+        "behavior": "全部/任务通知/修改意见/审核结果；纯事件流",
+        "acceptanceId": "ACT-18-FILTER"
+      }
+    ],
+    "source": "第4章／页面18",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0683",
+      "SRC-L0685",
+      "SRC-L0687",
+      "SRC-L0689",
+      "SRC-L0691",
+      "SRC-L0693",
+      "SRC-L0695",
+      "SRC-L0697",
+      "SRC-L0699",
+      "SRC-L0701",
+      "SRC-L0703",
+      "SRC-L0705",
+      "SRC-L0707",
+      "SRC-L0709",
+      "SRC-L0711",
+      "SRC-L0713",
+      "SRC-L0715"
+    ],
+    "layoutRequirements": [
+      "页面布局：返回箭头；顶部未读计数+全部标已读；消息分类Tab；通知消息列表。"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0695",
+        "text": "未读消息数量；消息分类：全部 / 任务通知 / 修改意见 / 审核结果。"
+      },
+      {
+        "sourceId": "SRC-L0697",
+        "text": "消息条目内容：消息类型、所属项目、任务、发送人、时间。"
+      },
+      {
+        "sourceId": "SRC-L0699",
+        "text": "组员收到消息：新任务、需修改、审核通过、DDL提醒"
+      },
+      {
+        "sourceId": "SRC-L0701",
+        "text": "组长收到消息：组员首次提交、重新提交、逾期提醒"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0715",
+        "text": "MVP只做站内通知，不实现即时聊天；从消息跳转页面12，返回箭头回到页面18。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：底部Tab点击消息；页面03首页右上角铃铛图标。"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "19",
+    "name": "修改意见详情页",
+    "route": "pages/feedback/index",
+    "access": "当前负责人／提出意见的组长",
+    "description": "版本绑定、意见、重要程度、新DDL、发送时间；他人拒绝",
+    "apiActions": [
+      "notification.read",
+      "review.get"
+    ],
+    "buttons": [
+      {
+        "id": "B-19-01",
+        "label": "进入项目",
+        "sourceId": "SRC-L0731",
+        "sourceText": "1. 进入项目：跳转页面07项目总览页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "07"
+        ],
+        "handler": "openProjectFromFeedback",
+        "apiActions": [],
+        "behavior": "固定07",
+        "acceptanceId": "ACT-19-01"
+      },
+      {
+        "id": "B-19-02",
+        "label": "查看任务",
+        "sourceId": "SRC-L0733",
+        "sourceText": "2. 查看任务：跳转页面12任务详情页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "12"
+        ],
+        "handler": "openTaskFromFeedback",
+        "apiActions": [],
+        "behavior": "新12导航实例，返回当前19；不覆盖原先12的来源",
+        "acceptanceId": "ACT-19-02"
+      },
+      {
+        "id": "B-19-03",
+        "label": "重新提交",
+        "sourceId": "SRC-L0735",
+        "sourceText": "3. 重新提交：跳转页面20重新提交文件页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "20"
+        ],
+        "handler": "resubmitFromFeedback",
+        "apiActions": [],
+        "behavior": "当前负责人需修改；原意见若已过期显示历史而非允许交给旧轮次",
+        "acceptanceId": "ACT-19-03"
+      },
+      {
+        "id": "B-19-04",
+        "label": "我知道了",
+        "sourceId": "SRC-L0737",
+        "sourceText": "4. 我知道了：标记消息已读；返回来源页面。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "SOURCE",
+        "targetPageIds": [],
+        "handler": "acknowledgeFeedback",
+        "apiActions": [
+          "notification.read"
+        ],
+        "behavior": "标记本人对本review的对应通知；无notificationId时通过reviewId关联查找；不存在则幂等不操作；组长不能替组员已读",
+        "acceptanceId": "ACT-19-04"
+      }
+    ],
+    "source": "第4章／页面19",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0717",
+      "SRC-L0719",
+      "SRC-L0721",
+      "SRC-L0723",
+      "SRC-L0725",
+      "SRC-L0727",
+      "SRC-L0729",
+      "SRC-L0731",
+      "SRC-L0733",
+      "SRC-L0735",
+      "SRC-L0737",
+      "SRC-L0739",
+      "SRC-L0741"
+    ],
+    "layoutRequirements": [
+      "页面布局：返回箭头；项目任务信息；意见详情；操作按钮。"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0727",
+        "text": "项目名称、任务名称、组长；绑定的文件版本；修改意见、重要程度、新DDL、发送时间。"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0741",
+        "text": "权限校验，非相关人员禁止访问本页面。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：页面18点击修改意见消息；页面12点击查看修改意见。"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "20",
+    "name": "重新提交文件页",
+    "route": "pages/resubmit/index",
+    "access": "需修改任务的当前负责人",
+    "description": "旧版本、意见、新DDL、新文件、修改说明；保留默认／覆盖二选一",
+    "apiActions": [
+      "file.beginUpload",
+      "file.finalizeUpload",
+      "review.get",
+      "submission.saveDraft",
+      "submission.submit",
+      "task.get"
+    ],
+    "buttons": [
+      {
+        "id": "B-20-01",
+        "label": "选择修改文件",
+        "sourceId": "SRC-L0757",
+        "sourceText": "1. 选择修改文件：调用微信文件选择，展示文件信息。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "chooseRevisedFile",
+        "apiActions": [],
+        "behavior": "选新稿本地预览",
+        "acceptanceId": "ACT-20-01"
+      },
+      {
+        "id": "B-20-02",
+        "label": "文件处理方式单选",
+        "sourceId": "SRC-L0759",
+        "sourceText": "2. 文件处理方式单选：①覆盖原有文档；②保留原文档。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "chooseVersionMode",
+        "apiActions": [],
+        "behavior": "KEEP默认推荐；OVERWRITE不增可见号",
+        "acceptanceId": "ACT-20-02"
+      },
+      {
+        "id": "B-20-03",
+        "label": "保存但不提交",
+        "sourceId": "SRC-L0761",
+        "sourceText": "3. 保存但不提交：保存新文件，任务维持需修改；跳转页面12任务详情。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "TASK_ANCHOR",
+        "targetPageIds": [
+          "12"
+        ],
+        "handler": "saveRevisedDraft",
+        "apiActions": [
+          "file.beginUpload",
+          "file.finalizeUpload",
+          "submission.saveDraft"
+        ],
+        "behavior": "仍需修改；保存mode/baseVersionId/baseVersionRevision，成功去12",
+        "acceptanceId": "ACT-20-03"
+      },
+      {
+        "id": "B-20-04",
+        "label": "上传并重新提交",
+        "sourceId": "SRC-L0763",
+        "sourceText": "4. 上传并重新提交：按所选模式处理版本；任务改为待审核；推送组长消息；提交成功toast，跳转页面12任务详情。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "TASK_ANCHOR",
+        "targetPageIds": [
+          "12"
+        ],
+        "handler": "submitRevisedFile",
+        "apiActions": [
+          "file.beginUpload",
+          "file.finalizeUpload",
+          "submission.submit"
+        ],
+        "behavior": "按模式；成功原文toast去12，失败留20；不因重试多生成V号",
+        "acceptanceId": "ACT-20-04"
+      },
+      {
+        "id": "B-20-05",
+        "label": "取消",
+        "sourceId": "SRC-L0765",
+        "sourceText": "5. 取消：放弃操作，返回来源页面。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "SOURCE",
+        "targetPageIds": [],
+        "handler": "cancelResubmission",
+        "apiActions": [],
+        "behavior": "返回当前实际来源；从02-A/19/12进入分别还原",
+        "acceptanceId": "ACT-20-05"
+      }
+    ],
+    "source": "第4章／页面20",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0743",
+      "SRC-L0745",
+      "SRC-L0747",
+      "SRC-L0749",
+      "SRC-L0751",
+      "SRC-L0753",
+      "SRC-L0755",
+      "SRC-L0757",
+      "SRC-L0759",
+      "SRC-L0761",
+      "SRC-L0763",
+      "SRC-L0765",
+      "SRC-L0767",
+      "SRC-L0769"
+    ],
+    "layoutRequirements": [
+      "页面布局：返回箭头；原版本与组长修改意见展示；新文件选择；修改说明；文件处理模式选择；底部操作按钮。"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0753",
+        "text": "原文件版本；组长修改意见；新修改DDL；新文件选择；本次修改说明；二选一模式：覆盖原有文档 / 保留原文档（默认推荐）。"
+      }
+    ],
+    "boundaryRequirements": [
+      {
+        "sourceId": "SRC-L0769",
+        "text": "即使选择覆盖，后台留存旧文件审计记录；普通前端界面不展示被覆盖旧版本。"
+      }
+    ],
+    "entryRequirements": [
+      "入口来源：页面12、页面19点击重新提交；02‑A我的页面待办卡片点击重新提交快捷按钮。"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  },
+  {
+    "pageId": "02-A",
+    "name": "个人中心页",
+    "route": "pages/me/index",
+    "access": "已登录且资料完整",
+    "description": "跨项目待提交／待修改；我的不打红点；资料、协议、退出",
+    "apiActions": [
+      "my.todoList",
+      "user.get",
+      "user.logout"
+    ],
+    "buttons": [
+      {
+        "id": "B-02-A-01",
+        "label": "编辑资料",
+        "sourceId": "SRC-L0795",
+        "sourceText": "1. 编辑资料：跳转页面02完善个人资料页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "02"
+        ],
+        "handler": "editProfile",
+        "apiActions": [],
+        "behavior": "完善/编辑复用02",
+        "acceptanceId": "ACT-02-A-01"
+      },
+      {
+        "id": "B-02-A-02",
+        "label": "任务卡片点击",
+        "sourceId": "SRC-L0797",
+        "sourceText": "2. 任务卡片点击：跳转页面12任务详情页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "12"
+        ],
+        "handler": "openGlobalTodo",
+        "apiActions": [],
+        "behavior": "来源02-A，按当前负责人跨项目",
+        "acceptanceId": "ACT-02-A-02"
+      },
+      {
+        "id": "B-02-A-03",
+        "label": "待提交卡片快捷按钮「上传文件」",
+        "sourceId": "SRC-L0799",
+        "sourceText": "3. 待提交卡片快捷按钮「上传文件」：跳转页面13首次上传提交页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "13"
+        ],
+        "handler": "uploadGlobalShortcut",
+        "apiActions": [],
+        "behavior": "直接进入13仍记录来源02-A",
+        "acceptanceId": "ACT-02-A-03"
+      },
+      {
+        "id": "B-02-A-04",
+        "label": "待修改卡片快捷按钮「重新提交」",
+        "sourceId": "SRC-L0801",
+        "sourceText": "4. 待修改卡片快捷按钮「重新提交」：跳转页面20重新提交文件页。",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "20"
+        ],
+        "handler": "resubmitGlobalShortcut",
+        "apiActions": [],
+        "behavior": "直接进入20，取消回02-A",
+        "acceptanceId": "ACT-02-A-04"
+      },
+      {
+        "id": "B-02-A-05",
+        "label": "用户协议、隐私协议",
+        "sourceId": "SRC-L0803",
+        "sourceText": "5. 用户协议、隐私协议：弹窗打开",
+        "basis": "SOURCE_EXPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "openAgreements",
+        "apiActions": [],
+        "behavior": "用户协议与隐私分别可开，关闭留02-A",
+        "acceptanceId": "ACT-02-A-05"
+      },
+      {
+        "id": "B-02-A-FILTER",
+        "label": "待提交／待修改切换",
+        "sourceId": "SRC-L0783",
+        "sourceText": "2. 模块一 我的待处理任务(数量)：二级Tab切换【待提交】｜【待修改】",
+        "basis": "SOURCE_IMPLICIT",
+        "targetKind": "STAY",
+        "targetPageIds": [],
+        "handler": "filterGlobalTodos",
+        "apiActions": [
+          "my.todoList"
+        ],
+        "behavior": "待办数量是两类合计，当前类数量单列；数量含全量结果，不按第一页算",
+        "acceptanceId": "ACT-02-A-FILTER"
+      },
+      {
+        "id": "B-02-A-LOGOUT",
+        "label": "退出登录",
+        "sourceId": "SRC-L0791",
+        "sourceText": "3. 设置菜单列表：修改个人资料；用户协议；隐私政策；退出登录。",
+        "basis": "SOURCE_IMPLICIT",
+        "targetKind": "PAGE",
+        "targetPageIds": [
+          "01"
+        ],
+        "handler": "logout",
+        "apiActions": [
+          "user.logout"
+        ],
+        "behavior": "本人主动退出；清缓存和自动进入标记；重开应用不绕过点击登录",
+        "acceptanceId": "ACT-02-A-LOGOUT"
+      }
+    ],
+    "source": "第4章／页面02-A",
+    "globalNavigation": true,
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauses": [
+      "SRC-L0771",
+      "SRC-L0773",
+      "SRC-L0775",
+      "SRC-L0777",
+      "SRC-L0779",
+      "SRC-L0781",
+      "SRC-L0783",
+      "SRC-L0785",
+      "SRC-L0787",
+      "SRC-L0789",
+      "SRC-L0791",
+      "SRC-L0793",
+      "SRC-L0795",
+      "SRC-L0797",
+      "SRC-L0799",
+      "SRC-L0801",
+      "SRC-L0803",
+      "SRC-L0805"
+    ],
+    "layoutRequirements": [
+      "页面布局：顶部个人信息区 → 模块一「我的待处理任务」 → 模块二设置菜单列表；底部全局Tab。"
+    ],
+    "displayRequirements": [
+      {
+        "sourceId": "SRC-L0781",
+        "text": "1. 顶部个人信息：头像、昵称；编辑资料按钮。"
+      },
+      {
+        "sourceId": "SRC-L0783",
+        "text": "2. 模块一 我的待处理任务(数量)：二级Tab切换【待提交】｜【待修改】"
+      },
+      {
+        "sourceId": "SRC-L0785",
+        "text": "任务卡片字段：所属项目、任务名称、DDL、逾期标记、任务状态"
+      },
+      {
+        "sourceId": "SRC-L0787",
+        "text": "卡片快捷按钮：待提交卡片「上传文件」；待修改卡片「重新提交」"
+      },
+      {
+        "sourceId": "SRC-L0789",
+        "text": "空状态：暂无待处理任务"
+      },
+      {
+        "sourceId": "SRC-L0791",
+        "text": "3. 设置菜单列表：修改个人资料；用户协议；隐私政策；退出登录。"
+      }
+    ],
+    "boundaryRequirements": [],
+    "entryRequirements": [
+      "入口来源：底部Tab点击【我的】"
+    ],
+    "backPolicy": {
+      "kind": "PREVIOUS_INSTANCE",
+      "pageId": null
+    },
+    "specStatus": "REVIEWED_SOURCE_AND_EXPLICIT_DEFAULTS"
+  }
+]

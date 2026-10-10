@@ -1,0 +1,101 @@
+{
+  "basis": "SOURCE_STATE_MACHINE_WITH_DECLARED_ENGINEERING_BOUNDARIES",
+  "states": {
+    "TODO": "待完成",
+    "DOING": "进行中",
+    "SUBMITTED": "待审核",
+    "CHANGES_REQUESTED": "需修改",
+    "DONE": "已完成"
+  },
+  "publication": [
+    "DRAFT",
+    "PUBLISHED"
+  ],
+  "transitions": [
+    {
+      "event": "task.publish",
+      "from": null,
+      "to": "TODO",
+      "actor": "LEADER"
+    },
+    {
+      "event": "submission.saveDraft",
+      "mode": "FIRST",
+      "from": [
+        "TODO",
+        "DOING"
+      ],
+      "to": "DOING",
+      "actor": "ASSIGNEE"
+    },
+    {
+      "event": "submission.saveDraft",
+      "mode": "KEEP|OVERWRITE",
+      "from": [
+        "CHANGES_REQUESTED"
+      ],
+      "to": "CHANGES_REQUESTED",
+      "actor": "ASSIGNEE"
+    },
+    {
+      "event": "submission.submit",
+      "mode": "FIRST",
+      "from": [
+        "TODO",
+        "DOING"
+      ],
+      "to": "SUBMITTED",
+      "actor": "ASSIGNEE"
+    },
+    {
+      "event": "submission.submit",
+      "mode": "KEEP|OVERWRITE",
+      "from": [
+        "CHANGES_REQUESTED"
+      ],
+      "to": "SUBMITTED",
+      "actor": "ASSIGNEE"
+    },
+    {
+      "event": "review.approve",
+      "from": [
+        "SUBMITTED"
+      ],
+      "to": "DONE",
+      "actor": "LEADER"
+    },
+    {
+      "event": "review.reject",
+      "from": [
+        "SUBMITTED"
+      ],
+      "to": "CHANGES_REQUESTED",
+      "actor": "LEADER"
+    }
+  ],
+  "specialReassignmentRule": "E10_SELECTED_DEMO_DEFAULT_BY_DELEGATION",
+  "overdueRule": "E12_OUTSTANDING_OR_SNAPSHOT_LATE",
+  "forbiddenOrdinaryActions": [
+    "claimTask",
+    "submitForOther",
+    "reopenDone",
+    "editPendingSubmissionBytes"
+  ],
+  "overdueEvaluation": {
+    "basis": "ASSISTANT_SELECTED_UNDER_USER_DELEGATION",
+    "outstandingStates": [
+      "TODO",
+      "DOING",
+      "CHANGES_REQUESTED"
+    ],
+    "outstandingExpression": "isPublished && !isDeleted && serverNow > effectiveDueAt",
+    "submittedStates": [
+      "SUBMITTED",
+      "DONE"
+    ],
+    "submittedExpression": "isPublished && !isDeleted && currentSubmission.submittedLate === true",
+    "submissionSnapshot": "submittedLate = submittedAt > dueAtSnapshot; immutable after submit",
+    "missingCurrentSubmission": "Invariant error; do not guess using current clock. Return data error and repair through supported recovery.",
+    "history": "Previous submissions retain their own snapshots; current task follows current state/current effective submission."
+  }
+}

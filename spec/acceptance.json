@@ -1,0 +1,2495 @@
+[
+  {
+    "id": "UI-01-01",
+    "requirements": [
+      "UI-01"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "微信快捷登录页逐按钮验收",
+    "steps": "按页面01全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-02-01",
+    "requirements": [
+      "UI-02"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "完善个人资料页逐按钮验收",
+    "steps": "按页面02全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-03-01",
+    "requirements": [
+      "UI-03"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "首页逐按钮验收",
+    "steps": "按页面03全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-03-A-01",
+    "requirements": [
+      "UI-03-A"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "项目列表页逐按钮验收",
+    "steps": "按页面03-A全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-04-01",
+    "requirements": [
+      "UI-04"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "输入邀请码页逐按钮验收",
+    "steps": "按页面04全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-05-01",
+    "requirements": [
+      "UI-05"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "创建／编辑项目页逐按钮验收",
+    "steps": "按页面05全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-06-01",
+    "requirements": [
+      "UI-06"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "项目创建成功页逐按钮验收",
+    "steps": "按页面06全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-07-01",
+    "requirements": [
+      "UI-07"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "项目总览页逐按钮验收",
+    "steps": "按页面07全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-08-01",
+    "requirements": [
+      "UI-08"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "项目简介页逐按钮验收",
+    "steps": "按页面08全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-09-01",
+    "requirements": [
+      "UI-09"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "参考文档页逐按钮验收",
+    "steps": "按页面09全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-10-01",
+    "requirements": [
+      "UI-10"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "总体任务页逐按钮验收",
+    "steps": "按页面10全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-11-01",
+    "requirements": [
+      "UI-11"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "我的任务页逐按钮验收",
+    "steps": "按页面11全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-12-01",
+    "requirements": [
+      "UI-12"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "任务详情页逐按钮验收",
+    "steps": "按页面12全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-13-01",
+    "requirements": [
+      "UI-13"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "首次上传与提交页逐按钮验收",
+    "steps": "按页面13全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-14-01",
+    "requirements": [
+      "UI-14"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "组长创建／编辑任务页逐按钮验收",
+    "steps": "按页面14全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-15-01",
+    "requirements": [
+      "UI-15"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "组长任务概况页逐按钮验收",
+    "steps": "按页面15全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-16-01",
+    "requirements": [
+      "UI-16"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "审核与反馈页逐按钮验收",
+    "steps": "按页面16全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-17-01",
+    "requirements": [
+      "UI-17"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "填写修改意见页逐按钮验收",
+    "steps": "按页面17全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-18-01",
+    "requirements": [
+      "UI-18"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "消息中心逐按钮验收",
+    "steps": "按页面18全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-19-01",
+    "requirements": [
+      "UI-19"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "修改意见详情页逐按钮验收",
+    "steps": "按页面19全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-20-01",
+    "requirements": [
+      "UI-20"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "重新提交文件页逐按钮验收",
+    "steps": "按页面20全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "UI-02-A-01",
+    "requirements": [
+      "UI-02-A"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "个人中心页逐按钮验收",
+    "steps": "按页面02-A全部原文sourceClauses检查展示、布局、权限与返回，再逐个执行独立ACT用例；不能只按本包自写按钮列表检查。",
+    "expected": "所有按钮按原编号目标跳转或更新；全局底栏存在；未保存离开有提示；没有空按钮或模拟成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A01",
+    "requirements": [
+      "G01"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "同人跨项目角色",
+    "steps": "A创建P，A凭码加入B创建的Q。",
+    "expected": "A在P是组长、在Q是组员；切换项目能力不同，用户表没有全局role。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A02",
+    "requirements": [
+      "G01"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "身份伪造",
+    "steps": "普通组员请求携带role=owner、别人的openid/userId。",
+    "expected": "服务端忽略伪造字段，不取得组长权限。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A03",
+    "requirements": [
+      "G02"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "创建与查找加入",
+    "steps": "创建项目，复制六位码；B查找后再点加入。",
+    "expected": "查询只返回最小信息；明确加入才创建唯一成员关系。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A04",
+    "requirements": [
+      "G02"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "邀请码异常与重试",
+    "steps": "查询不存在、失效、归档项目邀请码；并发重复加入。",
+    "expected": "按边界提示；重复加入不重复建成员；同一代码不能指向两个项目。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A05",
+    "requirements": [
+      "G02"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "邀请码频控",
+    "steps": "连续高频查询随机六位码。",
+    "expected": "服务器持久频控有效；不泄露任务/成员/文件；不把前端校验当频控。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A06",
+    "requirements": [
+      "G03"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "项目草稿与附件恢复",
+    "steps": "05上传封面/两份参考，保存草稿；退出后03点创建。",
+    "expected": "恢复原表单与授权附件；未生成邀请码；03无项目列表，03-A不显示草稿。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A07",
+    "requirements": [
+      "G03"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "编辑项目返回",
+    "steps": "08进入05编辑，保存；另测05首次创建与存草稿。",
+    "expected": "编辑回08、创建回06、存草稿回03；重复提交只创建一次。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A08",
+    "requirements": [
+      "G04"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "无组员与任务草稿",
+    "steps": "项目新建后06点首任务，成员未加入。",
+    "expected": "可存草稿到15；不能发布；没有伪成员／默认自领。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A09",
+    "requirements": [
+      "G04"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "单一负责人",
+    "steps": "B/C加入，组长14分配B并保存继续创建。",
+    "expected": "只可选择本项目已加入组员；一个负责人；发布发通知并清空表单。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A10",
+    "requirements": [
+      "G05"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "他人摘要内容",
+    "steps": "B点C任务；检查网络响应、缓存、版本接口与直接下载。",
+    "expected": "只能取得摘要白名单；无C意见、交付字节、版本链接；不是CSS隐藏。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A11",
+    "requirements": [
+      "G05"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "意见页面直达",
+    "steps": "B修改URL为C的reviewId访问19。",
+    "expected": "拒绝；消息/错误不泄露修改意见正文。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A12",
+    "requirements": [
+      "G06"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "参考资料权限",
+    "steps": "组长09上传分类说明，B查看下载，再让B直接调用create/delete。",
+    "expected": "公开参考能读；B写入被后端拒绝；不把任务交付混入参考列表。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A13",
+    "requirements": [
+      "G06"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "删除参考资料",
+    "steps": "组长二次确认删除后，成员用旧referenceId新取下载票据。",
+    "expected": "列表移除，新授权拒绝；已下载副本不宣称远程收回。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A14",
+    "requirements": [
+      "G07"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "首次草稿",
+    "steps": "B在13保存不提交，再在12正式提交。",
+    "expected": "先进行中且未正式交；正式后待审核。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A15",
+    "requirements": [
+      "G07"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "修改稿草稿",
+    "steps": "组长退回后，B在20保存但不提交。",
+    "expected": "仍需修改，未发重新提交通知，旧可见版本未被替换。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A16",
+    "requirements": [
+      "G08"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "首次V1",
+    "steps": "先保存草稿多次再正式提交。",
+    "expected": "第一个可见版本仍V1，不是V2/V3。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A17",
+    "requirements": [
+      "G08"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "保留增版",
+    "steps": "S1=V1退回；20选择保留提交S2。",
+    "expected": "生成V2；V1原字节能按权限取回；本轮提交锁定V2。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A18",
+    "requirements": [
+      "G09"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "覆盖语义",
+    "steps": "V1退回后20选覆盖正式提交。",
+    "expected": "可见仍V1；内部revision与submission改变；旧字节审计留存且普通前端不可见。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A19",
+    "requirements": [
+      "G09"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "覆盖后再保留",
+    "steps": "R1=V1，覆盖为R2=V1，再保留R3=V2。",
+    "expected": "可见历史仅V1→R2、V2→R3；R1只审计；历史意见绝不改绑定R2或R3。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A20",
+    "requirements": [
+      "G09"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "覆盖并发",
+    "steps": "两端对同一个V1同时提交覆盖，期望revision相同。",
+    "expected": "最多一个成功；另一端版本冲突；不丢旧审计、不双发通知。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A21",
+    "requirements": [
+      "G10"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "驳回绑定",
+    "steps": "组长17填意见、新DDL、重要程度；B从消息打开19。",
+    "expected": "意见指向准确project/task/submission/version/revision；别人不能读。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A22",
+    "requirements": [
+      "G10"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "只审当前提交",
+    "steps": "保留旧审核页，任务重交或改负责人后再点旧通过。",
+    "expected": "STALE_REVISION/INVALID_STATE；不误审另一份文稿。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A23",
+    "requirements": [
+      "G10"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "通过及反馈",
+    "steps": "组长16确认通过；B查看任务和结果通知。",
+    "expected": "已完成；项目进度正确；待提交/待修改不再出现；不能普通重交。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A24",
+    "requirements": [
+      "G11"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "全部页面底栏",
+    "steps": "遍历01至20和02-A/03-A。",
+    "expected": "四入口始终存在；未登录/未完善不能绕过守卫；消息红点，我的无红点。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A25",
+    "requirements": [
+      "G12"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "12直接来源",
+    "steps": "分别由02-A、10、11、18、15、19进入12再返回。",
+    "expected": "回真实来源，恢复项目、筛选、滚动；不是固定07。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A26",
+    "requirements": [
+      "G12"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "快捷上传来源链",
+    "steps": "02-A→13→提交成功→12→返回。",
+    "expected": "回02-A；13取消也先12；不在页面栈重复压入12。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A27",
+    "requirements": [
+      "G12"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "重新提交来源链",
+    "steps": "测试02-A→20、19→20、12→20的保存、成功、取消。",
+    "expected": "保存/成功去12并继承taskOrigin；取消回实际入口。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A28",
+    "requirements": [
+      "G13"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "首页无重复入口",
+    "steps": "检查03数字点击以及03-A项目卡片。",
+    "expected": "统计无点击行为；03无项目列表；03-A角色按项目显示。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A29",
+    "requirements": [
+      "G13"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "混合角色统计",
+    "steps": "A在P任组长，在Q任成员；P与Q均有他人任务。",
+    "expected": "统计按E02去重；不把Q他人待审核变成A的工作量。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A30",
+    "requirements": [
+      "G14"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "个人待办范围",
+    "steps": "在多个项目造待完成、进行中、待审核、需修改、已完成。",
+    "expected": "02-A仅本人待提交/待修改；11只当前项目；数量不是第一页数量。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A31",
+    "requirements": [
+      "G15"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "通知事件完整",
+    "steps": "在任务T1测试发布→首次提交→退回→重交→通过；另建未提交任务T2执行组长手动提醒；再对已完成T1尝试提醒。",
+    "expected": "T1各事件仅一次；T2产生手动站内提醒；T1不得误发催交；18仍是纯事件列表。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A32",
+    "requirements": [
+      "G15"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "通知事务失败",
+    "steps": "模拟业务事务失败与回包丢失后重试。",
+    "expected": "业务未成不发假通知；重放不重复通知；业务成功通知持久存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A33",
+    "requirements": [
+      "G15"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "已读并发",
+    "steps": "冻结毫秒时间相同；获得带seq签名的列表watermark后，另一事务提交新通知；再点全部已读；另测伪造watermark。",
+    "expected": "只标旧快照序号；同毫秒但之后提交的通知保持未读；水位单调；签名与收件人不匹配拒绝。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A34",
+    "requirements": [
+      "G16"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "逾期标签：未交当前DDL与已交快照区分",
+    "steps": "固定服务器时间，测试TODO/DOING/CHANGES_REQUESTED超过当前DDL；测试SUBMITTED/DONE各自按时/晚交快照；推进时钟到DDL以后；修改审核后的DDL；退回并给新DDL。",
+    "expected": "未交三态到期后isOverdue=true；待审核/已完成仅当前有效提交submittedLate=true时保留逾期提交标识，按时提交不因时钟推进/审核延迟变逾期；既往快照不回写；退回后按当前DDL判断。五态本身不被标签替换。此为本轮授权选定的Demo默认E12。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A35",
+    "requirements": [
+      "G16"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "进度和分页",
+    "steps": "项目造超过默认分页量任务，包含草稿、删除、已完成。",
+    "expected": "分母=全部发布未删任务；分子=其中已完成；零任务=0%并写暂无任务，非100%。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A36",
+    "requirements": [
+      "G16"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "DDL调度与去重",
+    "steps": "在真实环境部署reminders定时器，两次触发；改任务DDL再触发。",
+    "expected": "仅符合窗口/角色/状态收到通知；同一截止修订不重复；新DDL重新评估。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A37",
+    "requirements": [
+      "G16"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "时区一致",
+    "steps": "不同时区设备填写/查看同一个DDL。",
+    "expected": "同一时间戳；界面显示北京时间；修改DDL只影响任务并保留提交快照。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A38",
+    "requirements": [
+      "G17"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "成功与失败文案",
+    "steps": "13/20分别正常提交、断网、超限、接口失败。",
+    "expected": "成功为“提交成功，等待组长审核”显示2–3秒后到12；失败为原文提示且留当前页，不伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A39",
+    "requirements": [
+      "G18"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "跨项目对象ID攻击",
+    "steps": "非成员替换project/task/reference/version/submission/review/notification ID。",
+    "expected": "每层服务端鉴权；访问不存在和无权敏感资源用统一不可访问信息。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A40",
+    "requirements": [
+      "G18"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "组长不是其他项目管理员",
+    "steps": "P组长直接编辑Q、读Q参考及意见。",
+    "expected": "拒绝；权限由项目成员关系不是全局身份决定。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A41",
+    "requirements": [
+      "G19"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "真实双账号文件链",
+    "steps": "B上传真实Word/PDF，A在另一设备审核和下载原文件。",
+    "expected": "文件完整可打开；hash/大小对应存档；不是只预览占位或缓存模拟。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A42",
+    "requirements": [
+      "G19"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "文件封存和原上传者攻击",
+    "steps": "上传者尝试直接改写正式对象，外人直接读，提交他人临时对象。",
+    "expected": "全部失败；不同会话/项目归属不可伪造；正式对象路径不重复覆盖。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A43",
+    "requirements": [
+      "G19"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "上传边界",
+    "steps": "取消选择、后台中断、对象成功数据库失败、同requestId重试、同ID不同payload。",
+    "expected": "无假成功、无双版本；可恢复/明确报错；同ID异参拒绝；保留失败文件上下文。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A44",
+    "requirements": [
+      "G19"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "文件兼容与实际大小",
+    "steps": "测试允许的Office旧/新格式、PDF、图片、中文空格名、伪造sizeHint、超限。",
+    "expected": "后端查真实大小与格式；支持格式逐一真机验收，不支持预览时明确下载路径；不得写全兼容。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A45",
+    "requirements": [
+      "G20"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "资料和退出",
+    "steps": "空姓名保存、默认头像、编辑、协议弹窗、退出重登。",
+    "expected": "空姓名拒绝；头像选填；协议返回原页；退出不删除成员和文件。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A46",
+    "requirements": [
+      "G21"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "更换负责人（已选定E10规则，不是原文规定的状态重置）",
+    "steps": "B任务已退回或待审，组长改给C并确认影响。",
+    "expected": "轮次递增；B转只读摘要；C无B意见/文件；旧待审撤销；组长历史保留；新任务待完成。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A47",
+    "requirements": [
+      "G21"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "删除有历史任务",
+    "steps": "任务有提交/审核后组长删除，点旧通知再取文件。",
+    "expected": "任务从统计和待办移除；新访问被拒绝；审计保留；无悬空可审批按钮。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A48",
+    "requirements": [
+      "G22"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "旧功能污染检查",
+    "steps": "检索页面路由、UI按钮和API白名单。",
+    "expected": "没有抢任务、项目分享卡片、旧deliverable.bind/archive/reopen/代交、自审和网页替代品。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A49",
+    "requirements": [
+      "G23"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "连续施工证据",
+    "steps": "读取执行计划、实现状态、实际命令日志和截图。",
+    "expected": "没有“下一阶段是否继续”作为正常停点；源码/本地/编译/真云/真机状态分开。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A50",
+    "requirements": [
+      "G19"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "备份恢复",
+    "steps": "只读导出合成项目所有元数据、引用文件、覆盖前审计；恢复到隔离测试环境。",
+    "expected": "版本/意见关系仍正确，审计字节在备份中但普通前端仍不可访问；无重置真实库。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A51",
+    "requirements": [
+      "G16"
+    ],
+    "level": "REAL_CLOUD_OR_DEVICE",
+    "scenario": "定时函数不能被伪调用",
+    "steps": "用普通客户端直接调用reminders并伪造timer字段。",
+    "expected": "函数级和入口防护有效；客户端不能创建任意提醒；只接受真实受控触发。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "A52",
+    "requirements": [
+      "G23"
+    ],
+    "level": "LOCAL_PLUS_REVIEW",
+    "scenario": "未具备环境时的交付",
+    "steps": "缺AppID或云环境运行项目与测试。",
+    "expected": "真实适配仍已实现；显式配置错误，无自动mock；报告真机BLOCKED，不能称可用体验版。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-01-01",
+    "requirements": [
+      "UI-01"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "01／微信快捷登录",
+    "sourceId": "SRC-L0163",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "真实微信身份；已登录自动跳过；首次未完善去02，已有资料去03；目标：CONDITIONAL 02,03；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-01-02",
+    "requirements": [
+      "UI-01"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "01／用户协议",
+    "sourceId": "SRC-L0165",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "协议弹窗关闭仍在01；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-01-03",
+    "requirements": [
+      "UI-01"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "01／隐私政策",
+    "sourceId": "SRC-L0167",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "隐私弹窗关闭仍在01；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-01",
+    "requirements": [
+      "UI-01"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "01原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-02-01",
+    "requirements": [
+      "UI-02"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "02／选择头像",
+    "sourceId": "SRC-L0191",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "使用头像选择交互，本地预览；选填；保存前以AVATAR用途封存；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-02-02",
+    "requirements": [
+      "UI-02"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "02／填写姓名",
+    "sourceId": "SRC-L0193",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "输入本人展示名；必填校验发生在保存时；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-02-03",
+    "requirements": [
+      "UI-02"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "02／保存并进入",
+    "sourceId": "SRC-L0195",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "昵称非空；有头像时先封存，保存成功去03，包括从02-A进入的编辑模式；目标：PAGE 03；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-02",
+    "requirements": [
+      "UI-02"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "02原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-03-01",
+    "requirements": [
+      "UI-03"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "03／右上角铃铛图标",
+    "sourceId": "SRC-L0227",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "不将统计数字设为消息链接；目标：PAGE 18；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-03-02",
+    "requirements": [
+      "UI-03"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "03／+ 创建项目",
+    "sourceId": "SRC-L0229",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "所有已登录且资料完整用户可创建自己的新项目；目标：PAGE 05；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-03-03",
+    "requirements": [
+      "UI-03"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "03／输入邀请码加入项目",
+    "sourceId": "SRC-L0231",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "去独立邀请码页；目标：PAGE 04；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-03",
+    "requirements": [
+      "UI-03"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "03原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-03-A-01",
+    "requirements": [
+      "UI-03-A"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "03-A／项目卡片",
+    "sourceId": "SRC-L0255",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "传projectId；进入后重新鉴权；目标：PAGE 07；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-03-A-02",
+    "requirements": [
+      "UI-03-A"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "03-A／空状态按钮「去首页创建或加入项目」→ 跳转页面03首页。",
+    "sourceId": "SRC-L0257",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "只在无项目空状态显示；目标：PAGE 03；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-03-A",
+    "requirements": [
+      "UI-03-A"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "03-A原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-04-01",
+    "requirements": [
+      "UI-04"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "04／查找项目",
+    "sourceId": "SRC-L0279",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "输入变更立即清空旧预览；无效弹窗；已加入/归档/失效分别处理；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-04-02",
+    "requirements": [
+      "UI-04"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "04／加入项目",
+    "sourceId": "SRC-L0281",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "确认加入；入组用当前已查验的code而非旧预览；原组长重复加入不得降级；目标：PAGE 07；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-04-03",
+    "requirements": [
+      "UI-04"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "04／重新输入",
+    "sourceId": "SRC-L0283",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "清空输入和查找结果；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-04-04",
+    "requirements": [
+      "UI-04"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "04／返回首页",
+    "sourceId": "SRC-L0285",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "不写成员关系；目标：PAGE 03；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-04",
+    "requirements": [
+      "UI-04"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "04原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-05-01",
+    "requirements": [
+      "UI-05"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "05／上传项目封面",
+    "sourceId": "SRC-L0305",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "图片选择预览；只进入当前编辑上下文，尚不改公开项目；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-05-02",
+    "requirements": [
+      "UI-05"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "05／上传参考文档",
+    "sourceId": "SRC-L0307",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "保持全部原文件类型；说明和分类；当前编辑上下文暂存；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-05-03",
+    "requirements": [
+      "UI-05"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "05／保存草稿",
+    "sourceId": "SRC-L0309",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "NEW保存私有新建草稿；EDIT保存隔离编辑草稿；不改公开字段、不新建邀请码；目标：PAGE 03；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-05-04",
+    "requirements": [
+      "UI-05"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "05／创建项目",
+    "sourceId": "SRC-L0311",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "NEW才显示；字段与素材关联验证通过后一次发布；失败留05；目标：PAGE 06；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-05-EDIT",
+    "requirements": [
+      "UI-05"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "05／保存项目编辑",
+    "sourceId": "SRC-L0405",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "编辑08来源保存回08；07来源暂按E16回08；成功才替换公开字段/素材，邀请码不变；目标：PAGE 08；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-05",
+    "requirements": [
+      "UI-05"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "05原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-06-01",
+    "requirements": [
+      "UI-06"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "06／复制邀请码",
+    "sourceId": "SRC-L0331",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "复制服务端返回六位码，成功前不提示已复制；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-06-02",
+    "requirements": [
+      "UI-06"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "06／创建第一个任务",
+    "sourceId": "SRC-L0333",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "无组员只能存草稿，不造虚拟成员；目标：PAGE 14；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-06-03",
+    "requirements": [
+      "UI-06"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "06／进入项目",
+    "sourceId": "SRC-L0335",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "带projectId；目标：PAGE 07；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-06-04",
+    "requirements": [
+      "UI-06"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "06／返回项目列表",
+    "sourceId": "SRC-L0337",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "明确目的地优先；目标：PAGE 03-A；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-06",
+    "requirements": [
+      "UI-06"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "06原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-07-01",
+    "requirements": [
+      "UI-07"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "07／查看项目简介",
+    "sourceId": "SRC-L0361",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "全员；目标：PAGE 08；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-07-02",
+    "requirements": [
+      "UI-07"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "07／查看参考文档",
+    "sourceId": "SRC-L0363",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "全员；目标：PAGE 09；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-07-03",
+    "requirements": [
+      "UI-07"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "07／查看总体任务",
+    "sourceId": "SRC-L0365",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "全员；目标：PAGE 10；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-07-04",
+    "requirements": [
+      "UI-07"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "07／查看我的任务",
+    "sourceId": "SRC-L0369",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "按原文组员入口；仅当前项目；目标：PAGE 11；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-07-05",
+    "requirements": [
+      "UI-07"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "07／创建任务",
+    "sourceId": "SRC-L0373",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "仅本项目组长；目标：PAGE 14；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-07-06",
+    "requirements": [
+      "UI-07"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "07／查看任务概况",
+    "sourceId": "SRC-L0375",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "仅本项目组长；目标：PAGE 15；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-07-07",
+    "requirements": [
+      "UI-07"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "07／审核与反馈",
+    "sourceId": "SRC-L0377",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "仅本项目组长；目标：PAGE 16；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-07-08",
+    "requirements": [
+      "UI-07"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "07／编辑项目",
+    "sourceId": "SRC-L0379",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "EDIT模式，带projectId及来源07；目标：PAGE 05；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-07-COPY",
+    "requirements": [
+      "UI-07"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "07／复制邀请码",
+    "sourceId": "SRC-L0355",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "所有已加入成员可复制当前项目显示的六位码；不生成分享卡片；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-07",
+    "requirements": [
+      "UI-07"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "07原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-08-01",
+    "requirements": [
+      "UI-08"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "08／查看总体任务",
+    "sourceId": "SRC-L0399",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "全员；目标：PAGE 10；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-08-02",
+    "requirements": [
+      "UI-08"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "08／查看参考文档",
+    "sourceId": "SRC-L0401",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "全员；目标：PAGE 09；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-08-03",
+    "requirements": [
+      "UI-08"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "08／返回项目",
+    "sourceId": "SRC-L0403",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "固定07；目标：PAGE 07；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-08-04",
+    "requirements": [
+      "UI-08"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "08／编辑项目信息（组长才可见）",
+    "sourceId": "SRC-L0405",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "EDIT模式，保存明确回08；目标：PAGE 05；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-08",
+    "requirements": [
+      "UI-08"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "08原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-09-01",
+    "requirements": [
+      "UI-09"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "09／查看或预览",
+    "sourceId": "SRC-L0425",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "关闭预览恢复09；非成员不能取票据；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-09-02",
+    "requirements": [
+      "UI-09"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "09／下载文件",
+    "sourceId": "SRC-L0427",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "下载原文件，留09；不以预览替代；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-09-03",
+    "requirements": [
+      "UI-09"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "09／上传参考文档（组长可见）",
+    "sourceId": "SRC-L0429",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "仅组长；选择文件、分类说明；09上传确认才对项目成员公开；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-09-04",
+    "requirements": [
+      "UI-09"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "09／删除文档（组长可见）",
+    "sourceId": "SRC-L0431",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "二次确认；取消无变更；成功刷新09；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-09-05",
+    "requirements": [
+      "UI-09"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "09／返回项目",
+    "sourceId": "SRC-L0433",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "固定07；目标：PAGE 07；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-09-FILTER",
+    "requirements": [
+      "UI-09"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "09／文件分类筛选",
+    "sourceId": "SRC-L0421",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "原文五个分类；列表稳定分页；不混入任务稿件；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-09",
+    "requirements": [
+      "UI-09"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "09原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-10-01",
+    "requirements": [
+      "UI-10"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "10／状态筛选Tab",
+    "sourceId": "SRC-L0453",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "原筛选枚举；待完成如何包含进行中见E22已选定规则；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-10-02",
+    "requirements": [
+      "UI-10"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "10／点击自己任务卡片",
+    "sourceId": "SRC-L0455",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "新建导航帧；来源10与筛选快照；目标：PAGE 12；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-10-03",
+    "requirements": [
+      "UI-10"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "10／点击他人任务卡片",
+    "sourceId": "SRC-L0457",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "普通组员返回摘要，组长完整；不先下发全文再隐藏；目标：PAGE 12；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-10-04",
+    "requirements": [
+      "UI-10"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "10／创建任务（组长可见）",
+    "sourceId": "SRC-L0459",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "仅组长；目标：PAGE 14；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-10-05",
+    "requirements": [
+      "UI-10"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "10／返回项目",
+    "sourceId": "SRC-L0461",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "固定07；目标：PAGE 07；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-10",
+    "requirements": [
+      "UI-10"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "10原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-11-01",
+    "requirements": [
+      "UI-11"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "11／状态筛选Tab",
+    "sourceId": "SRC-L0481",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "仅本项目本人任务；筛选保留原文项；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-11-02",
+    "requirements": [
+      "UI-11"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "11／任务卡片",
+    "sourceId": "SRC-L0483",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "来源11；目标：PAGE 12；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-11-03",
+    "requirements": [
+      "UI-11"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "11／上传文件",
+    "sourceId": "SRC-L0485",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "首次允许状态；记录13完成后12返回11；目标：PAGE 13；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-11-04",
+    "requirements": [
+      "UI-11"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "11／返回项目",
+    "sourceId": "SRC-L0487",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "固定07；目标：PAGE 07；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-11",
+    "requirements": [
+      "UI-11"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "11原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-12-01",
+    "requirements": [
+      "UI-12"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "12／上传文件",
+    "sourceId": "SRC-L0511",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "当前负责人，首次待完成/进行中；目标：PAGE 13；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-12-02",
+    "requirements": [
+      "UI-12"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "12／保存但不提交",
+    "sourceId": "SRC-L0513",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "首次变进行中；需修改稿遵循20专门规则仍需修改；模式和基线版本一并保存；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-12-03",
+    "requirements": [
+      "UI-12"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "12／提交审核",
+    "sourceId": "SRC-L0515",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "存在本人本轮有效草稿；使用服务端保存的mode/base；完成后刷新12而非跳离；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-12-04",
+    "requirements": [
+      "UI-12"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "12／查看修改意见",
+    "sourceId": "SRC-L0517",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "传明确reviewId，不能用任务最新意见替代历史通知意见；目标：PAGE 19；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-12-05",
+    "requirements": [
+      "UI-12"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "12／重新提交",
+    "sourceId": "SRC-L0519",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "当前负责人且需修改；目标：PAGE 20；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-12-06",
+    "requirements": [
+      "UI-12"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "12／查看文件",
+    "sourceId": "SRC-L0523",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "按明确submission或visibleVersion读取；关闭回同一12实例；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-12-07",
+    "requirements": [
+      "UI-12"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "12／下载文件",
+    "sourceId": "SRC-L0525",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "下载当前可访问版本；非负责人组员禁用且服务端拒绝；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-12-08",
+    "requirements": [
+      "UI-12"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "12／查看历史版本",
+    "sourceId": "SRC-L0527",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "版本弹窗；不泄漏被覆盖的审计字节；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-12-09",
+    "requirements": [
+      "UI-12"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "12／编辑任务",
+    "sourceId": "SRC-L0531",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "组长EDIT模式，原任务回填；目标：PAGE 14；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-12-10",
+    "requirements": [
+      "UI-12"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "12／修改负责人；修改DDL。",
+    "sourceId": "SRC-L0533",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "组长同一编辑页聚焦对应字段；换人E10为已选定产品规则；目标：PAGE 14；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-12-11",
+    "requirements": [
+      "UI-12"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "12／开始审核",
+    "sourceId": "SRC-L0535",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "组长；携带taskId及明确submissionId定位，不误审；目标：PAGE 16；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-12-12",
+    "requirements": [
+      "UI-12"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "12／删除任务",
+    "sourceId": "SRC-L0537",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "组长二次确认；软删及取消待审；成功回15；目标：PAGE 15；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-12",
+    "requirements": [
+      "UI-12"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "12原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-13-01",
+    "requirements": [
+      "UI-13"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "13／选择文件",
+    "sourceId": "SRC-L0557",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "只选择/预览不算保存，取消选择不变任务；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-13-02",
+    "requirements": [
+      "UI-13"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "13／重新选择",
+    "sourceId": "SRC-L0559",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "清当前本地选择，旧已保存草稿不删除；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-13-03",
+    "requirements": [
+      "UI-13"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "13／保存但不提交",
+    "sourceId": "SRC-L0561",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "保存成功去12；无可见V号；来源保留；目标：TASK_ANCHOR 12；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-13-04",
+    "requirements": [
+      "UI-13"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "13／上传并提交审核",
+    "sourceId": "SRC-L0563",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "FIRST；服务端成功才原文toast2–3秒并去12；失败原文toast留13；目标：TASK_ANCHOR 12；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-13-05",
+    "requirements": [
+      "UI-13"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "13／取消",
+    "sourceId": "SRC-L0565",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "原文明确取消去12；不附着此次未保存文件；目标：TASK_ANCHOR 12；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-13",
+    "requirements": [
+      "UI-13"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "13原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-14-01",
+    "requirements": [
+      "UI-14"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "14／选择负责人",
+    "sourceId": "SRC-L0585",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "只能单个已加入组员；本人组长是否可选按E17已选定解释；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-14-02",
+    "requirements": [
+      "UI-14"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "14／保存草稿",
+    "sourceId": "SRC-L0587",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "NEW不发布；EDIT写隔离编辑草稿，不撤回现有任务或覆盖实况；目标：PAGE 15；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-14-03",
+    "requirements": [
+      "UI-14"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "14／创建并发布",
+    "sourceId": "SRC-L0589",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "NEW发布；单负责人待完成+新任务通知；EDIT改用task.update，见补充按钮；目标：PAGE 15；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-14-04",
+    "requirements": [
+      "UI-14"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "14／保存并继续创建",
+    "sourceId": "SRC-L0591",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "仅NEW；成功才清表单；失败保留全部数据；下一次新的requestId；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-14-05",
+    "requirements": [
+      "UI-14"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "14／取消",
+    "sourceId": "SRC-L0593",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "返回实际上一级；未保存变更不写公开任务；目标：SOURCE；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-14-EDIT",
+    "requirements": [
+      "UI-14"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "14／保存任务编辑",
+    "sourceId": "SRC-L0603",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "保留当前publication和五态，实际换人按已选定E10；成功回15；目标：PAGE 15；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-14",
+    "requirements": [
+      "UI-14"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "14原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-15-01",
+    "requirements": [
+      "UI-15"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "15／状态筛选Tab",
+    "sourceId": "SRC-L0613",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "组长筛选含全部/未提交/待审核/需修改/已完成/已逾期；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-15-02",
+    "requirements": [
+      "UI-15"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "15／查看任务",
+    "sourceId": "SRC-L0615",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "来源15；历史与当前分开；目标：PAGE 12；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-15-03",
+    "requirements": [
+      "UI-15"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "15／修改任务",
+    "sourceId": "SRC-L0617",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "EDIT；目标：PAGE 14；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-15-04",
+    "requirements": [
+      "UI-15"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "15／查看文件",
+    "sourceId": "SRC-L0619",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "取最新正式提交，不拿未交草稿冒充已提交；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-15-05",
+    "requirements": [
+      "UI-15"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "15／开始审核",
+    "sourceId": "SRC-L0621",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "定位明确提交；目标：PAGE 16；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-15-06",
+    "requirements": [
+      "UI-15"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "15／提醒提交",
+    "sourceId": "SRC-L0623",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "站内提醒；未交/需修改限制和频控是已选定规则；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-15-07",
+    "requirements": [
+      "UI-15"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "15／创建任务",
+    "sourceId": "SRC-L0625",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "NEW；目标：PAGE 14；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-15-08",
+    "requirements": [
+      "UI-15"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "15／返回项目",
+    "sourceId": "SRC-L0627",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "固定07；目标：PAGE 07；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-15",
+    "requirements": [
+      "UI-15"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "15原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-16-01",
+    "requirements": [
+      "UI-16"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "16／审核分类Tab切换。",
+    "sourceId": "SRC-L0647",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "待审核/已通过/已退回按提交记录分类；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-16-02",
+    "requirements": [
+      "UI-16"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "16／查看文件",
+    "sourceId": "SRC-L0649",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "查看本卡片的准确提交；覆盖旧件只提示审计不可读；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-16-03",
+    "requirements": [
+      "UI-16"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "16／通过",
+    "sourceId": "SRC-L0651",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "仅当前待审核；二次确认；成功刷新16及统计通知；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-16-04",
+    "requirements": [
+      "UI-16"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "16／不通过",
+    "sourceId": "SRC-L0653",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "仅当前待审核；传submissionId和taskRevision；目标：PAGE 17；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-16-05",
+    "requirements": [
+      "UI-16"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "16／返回任务概况",
+    "sourceId": "SRC-L0655",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "固定15；目标：PAGE 15；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-16",
+    "requirements": [
+      "UI-16"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "16原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-17-01",
+    "requirements": [
+      "UI-17"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "17／发送修改意见",
+    "sourceId": "SRC-L0675",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "意见与具体提交绑定；DDL/重要程度按契约；取消不写；目标：PAGE 16；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-17-02",
+    "requirements": [
+      "UI-17"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "17／取消",
+    "sourceId": "SRC-L0677",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "不保存；回16恢复原筛选；目标：PAGE 16；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-17",
+    "requirements": [
+      "UI-17"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "17原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-18-01",
+    "requirements": [
+      "UI-18"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "18／全部已读",
+    "sourceId": "SRC-L0705",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "使用此列表服务端签发快照watermark，不用客户端当前时间；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-18-02",
+    "requirements": [
+      "UI-18"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "18／新任务消息",
+    "sourceId": "SRC-L0707",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "来源18；目标：PAGE 12；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-18-03",
+    "requirements": [
+      "UI-18"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "18／修改意见消息",
+    "sourceId": "SRC-L0709",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "明确reviewId；带当前notificationId；目标：PAGE 19；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-18-04",
+    "requirements": [
+      "UI-18"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "18／文件提交消息（组长）",
+    "sourceId": "SRC-L0711",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "组长；明确submissionId定位，不能静默跳到同任务的新提交；目标：PAGE 16；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-18-FILTER",
+    "requirements": [
+      "UI-18"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "18／消息分类筛选",
+    "sourceId": "SRC-L0695",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "全部/任务通知/修改意见/审核结果；纯事件流；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-18",
+    "requirements": [
+      "UI-18"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "18原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-19-01",
+    "requirements": [
+      "UI-19"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "19／进入项目",
+    "sourceId": "SRC-L0731",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "固定07；目标：PAGE 07；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-19-02",
+    "requirements": [
+      "UI-19"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "19／查看任务",
+    "sourceId": "SRC-L0733",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "新12导航实例，返回当前19；不覆盖原先12的来源；目标：PAGE 12；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-19-03",
+    "requirements": [
+      "UI-19"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "19／重新提交",
+    "sourceId": "SRC-L0735",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "当前负责人需修改；原意见若已过期显示历史而非允许交给旧轮次；目标：PAGE 20；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-19-04",
+    "requirements": [
+      "UI-19"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "19／我知道了",
+    "sourceId": "SRC-L0737",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "标记本人对本review的对应通知；无notificationId时通过reviewId关联查找；不存在则幂等不操作；组长不能替组员已读；目标：SOURCE；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-19",
+    "requirements": [
+      "UI-19"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "19原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-20-01",
+    "requirements": [
+      "UI-20"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "20／选择修改文件",
+    "sourceId": "SRC-L0757",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "选新稿本地预览；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-20-02",
+    "requirements": [
+      "UI-20"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "20／文件处理方式单选",
+    "sourceId": "SRC-L0759",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "KEEP默认推荐；OVERWRITE不增可见号；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-20-03",
+    "requirements": [
+      "UI-20"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "20／保存但不提交",
+    "sourceId": "SRC-L0761",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "仍需修改；保存mode/baseVersionId/baseVersionRevision，成功去12；目标：TASK_ANCHOR 12；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-20-04",
+    "requirements": [
+      "UI-20"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "20／上传并重新提交",
+    "sourceId": "SRC-L0763",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "按模式；成功原文toast去12，失败留20；不因重试多生成V号；目标：TASK_ANCHOR 12；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-20-05",
+    "requirements": [
+      "UI-20"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "20／取消",
+    "sourceId": "SRC-L0765",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "返回当前实际来源；从02-A/19/12进入分别还原；目标：SOURCE；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-20",
+    "requirements": [
+      "UI-20"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "20原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-02-A-01",
+    "requirements": [
+      "UI-02-A"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "02-A／编辑资料",
+    "sourceId": "SRC-L0795",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "完善/编辑复用02；目标：PAGE 02；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-02-A-02",
+    "requirements": [
+      "UI-02-A"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "02-A／任务卡片点击",
+    "sourceId": "SRC-L0797",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "来源02-A，按当前负责人跨项目；目标：PAGE 12；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-02-A-03",
+    "requirements": [
+      "UI-02-A"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "02-A／待提交卡片快捷按钮「上传文件」",
+    "sourceId": "SRC-L0799",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "直接进入13仍记录来源02-A；目标：PAGE 13；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-02-A-04",
+    "requirements": [
+      "UI-02-A"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "02-A／待修改卡片快捷按钮「重新提交」",
+    "sourceId": "SRC-L0801",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "直接进入20，取消回02-A；目标：PAGE 20；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-02-A-05",
+    "requirements": [
+      "UI-02-A"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "02-A／用户协议、隐私协议",
+    "sourceId": "SRC-L0803",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "用户协议与隐私分别可开，关闭留02-A；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-02-A-FILTER",
+    "requirements": [
+      "UI-02-A"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "02-A／待提交／待修改切换",
+    "sourceId": "SRC-L0783",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "待办数量是两类合计，当前类数量单列；数量含全量结果，不按第一页算；目标：STAY；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "ACT-02-A-LOGOUT",
+    "requirements": [
+      "UI-02-A"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "02-A／退出登录",
+    "sourceId": "SRC-L0791",
+    "steps": "从原文入口进入对应页面，用合法角色/状态执行此交互；有写入再测失败及重复点击；记录设备与真实响应。",
+    "expected": "本人主动退出；清缓存和自动进入标记；重开应用不绕过点击登录；目标：PAGE 01；不满足权限/状态时后端拒绝且不能伪成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "VIEW-02-A",
+    "requirements": [
+      "UI-02-A"
+    ],
+    "level": "DEVTOOLS_AND_DEVICE",
+    "scenario": "02-A原文展示和边界逐项检查",
+    "steps": "逐项对照spec/pages.json保留的原文layoutRequirements、displayRequirements、boundaryRequirements及sourceClauses；检查每个字段来源。",
+    "expected": "原文信息不因按钮映射省略；能看到原文规定的数据/空态/异常；不展示未授权字段；全页面底栏和对应返回均存在。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "R01",
+    "requirements": [
+      "G03",
+      "G04"
+    ],
+    "level": "LOCAL_PLUS_REAL_CLOUD_WHEN_APPLICABLE",
+    "scenario": "已发布对象编辑草稿隔离",
+    "steps": "A编辑ACTIVE项目与PUBLISHED任务，改名称/DDL/参考/负责人，只点保存草稿；B同时读取；再取消或正式保存。",
+    "expected": "仅明确保存公开修改才影响B；草稿恢复有效；不撤回项目/任务、不改邀请码、不发提前通知；CAS冲突保留草稿。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "R02",
+    "requirements": [
+      "G03",
+      "G19"
+    ],
+    "level": "LOCAL_PLUS_REAL_CLOUD_WHEN_APPLICABLE",
+    "scenario": "上传前草稿上下文",
+    "steps": "未有项目ID时05先上传封面和参考；伪造他人draftKey；保存恢复；取消。",
+    "expected": "服务器draftOpen分配专属上下文；正常恢复自己的附件；他人/跨用途被拒；取消未公开素材可回收，不损伤已保存草稿。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "R03",
+    "requirements": [
+      "G07",
+      "G09"
+    ],
+    "level": "LOCAL_PLUS_REAL_CLOUD_WHEN_APPLICABLE",
+    "scenario": "修改稿从20保存到12正式提交",
+    "steps": "20选OVERWRITE保存不交，退出再进12提交已存草稿；另测KEEP及首次FIRST。",
+    "expected": "保存模式/基线/版本令牌完整恢复；OVERWRITE不增可见号，KEEP增版，FIRST为V1；旧页面失效不自动改模式。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "R04",
+    "requirements": [
+      "G12"
+    ],
+    "level": "LOCAL_PLUS_REAL_CLOUD_WHEN_APPLICABLE",
+    "scenario": "嵌套同路由不形成返回循环",
+    "steps": "02-A→12_A→19_B→12_C，逐次返回；18→19→20成功；13/20成功toast期间切Tab。",
+    "expected": "依次12_C→19_B→12_A→02-A，无循环；无原12时创建正确来源12；已离开页面不会被定时器拉回。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "R05",
+    "requirements": [
+      "G15",
+      "G18"
+    ],
+    "level": "LOCAL_PLUS_REAL_CLOUD_WHEN_APPLICABLE",
+    "scenario": "从任务进入意见后我知道了",
+    "steps": "B从12进入19且无notificationId，点击我知道了；A查看自己意见执行相同动作；再传别人的notificationId。",
+    "expected": "通过当前用户+reviewId标对应通知；无本人通知是幂等空操作；不能替他人标已读；回实际来源。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "R06",
+    "requirements": [
+      "G19"
+    ],
+    "level": "LOCAL_PLUS_REAL_CLOUD_WHEN_APPLICABLE",
+    "scenario": "容量并发与失败释放",
+    "steps": "剩余容量只够一份文件时并发两个上传；一次失败/过期重试；一次覆盖；清理失败后重复清理。",
+    "expected": "服务端原子预留/实际字节计费，不双放行、不双扣、释放一次；覆盖审计占用容量；业务配额不被当成云账单硬上限。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "R07",
+    "requirements": [
+      "G01",
+      "G20"
+    ],
+    "level": "LOCAL_PLUS_REAL_CLOUD_WHEN_APPLICABLE",
+    "scenario": "创建权限与首次资料守卫",
+    "steps": "没有任何项目用户创建新项目；未完善用户保存头像昵称；已退出后重开；普通组员编辑他人项目。",
+    "expected": "新建不要求已有LEADER角色；首次资料接口不死循环；退出后仍需主动登录；已有项目管理仍严格按角色。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "R08",
+    "requirements": [
+      "G18",
+      "G23"
+    ],
+    "level": "LOCAL_PLUS_REAL_CLOUD_WHEN_APPLICABLE",
+    "scenario": "读写分类与结构校验变异",
+    "steps": "检查auth.bootstrap副作用标记；篡改目标页面、删掉必需交互、修改源码转写、引用不存在DTO后运行规格校验。",
+    "expected": "bootstrap明确有确定性建用户写入；四类规格变异均被校验拒绝；此项只验证文档工具，不宣称应用安全通过。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "R09",
+    "requirements": [
+      "G19"
+    ],
+    "level": "LOCAL_PLUS_REAL_CLOUD_WHEN_APPLICABLE",
+    "scenario": "云事务适配约束",
+    "steps": "检查事务写入名单；真云执行创建/发布/提交/审核；构造大参考列表。",
+    "expected": "仅已知doc ID事务访问，不在事务里where扫描/文件网络请求；事务预算不足在成功响应前明确失败，不截断附件。",
+    "status": "NOT_RUN"
+  }
+]

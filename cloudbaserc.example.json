@@ -1,0 +1,8 @@
+{
+  "envId": "FILL_AUTHORIZED_TEST_ENV",
+  "functionRoot": "cloudfunctions",
+  "functions": [
+    {"name":"api","handler":"index.main","runtime":"Nodejs20.19","timeout":60,"memorySize":512},
+    {"name":"reminders","handler":"index.main","runtime":"Nodejs20.19","timeout":60,"memorySize":512,"envVariables":{"REMINDERS_PLATFORM_LOCKED":"false"},"triggers":[{"name":"wefile-hourly","type":"timer","config":"0 0 * * * * *"}]}
+  ]
+}

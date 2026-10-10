@@ -1,0 +1,65 @@
+<view class="page project-dashboard">
+  <view class="overview-head">
+    <view wx:if="{{canBack}}" class="overview-back" bindtap="back">‹</view>
+    <view class="overview-brand">WeFile</view>
+    <view class="overview-role">{{isLeader ? '组长' : '组员'}}</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="muted">加载中…</view>
+  <view wx:if="{{error}}" class="error">{{error}}<button class="action-button" bindtap="action" data-action="retry" disabled="{{busy || submissionSucceeded}}">刷新重试</button></view>
+
+  <view class="project-hero">
+    <image wx:if="{{coverUrl}}" class="project-hero-cover" src="{{coverUrl}}" mode="aspectFill"/>
+    <view class="project-hero-shade"></view>
+    <view class="project-hero-content">
+      <view class="hero-top">
+        <view class="hero-kicker">项目空间</view>
+        <button wx:if="{{isLeader}}" class="hero-edit" bindtap="go" data-page="05">编辑项目 ›</button>
+      </view>
+      <view class="project-name">{{project.fields.name}}</view>
+      <view class="project-description">{{project.fields.description || '暂未填写项目简介'}}</view>
+      <view class="hero-meta-grid">
+        <view class="hero-meta" bindtap="action" data-action="copy"><text class="hero-icon">⌁</text><view><text>邀请码（点击复制）</text><view class="hero-value">{{project.inviteCode}}</view></view></view>
+        <view class="hero-meta"><text class="hero-icon">♙</text><view><text>我的身份</text><view class="hero-value">{{isLeader ? '项目组长' : '项目成员'}}</view></view></view>
+        <view class="hero-meta"><text class="hero-icon">◷</text><view><text>总 DDL</text><view class="hero-value">{{project.fields.dueAtText}}</view></view></view>
+      </view>
+      <view class="hero-deadline">{{remaining < 0 ? '项目已逾期' : '距离截止'}} <text>{{remaining < 0 ? '' : '剩余 ' + remaining + ' 天'}}</text></view>
+      <view class="hero-divider"></view>
+      <view class="reference-title-row"><view>参考文档 <text>({{references.length || 0}})</text></view><view bindtap="go" data-page="09">查看全部 ›</view></view>
+      <scroll-view class="reference-strip" scroll-x="true" enable-flex="true">
+        <view wx:for="{{references}}" wx:key="referenceId" class="reference-chip"><view class="file-type">{{item.extension}}</view><view class="reference-copy"><view>{{item.name}}</view><text>{{item.description || '项目参考资料'}}</text></view></view>
+        <view wx:if="{{!references.length}}" class="reference-empty">暂无参考文档</view>
+        <view wx:if="{{isLeader}}" class="reference-add" bindtap="go" data-page="09"><text>＋</text><view>添加文档</view></view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <view class="dashboard-stats">
+    <view class="dashboard-stat"><view class="dashboard-number">{{project.statistics.total}}</view><text>总任务</text></view>
+    <view class="dashboard-stat"><view class="dashboard-number">{{project.statistics.completed}}</view><text>已完成</text></view>
+    <view class="dashboard-stat"><view class="dashboard-number">{{project.statistics.awaitingReview}}</view><text>待审核</text></view>
+    <view class="dashboard-stat"><view class="dashboard-number">{{project.statistics.pending}}</view><text>未提交</text></view>
+    <view class="dashboard-stat"><view class="dashboard-number">{{project.statistics.changesRequested}}</view><text>需修改</text></view>
+    <view class="dashboard-stat"><view class="dashboard-number">{{project.statistics.overdue}}</view><text>已逾期</text></view>
+    <view class="dashboard-progress">完成度 {{project.statistics.progress}}% · 未完成 {{project.statistics.unfinished}}</view>
+  </view>
+
+  <view class="dashboard-section-title">任务中心</view>
+  <view class="quick-grid">
+    <view class="quick-card" bindtap="go" data-page="10"><text class="quick-icon">▤</text><view><view class="quick-label">查看总体任务</view><text>全部项目分工</text></view><text class="quick-arrow">›</text></view>
+    <view class="quick-card" bindtap="go" data-page="11"><text class="quick-icon">♙</text><view><view class="quick-label">查看我的任务</view><text>我负责的内容</text></view><text class="quick-arrow">›</text></view>
+    <view wx:if="{{isLeader}}" class="quick-card quick-card-wide" bindtap="go" data-page="14"><text class="quick-icon quick-icon-solid">＋</text><view><view class="quick-label">创建任务</view><text>创建并分配新的项目任务</text></view><text class="quick-arrow">›</text></view>
+    <view wx:if="{{isLeader}}" class="quick-card" bindtap="go" data-page="15"><text class="quick-icon">▦</text><view><view class="quick-label">任务概况</view><text>查看全部进度</text></view><text class="quick-arrow">›</text></view>
+    <view wx:if="{{isLeader}}" class="quick-card" bindtap="go" data-page="16"><text class="quick-icon">✓</text><view><view class="quick-label">审核与反馈</view><text>处理待审核任务</text></view><text class="quick-arrow">›</text></view>
+    <view class="quick-card quick-card-wide" bindtap="go" data-page="08"><text class="quick-icon">i</text><view><view class="quick-label">查看项目简介</view><text>项目要求与交付说明</text></view><text class="quick-arrow">›</text></view>
+  </view>
+
+  <view class="dashboard-section-title">公开分工摘要</view>
+  <view wx:for="{{items}}" wx:key="taskId" class="dashboard-task" bindtap="go" data-page="12" data-task="{{item.taskId}}" data-project="{{item.projectId}}">
+    <view><view class="dashboard-task-title">{{item.title}}</view><view class="dashboard-task-meta">负责人 {{item.assigneeDisplayName}} · DDL {{item.effectiveDueAtText || item.dueAtText}}</view></view>
+    <view class="dashboard-task-state"><text class="badge">{{item.stateText}}</text><text wx:if="{{item.isOverdue}}" class="badge late">已逾期</text><text class="quick-arrow">›</text></view>
+  </view>
+  <view wx:if="{{!items.length && !loading}}" class="empty dashboard-empty">暂无任务</view>
+  <view wx:if="{{busy}}" class="muted">正在处理，请稍候…</view>
+</view>
+<global-nav class="global-nav" active="07"/>

@@ -1,0 +1,5 @@
+{
+  "enabled": true,
+  "origin": "https://your-https-tunnel.example",
+  "bridgeSecret": "GENERATE_AND_STORE_PRIVATELY"
+}

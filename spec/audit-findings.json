@@ -1,0 +1,295 @@
+[
+  {
+    "id": "F01",
+    "title": "来源交互漏入机器清单",
+    "classification": "明确漏项",
+    "problem": "Word页面12明列查看/下载；v0.3 pages与UI按钮没有这两项。07可复制码、11/15筛选也未逐项列全，不能用“有对应页”替代。",
+    "oldEvidence": {
+      "oldFile": "spec/pages.json",
+      "matchedExcerpt": [
+        {
+          "line": 421,
+          "text": "        \"label\": \"编辑任务／负责人／DDL\","
+        }
+      ],
+      "searchFragment": "编辑任务／负责人／DDL"
+    },
+    "updatedFiles": [
+      "spec/source-clauses.json",
+      "spec/pages.json",
+      "docs/UI_SPEC.md"
+    ],
+    "revision": "从原文提取104条编号交互逐条映射，另列7个显示/编辑模式推导交互；原文布局/信息/边界保留。",
+    "status": "SPEC_REVISED_NOT_APP_VERIFIED"
+  },
+  {
+    "id": "F02",
+    "title": "规格校验不能证明遵循原文",
+    "classification": "校验缺口",
+    "problem": "旧脚本只看页面数、部分引用、原Word哈希和标题。隔离副本删12多数按钮、错误目标99、未知响应类型、修改转写权限句，均仍PASS。",
+    "oldEvidence": {
+      "oldFile": "scripts/validate-blueprint.py",
+      "matchedExcerpt": [
+        {
+          "line": 31,
+          "text": "        if not p[\"globalNavigation\"] or not p[\"buttons\"]:"
+        }
+      ],
+      "searchFragment": "if not p[\"globalNavigation\"] or not p[\"buttons\"]"
+    },
+    "updatedFiles": [
+      "scripts/validate-blueprint.py",
+      "scripts/test-validator-mutations.py",
+      "docs/VALIDATOR_MUTATIONS.json"
+    ],
+    "revision": "增加原转写哈希/段落/逐行清单、104条交互一一对应、目标白名单、正式schema引用与负例；不声称自动证明全部语义。",
+    "status": "SPEC_REVISED_NOT_APP_VERIFIED"
+  },
+  {
+    "id": "F03",
+    "title": "接口目录并非完整字段契约",
+    "classification": "工程细节缺口",
+    "problem": "原JSON的payload/response主要为字符串；多种DTO仅被命名，未定义字段与空值，前后端仍需自行猜。",
+    "oldEvidence": {
+      "oldFile": "spec/api-contract.json",
+      "matchedExcerpt": [
+        {
+          "line": 37,
+          "text": "    \"response\": \"HomeDTO\","
+        }
+      ],
+      "searchFragment": "\"response\": \"HomeDTO\""
+    },
+    "updatedFiles": [
+      "spec/contracts.schema.json",
+      "spec/api-contract.json",
+      "docs/API_CONTRACT.md"
+    ],
+    "revision": "43个action全部绑定请求/响应schema；定义必填、枚举、nullable、额外字段、条件字段及DTO；补10个正负结构样例。",
+    "status": "SPEC_REVISED_NOT_APP_VERIFIED"
+  },
+  {
+    "id": "F04",
+    "title": "首次身份接口写入标志错误",
+    "classification": "文档内矛盾",
+    "problem": "auth.bootstrap规则写创建用户，但JSON write=false；此外lookup存在频控写入，普通读与安全计数副作用应分开。",
+    "oldEvidence": {
+      "oldFile": "spec/api-contract.json",
+      "matchedExcerpt": [
+        {
+          "line": 7,
+          "text": "    \"rules\": \"创建或读取用户；不接收客户端role/openid；不创建项目角色\","
+        }
+      ],
+      "searchFragment": "创建或读取用户"
+    },
+    "updatedFiles": [
+      "spec/api-contract.json",
+      "docs/CONSISTENCY.md"
+    ],
+    "revision": "bootstrap标明确定性用户upsert及无需首次requestId例外；lookup标RATE_BUCKET_WRITE；logout明确只有本机会话清理。",
+    "status": "SPEC_REVISED_NOT_APP_VERIFIED"
+  },
+  {
+    "id": "F05",
+    "title": "创建新项目和已有项目管理混淆",
+    "classification": "权限表矛盾",
+    "problem": "PERMISSIONS把创建/编辑项目与任务写在一行，组员/非成员拒绝，与03所有已登录用户都可创建自己的项目不一致。首次资料守卫例外也未明确。",
+    "oldEvidence": {
+      "oldFile": "docs/PERMISSIONS.md",
+      "matchedExcerpt": [
+        {
+          "line": 8,
+          "text": "| 创建/编辑项目与任务 | 允许 | 拒绝 | 拒绝 | 拒绝 |"
+        }
+      ],
+      "searchFragment": "创建/编辑项目与任务"
+    },
+    "updatedFiles": [
+      "docs/PERMISSIONS.md",
+      "spec/pages.json"
+    ],
+    "revision": "拆分新建项目与已有项目管理；创建后才取得该项目组长，首次个人资料/头像可在未profileComplete时完成。",
+    "status": "SPEC_REVISED_NOT_APP_VERIFIED"
+  },
+  {
+    "id": "F06",
+    "title": "编辑模式保存草稿未闭合",
+    "classification": "工程细节缺口",
+    "problem": "05/14同时有草稿和编辑；旧模型/接口只笼统列草稿，未防止把ACTIVE/PUBLISHED对象当未发布草稿回写。",
+    "oldEvidence": {
+      "oldFile": "spec/api-contract.json",
+      "matchedExcerpt": [
+        {
+          "line": 67,
+          "text": "    \"action\": \"project.draftSave\","
+        }
+      ],
+      "searchFragment": "\"action\": \"project.draftSave\""
+    },
+    "updatedFiles": [
+      "docs/DRAFTS_AND_ASSETS.md",
+      "docs/DATA_MODEL.md",
+      "spec/contracts.schema.json"
+    ],
+    "revision": "NEW/EDIT草稿隔离；明确保存草稿不改变公开内容/状态/邀请码/通知，正式保存通过CAS应用。",
+    "status": "SPEC_REVISED_NOT_APP_VERIFIED"
+  },
+  {
+    "id": "F07",
+    "title": "首次上传项目素材缺少可执行上下文",
+    "classification": "工程细节缺口",
+    "problem": "旧文档要求使用draftKey，但未定义在项目尚未创建时由哪个接口获取及如何绑定授权、恢复、清理。",
+    "oldEvidence": {
+      "oldFile": "docs/DECISIONS.md",
+      "matchedExcerpt": [
+        {
+          "line": 10,
+          "text": "| E04 | 项目草稿找回 | 一个用户默认保留一个新建项目草稿；再次点03创建项目进入05恢复。草稿不出现在03-A的已参与项目列表，不生成邀请码。项目素材临时上传用私有draftKey，保存或发布时才绑定。 | 页面05有保存草稿，未给草稿找回入口 | 避免保存后消失，又不把项目列表放回首页 |"
+        }
+      ],
+      "searchFragment": "draftKey"
+    },
+    "updatedFiles": [
+      "docs/DRAFTS_AND_ASSETS.md",
+      "spec/api-contract.json"
+    ],
+    "revision": "增加内部project.draftOpen，不新增页面；服务器分配上下文，明确05暂存和09直接公开参考的区别。",
+    "status": "SPEC_REVISED_NOT_APP_VERIFIED"
+  },
+  {
+    "id": "F08",
+    "title": "保存修改稿后12提交可能丢模式",
+    "classification": "跨模块契约缺口",
+    "problem": "saveDraft输入有mode，但tasks.draft是未展开字段，TaskDetailDTO亦未规定恢复mode/baseVersion令牌。",
+    "oldEvidence": {
+      "oldFile": "docs/DATA_MODEL.md",
+      "matchedExcerpt": [
+        {
+          "line": 11,
+          "text": "| tasks | taskId, projectId, publication:DRAFT／PUBLISHED, assigneeId, assignmentEpoch, title, description, requirements, dueAt, dueRevision, state, draft, currentFileId, latestSubmissionId, approvedSubmissionId, revision, deletedAt | 草稿与五种任务状态分开；换人开启新分配轮次；soft-delete |"
+        }
+      ],
+      "searchFragment": "state, draft, currentFileId"
+    },
+    "updatedFiles": [
+      "docs/DRAFTS_AND_ASSETS.md",
+      "docs/STATE_AND_CAPABILITIES.md",
+      "spec/contracts.schema.json"
+    ],
+    "revision": "完整保存mode、baseVersion、版本令牌与轮次；20保存OVERWRITE后12仍按覆盖提交；FIRST/KEEP/OVERWRITE状态统一。",
+    "status": "SPEC_REVISED_NOT_APP_VERIFIED"
+  },
+  {
+    "id": "F09",
+    "title": "嵌套来源和同路由去重规则不足",
+    "classification": "导航细节缺口",
+    "problem": "只有sourcePageId/taskOrigin对象与“去重页面栈”，没有区分12_A与12_C；12→19→12的实例返回规则未锁定。",
+    "oldEvidence": {
+      "oldFile": "docs/NAVIGATION.md",
+      "matchedExcerpt": [
+        {
+          "line": 12,
+          "text": "  \"sourcePageId\": \"02-A\","
+        }
+      ],
+      "searchFragment": "sourcePageId"
+    },
+    "updatedFiles": [
+      "docs/NAVIGATION.md",
+      "spec/acceptance.json"
+    ],
+    "revision": "加入页面实例frameId/parent链及返回锚点；嵌套按实例退回，上传回原12不覆盖旧来源；离开取消延迟跳转。",
+    "status": "SPEC_REVISED_NOT_APP_VERIFIED"
+  },
+  {
+    "id": "F10",
+    "title": "从任务页进入意见后已读缺定位契约",
+    "classification": "接口衔接缺口",
+    "problem": "19可由12进入，FeedbackDTO没有notificationId；notification.read只接notificationId，未定义“我知道了”如何找到对应本人消息。",
+    "oldEvidence": {
+      "oldFile": "spec/api-contract.json",
+      "matchedExcerpt": [
+        {
+          "line": 323,
+          "text": "    \"action\": \"notification.read\","
+        }
+      ],
+      "searchFragment": "\"action\": \"notification.read\""
+    },
+    "updatedFiles": [
+      "docs/API_CONTRACT.md",
+      "docs/CONSISTENCY.md",
+      "spec/contracts.schema.json"
+    ],
+    "revision": "read允许notificationId/reviewId二选一，仅定位当前收件人；没有本人通知为空操作，组长不替组员已读。",
+    "status": "SPEC_REVISED_NOT_APP_VERIFIED"
+  },
+  {
+    "id": "F11",
+    "title": "全部已读水位未定义可比较顺序",
+    "classification": "并发规格缺口",
+    "problem": "原文只有watermark/readThrough说明，没有明确提交顺序，同毫秒先后提交能否区分没有规范。并非已发现运行时丢消息。",
+    "oldEvidence": {
+      "oldFile": "docs/NOTIFICATIONS.md",
+      "matchedExcerpt": [
+        {
+          "line": 30,
+          "text": "页面进入、下拉刷新、业务成功和小程序回到前台时更新通知与未读数；不引入实时聊天或WebSocket。服务端`noticeReadThrough`保存全部已读水位，单条readAt支持独立已读。`readAll`上限为用户当前服务端快照，避免吞掉之后到来的消息。通知收件人校验不可缺少。"
+        }
+      ],
+      "searchFragment": "noticeReadThrough"
+    },
+    "updatedFiles": [
+      "docs/CONSISTENCY.md",
+      "spec/contracts.schema.json",
+      "docs/NOTIFICATIONS.md"
+    ],
+    "revision": "按每收件人事务noticeSeq+签发水位，不依赖createdAt毫秒；新消息保持未读。",
+    "status": "SPEC_REVISED_NOT_APP_VERIFIED"
+  },
+  {
+    "id": "F12",
+    "title": "容量、事务预算与计量字段未闭合",
+    "classification": "工程细节缺口",
+    "problem": "旧版有500MiB限制及“计入草稿/审计”要求，但projects模型无预算字段，未明确并发预留/释放；事务文档限制未落成施工规则。",
+    "oldEvidence": {
+      "oldFile": "docs/VERSION_AND_REVIEW.md",
+      "matchedExcerpt": [
+        {
+          "line": 39,
+          "text": "文件配额计算包括可见版、被覆盖审计版与待附着封存文件，不能“覆盖不增版本”就不计新存储成本。前后端限制一致，文件名不作为版本归属，SHA-256只做完整性检查不表示内容正确。"
+        }
+      ],
+      "searchFragment": "文件配额计算包括"
+    },
+    "updatedFiles": [
+      "docs/CONSISTENCY.md",
+      "docs/DATA_MODEL.md"
+    ],
+    "revision": "补预算计数/唯一会话计量/失败释放与清理复核；事务已知docID访问、无外部网络副作用、预算超限先报错不截附件。",
+    "status": "SPEC_REVISED_NOT_APP_VERIFIED"
+  },
+  {
+    "id": "F13",
+    "title": "通知验收步骤与状态限制冲突",
+    "classification": "用例自身矛盾",
+    "problem": "A31按同任务发布→提交→退回→重交→通过→手动提醒，预期每次都有通知；但task.remind仅未交/需修改。",
+    "oldEvidence": {
+      "oldFile": "spec/acceptance.json",
+      "matchedExcerpt": [
+        {
+          "line": 581,
+          "text": "    \"steps\": \"发布→首次提交→退回→重交→通过→手动提醒。\","
+        }
+      ],
+      "searchFragment": "发布→首次提交→退回→重交→通过→手动提醒"
+    },
+    "updatedFiles": [
+      "spec/acceptance.json",
+      "docs/ACCEPTANCE_CHECKLIST.md"
+    ],
+    "revision": "闭环T1通过后不催交；另用未提交T2测试手动提醒，并检查对T1提醒被拒。",
+    "status": "SPEC_REVISED_NOT_APP_VERIFIED"
+  }
+]

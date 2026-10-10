@@ -1,0 +1,42 @@
+{
+  "classification": "ENGINEERING_DEFAULT_NOT_PLATFORM_LIMIT",
+  "timezone": "Asia/Shanghai",
+  "maxFileBytes": 20971520,
+  "projectStorageQuotaBytes": 524288000,
+  "taskFilesPerSubmission": 1,
+  "acceptedExtensions": [
+    "doc",
+    "docx",
+    "ppt",
+    "pptx",
+    "xls",
+    "xlsx",
+    "pdf",
+    "jpg",
+    "jpeg",
+    "png"
+  ],
+  "pageSize": 20,
+  "maxPageSize": 50,
+  "reminderScanMinutes": 60,
+  "dueSoonHours": 24,
+  "manualReminderCooldownMinutes": 30,
+  "inviteLookupPerUserPerMinute": 5,
+  "inviteLookupPerUserPerHour": 30,
+  "sourcePriority": "LATEST_UPLOADED_WORD",
+  "globalRoleSelection": false,
+  "taskSelfClaim": false,
+  "projectShareCards": false,
+  "publicTaskDeliverables": false,
+  "decisionReferences": [
+    "E07",
+    "E12",
+    "E13",
+    "E14",
+    "E15",
+    "E23",
+    "E24"
+  ],
+  "sourceFilesAreNotDeletedByDefault": true,
+  "overduePolicy": "OUTSTANDING_OR_SNAPSHOT_LATE"
+}

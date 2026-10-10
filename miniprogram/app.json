@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/tasks-all/index",
+    "pages/tasks-mine/index",
+    "pages/task-detail/index",
+    "pages/submit-first/index",
+    "pages/task-edit/index",
+    "pages/leader-tasks/index",
+    "pages/reviews/index",
+    "pages/review-reject/index",
+    "pages/messages/index",
+    "pages/feedback/index",
+    "pages/resubmit/index",
+    "pages/profile-edit/index",
+    "pages/home/index",
+    "pages/projects/index",
+    "pages/join/index",
+    "pages/project-edit/index",
+    "pages/project-created/index",
+    "pages/project-overview/index",
+    "pages/project-info/index",
+    "pages/references/index",
+    "pages/me/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "WeFile",
+    "navigationBarBackgroundColor": "#f3f6f5",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

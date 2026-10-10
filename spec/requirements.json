@@ -1,0 +1,1422 @@
+[
+  {
+    "id": "UI-01",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面01",
+    "requirement": "登录身份，不选择项目角色",
+    "pages": [
+      "01"
+    ],
+    "apiActions": [
+      "auth.bootstrap"
+    ],
+    "acceptanceTests": [
+      "UI-01-01",
+      "ACT-01-01",
+      "ACT-01-02",
+      "ACT-01-03",
+      "VIEW-01"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0145",
+      "SRC-L0147",
+      "SRC-L0149",
+      "SRC-L0151",
+      "SRC-L0153",
+      "SRC-L0155",
+      "SRC-L0157",
+      "SRC-L0159",
+      "SRC-L0161",
+      "SRC-L0163",
+      "SRC-L0165",
+      "SRC-L0167",
+      "SRC-L0169",
+      "SRC-L0171"
+    ]
+  },
+  {
+    "id": "UI-02",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面02",
+    "requirement": "昵称必填、头像选填；支持默认头像",
+    "pages": [
+      "02"
+    ],
+    "apiActions": [
+      "file.beginUpload",
+      "file.finalizeUpload",
+      "user.get",
+      "user.update"
+    ],
+    "acceptanceTests": [
+      "UI-02-01",
+      "ACT-02-01",
+      "ACT-02-02",
+      "ACT-02-03",
+      "VIEW-02"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0173",
+      "SRC-L0175",
+      "SRC-L0177",
+      "SRC-L0179",
+      "SRC-L0181",
+      "SRC-L0183",
+      "SRC-L0185",
+      "SRC-L0187",
+      "SRC-L0189",
+      "SRC-L0191",
+      "SRC-L0193",
+      "SRC-L0195",
+      "SRC-L0197",
+      "SRC-L0199"
+    ]
+  },
+  {
+    "id": "UI-03",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面03",
+    "requirement": "全局统计只读，无项目列表；创建／邀请码入口",
+    "pages": [
+      "03"
+    ],
+    "apiActions": [
+      "home.get",
+      "notification.unreadCount"
+    ],
+    "acceptanceTests": [
+      "UI-03-01",
+      "ACT-03-01",
+      "ACT-03-02",
+      "ACT-03-03",
+      "VIEW-03"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0201",
+      "SRC-L0203",
+      "SRC-L0205",
+      "SRC-L0207",
+      "SRC-L0209",
+      "SRC-L0211",
+      "SRC-L0213",
+      "SRC-L0215",
+      "SRC-L0217",
+      "SRC-L0219",
+      "SRC-L0221",
+      "SRC-L0223",
+      "SRC-L0225",
+      "SRC-L0227",
+      "SRC-L0229",
+      "SRC-L0231",
+      "SRC-L0233",
+      "SRC-L0235"
+    ]
+  },
+  {
+    "id": "UI-03-A",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面03-A",
+    "requirement": "全部参与的已发布项目；逐项目角色、DDL、进度",
+    "pages": [
+      "03-A"
+    ],
+    "apiActions": [
+      "project.list"
+    ],
+    "acceptanceTests": [
+      "UI-03-A-01",
+      "ACT-03-A-01",
+      "ACT-03-A-02",
+      "VIEW-03-A"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0237",
+      "SRC-L0239",
+      "SRC-L0241",
+      "SRC-L0243",
+      "SRC-L0245",
+      "SRC-L0247",
+      "SRC-L0249",
+      "SRC-L0251",
+      "SRC-L0253",
+      "SRC-L0255",
+      "SRC-L0257",
+      "SRC-L0259",
+      "SRC-L0261"
+    ]
+  },
+  {
+    "id": "UI-04",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面04",
+    "requirement": "6位邀请码查找，预览最小信息，明确加入",
+    "pages": [
+      "04"
+    ],
+    "apiActions": [
+      "invite.lookup",
+      "project.join"
+    ],
+    "acceptanceTests": [
+      "UI-04-01",
+      "ACT-04-01",
+      "ACT-04-02",
+      "ACT-04-03",
+      "ACT-04-04",
+      "VIEW-04"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0263",
+      "SRC-L0265",
+      "SRC-L0267",
+      "SRC-L0269",
+      "SRC-L0271",
+      "SRC-L0273",
+      "SRC-L0275",
+      "SRC-L0277",
+      "SRC-L0279",
+      "SRC-L0281",
+      "SRC-L0283",
+      "SRC-L0285",
+      "SRC-L0287",
+      "SRC-L0289"
+    ]
+  },
+  {
+    "id": "UI-05",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面05及页面08",
+    "requirement": "名称、简介、统一要求、总DDL、成果要求、封面、参考文档、草稿",
+    "pages": [
+      "05"
+    ],
+    "apiActions": [
+      "file.beginUpload",
+      "file.finalizeUpload",
+      "project.draftGet",
+      "project.draftOpen",
+      "project.draftSave",
+      "project.get",
+      "project.publish",
+      "project.update"
+    ],
+    "acceptanceTests": [
+      "UI-05-01",
+      "ACT-05-01",
+      "ACT-05-02",
+      "ACT-05-03",
+      "ACT-05-04",
+      "ACT-05-EDIT",
+      "VIEW-05"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0291",
+      "SRC-L0293",
+      "SRC-L0295",
+      "SRC-L0297",
+      "SRC-L0299",
+      "SRC-L0301",
+      "SRC-L0303",
+      "SRC-L0305",
+      "SRC-L0307",
+      "SRC-L0309",
+      "SRC-L0311",
+      "SRC-L0313",
+      "SRC-L0315"
+    ]
+  },
+  {
+    "id": "UI-06",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面06",
+    "requirement": "复制6位邀请码；不生成分享卡片",
+    "pages": [
+      "06"
+    ],
+    "apiActions": [
+      "project.get"
+    ],
+    "acceptanceTests": [
+      "UI-06-01",
+      "ACT-06-01",
+      "ACT-06-02",
+      "ACT-06-03",
+      "ACT-06-04",
+      "VIEW-06"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0317",
+      "SRC-L0319",
+      "SRC-L0321",
+      "SRC-L0323",
+      "SRC-L0325",
+      "SRC-L0327",
+      "SRC-L0329",
+      "SRC-L0331",
+      "SRC-L0333",
+      "SRC-L0335",
+      "SRC-L0337",
+      "SRC-L0339",
+      "SRC-L0341"
+    ]
+  },
+  {
+    "id": "UI-07",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面07",
+    "requirement": "项目信息、邀请码、DDL、统计、参考摘要、公开分工摘要",
+    "pages": [
+      "07"
+    ],
+    "apiActions": [
+      "project.get",
+      "reference.list",
+      "task.list"
+    ],
+    "acceptanceTests": [
+      "UI-07-01",
+      "ACT-07-01",
+      "ACT-07-02",
+      "ACT-07-03",
+      "ACT-07-04",
+      "ACT-07-05",
+      "ACT-07-06",
+      "ACT-07-07",
+      "ACT-07-08",
+      "ACT-07-COPY",
+      "VIEW-07"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0343",
+      "SRC-L0345",
+      "SRC-L0347",
+      "SRC-L0349",
+      "SRC-L0351",
+      "SRC-L0353",
+      "SRC-L0355",
+      "SRC-L0357",
+      "SRC-L0359",
+      "SRC-L0361",
+      "SRC-L0363",
+      "SRC-L0365",
+      "SRC-L0367",
+      "SRC-L0369",
+      "SRC-L0371",
+      "SRC-L0373",
+      "SRC-L0375",
+      "SRC-L0377",
+      "SRC-L0379",
+      "SRC-L0381",
+      "SRC-L0383"
+    ]
+  },
+  {
+    "id": "UI-08",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面08",
+    "requirement": "背景、统一要求、成果要求、DDL、组长、创建时间；组员只读",
+    "pages": [
+      "08"
+    ],
+    "apiActions": [
+      "project.get"
+    ],
+    "acceptanceTests": [
+      "UI-08-01",
+      "ACT-08-01",
+      "ACT-08-02",
+      "ACT-08-03",
+      "ACT-08-04",
+      "VIEW-08"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0385",
+      "SRC-L0387",
+      "SRC-L0389",
+      "SRC-L0391",
+      "SRC-L0393",
+      "SRC-L0395",
+      "SRC-L0397",
+      "SRC-L0399",
+      "SRC-L0401",
+      "SRC-L0403",
+      "SRC-L0405",
+      "SRC-L0407",
+      "SRC-L0409"
+    ]
+  },
+  {
+    "id": "UI-09",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面09",
+    "requirement": "项目要求／参考资料／数据资料／图片素材／其他；说明、上传信息",
+    "pages": [
+      "09"
+    ],
+    "apiActions": [
+      "file.beginUpload",
+      "file.finalizeUpload",
+      "file.getReadTicket",
+      "reference.create",
+      "reference.delete",
+      "reference.list"
+    ],
+    "acceptanceTests": [
+      "UI-09-01",
+      "ACT-09-01",
+      "ACT-09-02",
+      "ACT-09-03",
+      "ACT-09-04",
+      "ACT-09-05",
+      "ACT-09-FILTER",
+      "VIEW-09"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0411",
+      "SRC-L0413",
+      "SRC-L0415",
+      "SRC-L0417",
+      "SRC-L0419",
+      "SRC-L0421",
+      "SRC-L0423",
+      "SRC-L0425",
+      "SRC-L0427",
+      "SRC-L0429",
+      "SRC-L0431",
+      "SRC-L0433",
+      "SRC-L0435",
+      "SRC-L0437"
+    ]
+  },
+  {
+    "id": "UI-10",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面10",
+    "requirement": "全员公开分工；其他组员只有摘要，无修改意见／交付文件",
+    "pages": [
+      "10"
+    ],
+    "apiActions": [
+      "task.get",
+      "task.list"
+    ],
+    "acceptanceTests": [
+      "UI-10-01",
+      "ACT-10-01",
+      "ACT-10-02",
+      "ACT-10-03",
+      "ACT-10-04",
+      "ACT-10-05",
+      "VIEW-10"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0439",
+      "SRC-L0441",
+      "SRC-L0443",
+      "SRC-L0445",
+      "SRC-L0447",
+      "SRC-L0449",
+      "SRC-L0451",
+      "SRC-L0453",
+      "SRC-L0455",
+      "SRC-L0457",
+      "SRC-L0459",
+      "SRC-L0461",
+      "SRC-L0463",
+      "SRC-L0465"
+    ]
+  },
+  {
+    "id": "UI-11",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面11",
+    "requirement": "仅当前项目自己的任务；全局待办不放这里",
+    "pages": [
+      "11"
+    ],
+    "apiActions": [
+      "task.listMine"
+    ],
+    "acceptanceTests": [
+      "UI-11-01",
+      "ACT-11-01",
+      "ACT-11-02",
+      "ACT-11-03",
+      "ACT-11-04",
+      "VIEW-11"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0467",
+      "SRC-L0469",
+      "SRC-L0471",
+      "SRC-L0473",
+      "SRC-L0475",
+      "SRC-L0477",
+      "SRC-L0479",
+      "SRC-L0481",
+      "SRC-L0483",
+      "SRC-L0485",
+      "SRC-L0487",
+      "SRC-L0489",
+      "SRC-L0491"
+    ]
+  },
+  {
+    "id": "UI-12",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面12及3.2",
+    "requirement": "任务、当前提交、版本、最新意见；按钮随角色和状态改变",
+    "pages": [
+      "12"
+    ],
+    "apiActions": [
+      "file.getReadTicket",
+      "submission.saveDraft",
+      "submission.submit",
+      "task.delete",
+      "task.get",
+      "version.list"
+    ],
+    "acceptanceTests": [
+      "UI-12-01",
+      "ACT-12-01",
+      "ACT-12-02",
+      "ACT-12-03",
+      "ACT-12-04",
+      "ACT-12-05",
+      "ACT-12-06",
+      "ACT-12-07",
+      "ACT-12-08",
+      "ACT-12-09",
+      "ACT-12-10",
+      "ACT-12-11",
+      "ACT-12-12",
+      "VIEW-12"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0493",
+      "SRC-L0495",
+      "SRC-L0497",
+      "SRC-L0499",
+      "SRC-L0501",
+      "SRC-L0503",
+      "SRC-L0505",
+      "SRC-L0507",
+      "SRC-L0509",
+      "SRC-L0511",
+      "SRC-L0513",
+      "SRC-L0515",
+      "SRC-L0517",
+      "SRC-L0519",
+      "SRC-L0521",
+      "SRC-L0523",
+      "SRC-L0525",
+      "SRC-L0527",
+      "SRC-L0529",
+      "SRC-L0531",
+      "SRC-L0533",
+      "SRC-L0535",
+      "SRC-L0537",
+      "SRC-L0539",
+      "SRC-L0541"
+    ]
+  },
+  {
+    "id": "UI-13",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面13及3.3、3.5",
+    "requirement": "选择文件、说明、进度；保存不分配可见版本；首次正式提交V1",
+    "pages": [
+      "13"
+    ],
+    "apiActions": [
+      "file.beginUpload",
+      "file.finalizeUpload",
+      "submission.saveDraft",
+      "submission.submit"
+    ],
+    "acceptanceTests": [
+      "UI-13-01",
+      "ACT-13-01",
+      "ACT-13-02",
+      "ACT-13-03",
+      "ACT-13-04",
+      "ACT-13-05",
+      "VIEW-13"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0543",
+      "SRC-L0545",
+      "SRC-L0547",
+      "SRC-L0549",
+      "SRC-L0551",
+      "SRC-L0553",
+      "SRC-L0555",
+      "SRC-L0557",
+      "SRC-L0559",
+      "SRC-L0561",
+      "SRC-L0563",
+      "SRC-L0565",
+      "SRC-L0567",
+      "SRC-L0569"
+    ]
+  },
+  {
+    "id": "UI-14",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面14、15",
+    "requirement": "单一已加入组员负责人；任务、说明、成果要求、个人DDL；草稿",
+    "pages": [
+      "14"
+    ],
+    "apiActions": [
+      "member.list",
+      "task.draftSave",
+      "task.get",
+      "task.publish",
+      "task.update"
+    ],
+    "acceptanceTests": [
+      "UI-14-01",
+      "ACT-14-01",
+      "ACT-14-02",
+      "ACT-14-03",
+      "ACT-14-04",
+      "ACT-14-05",
+      "ACT-14-EDIT",
+      "VIEW-14"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0571",
+      "SRC-L0573",
+      "SRC-L0575",
+      "SRC-L0577",
+      "SRC-L0579",
+      "SRC-L0581",
+      "SRC-L0583",
+      "SRC-L0585",
+      "SRC-L0587",
+      "SRC-L0589",
+      "SRC-L0591",
+      "SRC-L0593",
+      "SRC-L0595",
+      "SRC-L0597"
+    ]
+  },
+  {
+    "id": "UI-15",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面15",
+    "requirement": "人员任务、状态筛选、最新提交、站内提醒；私有草稿找回入口为工程补全",
+    "pages": [
+      "15"
+    ],
+    "apiActions": [
+      "file.getReadTicket",
+      "task.draftList",
+      "task.list",
+      "task.remind"
+    ],
+    "acceptanceTests": [
+      "UI-15-01",
+      "ACT-15-01",
+      "ACT-15-02",
+      "ACT-15-03",
+      "ACT-15-04",
+      "ACT-15-05",
+      "ACT-15-06",
+      "ACT-15-07",
+      "ACT-15-08",
+      "VIEW-15"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0599",
+      "SRC-L0601",
+      "SRC-L0603",
+      "SRC-L0605",
+      "SRC-L0607",
+      "SRC-L0609",
+      "SRC-L0611",
+      "SRC-L0613",
+      "SRC-L0615",
+      "SRC-L0617",
+      "SRC-L0619",
+      "SRC-L0621",
+      "SRC-L0623",
+      "SRC-L0625",
+      "SRC-L0627",
+      "SRC-L0629",
+      "SRC-L0631"
+    ]
+  },
+  {
+    "id": "UI-16",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面16",
+    "requirement": "待审核／已通过／已退回；明确submission与版本；仅待审核可决策",
+    "pages": [
+      "16"
+    ],
+    "apiActions": [
+      "file.getReadTicket",
+      "review.approve",
+      "review.list"
+    ],
+    "acceptanceTests": [
+      "UI-16-01",
+      "ACT-16-01",
+      "ACT-16-02",
+      "ACT-16-03",
+      "ACT-16-04",
+      "ACT-16-05",
+      "VIEW-16"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0633",
+      "SRC-L0635",
+      "SRC-L0637",
+      "SRC-L0639",
+      "SRC-L0641",
+      "SRC-L0643",
+      "SRC-L0645",
+      "SRC-L0647",
+      "SRC-L0649",
+      "SRC-L0651",
+      "SRC-L0653",
+      "SRC-L0655",
+      "SRC-L0657",
+      "SRC-L0659"
+    ]
+  },
+  {
+    "id": "UI-17",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面17",
+    "requirement": "意见、修改DDL、重要程度；绑定项目／任务／不可变文件修订",
+    "pages": [
+      "17"
+    ],
+    "apiActions": [
+      "review.context",
+      "review.reject"
+    ],
+    "acceptanceTests": [
+      "UI-17-01",
+      "ACT-17-01",
+      "ACT-17-02",
+      "VIEW-17"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0661",
+      "SRC-L0663",
+      "SRC-L0665",
+      "SRC-L0667",
+      "SRC-L0669",
+      "SRC-L0671",
+      "SRC-L0673",
+      "SRC-L0675",
+      "SRC-L0677",
+      "SRC-L0679",
+      "SRC-L0681"
+    ]
+  },
+  {
+    "id": "UI-18",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面18",
+    "requirement": "纯通知流；未读计数、全部已读、分类；没有任务卡片",
+    "pages": [
+      "18"
+    ],
+    "apiActions": [
+      "notification.list",
+      "notification.read",
+      "notification.readAll",
+      "notification.unreadCount"
+    ],
+    "acceptanceTests": [
+      "UI-18-01",
+      "ACT-18-01",
+      "ACT-18-02",
+      "ACT-18-03",
+      "ACT-18-04",
+      "ACT-18-FILTER",
+      "VIEW-18"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0683",
+      "SRC-L0685",
+      "SRC-L0687",
+      "SRC-L0689",
+      "SRC-L0691",
+      "SRC-L0693",
+      "SRC-L0695",
+      "SRC-L0697",
+      "SRC-L0699",
+      "SRC-L0701",
+      "SRC-L0703",
+      "SRC-L0705",
+      "SRC-L0707",
+      "SRC-L0709",
+      "SRC-L0711",
+      "SRC-L0713",
+      "SRC-L0715"
+    ]
+  },
+  {
+    "id": "UI-19",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面19",
+    "requirement": "版本绑定、意见、重要程度、新DDL、发送时间；他人拒绝",
+    "pages": [
+      "19"
+    ],
+    "apiActions": [
+      "notification.read",
+      "review.get"
+    ],
+    "acceptanceTests": [
+      "UI-19-01",
+      "ACT-19-01",
+      "ACT-19-02",
+      "ACT-19-03",
+      "ACT-19-04",
+      "VIEW-19"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0717",
+      "SRC-L0719",
+      "SRC-L0721",
+      "SRC-L0723",
+      "SRC-L0725",
+      "SRC-L0727",
+      "SRC-L0729",
+      "SRC-L0731",
+      "SRC-L0733",
+      "SRC-L0735",
+      "SRC-L0737",
+      "SRC-L0739",
+      "SRC-L0741"
+    ]
+  },
+  {
+    "id": "UI-20",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面20",
+    "requirement": "旧版本、意见、新DDL、新文件、修改说明；保留默认／覆盖二选一",
+    "pages": [
+      "20"
+    ],
+    "apiActions": [
+      "file.beginUpload",
+      "file.finalizeUpload",
+      "review.get",
+      "submission.saveDraft",
+      "submission.submit",
+      "task.get"
+    ],
+    "acceptanceTests": [
+      "UI-20-01",
+      "ACT-20-01",
+      "ACT-20-02",
+      "ACT-20-03",
+      "ACT-20-04",
+      "ACT-20-05",
+      "VIEW-20"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0743",
+      "SRC-L0745",
+      "SRC-L0747",
+      "SRC-L0749",
+      "SRC-L0751",
+      "SRC-L0753",
+      "SRC-L0755",
+      "SRC-L0757",
+      "SRC-L0759",
+      "SRC-L0761",
+      "SRC-L0763",
+      "SRC-L0765",
+      "SRC-L0767",
+      "SRC-L0769"
+    ]
+  },
+  {
+    "id": "UI-02-A",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第4章／页面02-A",
+    "requirement": "跨项目待提交／待修改；我的不打红点；资料、协议、退出",
+    "pages": [
+      "02-A"
+    ],
+    "apiActions": [
+      "my.todoList",
+      "user.get",
+      "user.logout"
+    ],
+    "acceptanceTests": [
+      "UI-02-A-01",
+      "ACT-02-A-01",
+      "ACT-02-A-02",
+      "ACT-02-A-03",
+      "ACT-02-A-04",
+      "ACT-02-A-05",
+      "ACT-02-A-FILTER",
+      "ACT-02-A-LOGOUT",
+      "VIEW-02-A"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED",
+    "sourceClauseIds": [
+      "SRC-L0771",
+      "SRC-L0773",
+      "SRC-L0775",
+      "SRC-L0777",
+      "SRC-L0779",
+      "SRC-L0781",
+      "SRC-L0783",
+      "SRC-L0785",
+      "SRC-L0787",
+      "SRC-L0789",
+      "SRC-L0791",
+      "SRC-L0793",
+      "SRC-L0795",
+      "SRC-L0797",
+      "SRC-L0799",
+      "SRC-L0801",
+      "SRC-L0803",
+      "SRC-L0805"
+    ]
+  },
+  {
+    "id": "G01",
+    "classification": "SOURCE",
+    "source": "第2章、页面01",
+    "requirement": "项目内身份与可信鉴权：登录不选角色；创建者为该项目组长、邀请码加入者为组员；同人可跨项目不同角色。",
+    "pages": [
+      "01",
+      "03",
+      "07"
+    ],
+    "apiActions": [
+      "auth.bootstrap",
+      "project.publish",
+      "project.join",
+      "task.get"
+    ],
+    "acceptanceTests": [
+      "A01",
+      "A02",
+      "R07"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G02",
+    "classification": "SOURCE",
+    "source": "第2章、页面04/06",
+    "requirement": "六位邀请码：系统生成六位字符；查找→显示最小信息→明确加入；仅复制文本，无项目分享卡片。",
+    "pages": [
+      "04",
+      "06"
+    ],
+    "apiActions": [
+      "invite.lookup",
+      "project.join",
+      "project.publish"
+    ],
+    "acceptanceTests": [
+      "A03",
+      "A04",
+      "A05"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G03",
+    "classification": "SOURCE",
+    "source": "页面05/08",
+    "requirement": "项目表单、素材与草稿：完整字段、封面、参考文档说明；私有草稿不发邀请；编辑成功回08。",
+    "pages": [
+      "05",
+      "08"
+    ],
+    "apiActions": [
+      "project.draftGet",
+      "project.draftSave",
+      "project.publish",
+      "project.update",
+      "project.draftOpen"
+    ],
+    "acceptanceTests": [
+      "A06",
+      "A07",
+      "R01",
+      "R02"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G04",
+    "classification": "SOURCE",
+    "source": "页面14",
+    "requirement": "单负责人分配与任务草稿：负责人从已加入组员选择；草稿不发布；创建并发布与保存继续创建都有真实动作，无自选认领。",
+    "pages": [
+      "14",
+      "15"
+    ],
+    "apiActions": [
+      "member.list",
+      "task.draftSave",
+      "task.publish"
+    ],
+    "acceptanceTests": [
+      "A08",
+      "A09",
+      "R01"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G05",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第3.6节、页面10/12/19",
+    "requirement": "他人任务摘要与意见隔离：组员对他人只读摘要；看不到他人意见；不能替交、下载他人任务字节或读取审计文件。",
+    "pages": [
+      "10",
+      "12",
+      "19"
+    ],
+    "apiActions": [
+      "task.list",
+      "task.get",
+      "review.get",
+      "file.getReadTicket"
+    ],
+    "acceptanceTests": [
+      "A10",
+      "A11"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G06",
+    "classification": "SOURCE",
+    "source": "页面05/09",
+    "requirement": "参考文档集中入口：项目要求、参考、数据、图片、其他分类；组长上传/删除，项目成员查看和下载。",
+    "pages": [
+      "05",
+      "09"
+    ],
+    "apiActions": [
+      "reference.list",
+      "reference.create",
+      "reference.delete",
+      "file.getReadTicket"
+    ],
+    "acceptanceTests": [
+      "A12",
+      "A13"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G07",
+    "classification": "SOURCE",
+    "source": "第3.4节、页面13/20",
+    "requirement": "任务状态：待完成→进行中→待审核→已完成，或待审核→需修改→待审核；修改稿暂存保持需修改。",
+    "pages": [
+      "12",
+      "13",
+      "20"
+    ],
+    "apiActions": [
+      "submission.saveDraft",
+      "submission.submit",
+      "review.approve",
+      "review.reject"
+    ],
+    "acceptanceTests": [
+      "A14",
+      "A15",
+      "R03"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G08",
+    "classification": "SOURCE",
+    "source": "第3.5节、页面13/20",
+    "requirement": "首次正式提交和保留增版：首次正式提交V1，保留旧文档递增V2/V3且旧版可见可取。",
+    "pages": [
+      "13",
+      "20"
+    ],
+    "apiActions": [
+      "submission.submit",
+      "version.list"
+    ],
+    "acceptanceTests": [
+      "A16",
+      "A17"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G09",
+    "classification": "SOURCE",
+    "source": "第3.5节、页面20",
+    "requirement": "覆盖不增可见版本：覆盖不增加可见号；后台保留原字节审计，普通前端不可见；默认选择保留。",
+    "pages": [
+      "20"
+    ],
+    "apiActions": [
+      "submission.submit",
+      "version.list",
+      "file.getReadTicket"
+    ],
+    "acceptanceTests": [
+      "A18",
+      "A19",
+      "A20",
+      "R03"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G10",
+    "classification": "SOURCE",
+    "source": "第3.5节、页面16/17/19",
+    "requirement": "审核绑定与反馈：具体项目、任务、提交与物理修订绑定；通过二次确认；退回意见必填并通知负责人。",
+    "pages": [
+      "16",
+      "17",
+      "19"
+    ],
+    "apiActions": [
+      "review.context",
+      "review.approve",
+      "review.reject",
+      "review.get"
+    ],
+    "acceptanceTests": [
+      "A21",
+      "A22",
+      "A23"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G11",
+    "classification": "SOURCE",
+    "source": "第3.1节",
+    "requirement": "全局底栏与红点：全部页面固定首页/项目/消息/我的；消息未读红点，我的无红点。",
+    "pages": [
+      "01",
+      "02",
+      "03",
+      "03-A",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "02-A"
+    ],
+    "apiActions": [
+      "notification.unreadCount"
+    ],
+    "acceptanceTests": [
+      "A24"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G12",
+    "classification": "SOURCE",
+    "source": "第3.2节、页面12/13/20",
+    "requirement": "来源返回：12按来源返回；成功上传回12且保持原来源链；指定固定返回优先。",
+    "pages": [
+      "02-A",
+      "10",
+      "11",
+      "12",
+      "13",
+      "18",
+      "19",
+      "20"
+    ],
+    "apiActions": [],
+    "acceptanceTests": [
+      "A25",
+      "A26",
+      "A27",
+      "R04"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G13",
+    "classification": "SOURCE",
+    "source": "页面03/03-A",
+    "requirement": "首页与项目列表分离：首页无项目列表、统计不可点；项目列表显示全部参与项目与逐项目身份。",
+    "pages": [
+      "03",
+      "03-A"
+    ],
+    "apiActions": [
+      "home.get",
+      "project.list"
+    ],
+    "acceptanceTests": [
+      "A28",
+      "A29"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G14",
+    "classification": "SOURCE",
+    "source": "页面02-A/11",
+    "requirement": "跨项目个人待办：我的集中待提交/待修改；11仅单项目；待办卡片支持直达首次上传/重交。",
+    "pages": [
+      "02-A",
+      "11",
+      "13",
+      "20"
+    ],
+    "apiActions": [
+      "my.todoList",
+      "task.listMine"
+    ],
+    "acceptanceTests": [
+      "A30"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G15",
+    "classification": "SOURCE",
+    "source": "页面15/18",
+    "requirement": "纯站内消息：消息只有事件通知，不做任务卡片；新任务、首次提交、重交、需修改、通过、提醒都实际写入。",
+    "pages": [
+      "15",
+      "18"
+    ],
+    "apiActions": [
+      "notification.list",
+      "notification.read",
+      "notification.readAll",
+      "task.remind"
+    ],
+    "acceptanceTests": [
+      "A31",
+      "A32",
+      "A33",
+      "R05"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G16",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第3.4节、页面07/10/15/18",
+    "requirement": "DDL与统计：时间标签与状态分开；全量项目统计，不用第一页数量；DDL/逾期站内提醒。",
+    "pages": [
+      "03",
+      "07",
+      "10",
+      "15",
+      "18"
+    ],
+    "apiActions": [
+      "home.get",
+      "project.get",
+      "task.list",
+      "notification.list"
+    ],
+    "acceptanceTests": [
+      "A34",
+      "A35",
+      "A36",
+      "A37",
+      "A51"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G17",
+    "classification": "SOURCE",
+    "source": "第3.3节、页面13/20",
+    "requirement": "统一成功失败交互：成功toast原文2–3秒并回12刷新；失败toast原文，留上传页保留上下文。",
+    "pages": [
+      "13",
+      "20"
+    ],
+    "apiActions": [
+      "file.finalizeUpload",
+      "submission.submit"
+    ],
+    "acceptanceTests": [
+      "A38"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G18",
+    "classification": "SOURCE",
+    "source": "第3.6节及各管理页",
+    "requirement": "服务端权限与字段裁剪：读写都校验成员/角色/负责人；只读视图从后端裁剪，不能先返回再隐藏。",
+    "pages": [
+      "07",
+      "09",
+      "10",
+      "12",
+      "14",
+      "16",
+      "19"
+    ],
+    "apiActions": [
+      "task.get",
+      "review.get",
+      "reference.create",
+      "review.approve"
+    ],
+    "acceptanceTests": [
+      "A39",
+      "A40",
+      "R05",
+      "R08"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G19",
+    "classification": "SOURCE_AND_EXPLICIT_ENGINEERING",
+    "source": "原文文件版本及下载要求；工程推导",
+    "requirement": "文件持久性与故障一致性：暂存、不可变字节、可见槽位分开；安全读取；重试幂等，旧页面不误审，原文件可取回。",
+    "pages": [
+      "09",
+      "12",
+      "13",
+      "16",
+      "20"
+    ],
+    "apiActions": [
+      "file.beginUpload",
+      "file.finalizeUpload",
+      "file.getReadTicket",
+      "submission.submit"
+    ],
+    "acceptanceTests": [
+      "A41",
+      "A42",
+      "A43",
+      "A44",
+      "A50",
+      "R02",
+      "R06",
+      "R09"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G20",
+    "classification": "SOURCE",
+    "source": "页面01/02/02-A",
+    "requirement": "个人资料、协议与退出：昵称必填、头像选填、默认头像、协议弹窗、退出登录。",
+    "pages": [
+      "01",
+      "02",
+      "02-A"
+    ],
+    "apiActions": [
+      "user.get",
+      "user.update",
+      "user.logout"
+    ],
+    "acceptanceTests": [
+      "A45",
+      "R07"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G21",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "页面12/14/15；E10/E11补全",
+    "requirement": "编辑、改负责人、删除：组长可编辑负责人/DDL/说明并删除；历史保留与新负责人权限隔离按明确工程默认。",
+    "pages": [
+      "12",
+      "14",
+      "15"
+    ],
+    "apiActions": [
+      "task.update",
+      "task.delete"
+    ],
+    "acceptanceTests": [
+      "A46",
+      "A47"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G22",
+    "classification": "SOURCE_WITH_EXPLICIT_ENGINEERING_DEFAULTS",
+    "source": "第1章、页面06/14；与旧版比较",
+    "requirement": "范围清理：不实现在线编辑、即时聊天、自由认领、分享卡片、独立最终成果区、代交、自审或旧版归档流程。",
+    "pages": [],
+    "apiActions": [],
+    "acceptanceTests": [
+      "A48"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  },
+  {
+    "id": "G23",
+    "classification": "SOURCE_AND_EXPLICIT_ENGINEERING",
+    "source": "用户本轮及上轮明确要求；工程执行规定",
+    "requirement": "连续施工与真实验收：一次接收完整任务，内部连续实现/测试/修复；缺平台条件继续独立开发，未测不说通过。",
+    "pages": [],
+    "apiActions": [],
+    "acceptanceTests": [
+      "A49",
+      "A52",
+      "R08"
+    ],
+    "implementationStatus": "NOT_IMPLEMENTED"
+  }
+]
