@@ -4,8 +4,8 @@ WeFile 是一个原生微信小程序小组协作课程 Demo：项目成员通�
 
 ## 公开访问
 
-- 源码：发布后在本仓库的 GitHub 首页访问。
-- 可下载包：发布后在仓库的 **Releases** 下载 `WeFile-Course-Demo-0.1.zip`。
+- 源码：[https://github.com/goithamtenemdd358-cell/WeFile-Course-Demo](https://github.com/goithamtenemdd358-cell/WeFile-Course-Demo)。
+- 可下载包：[https://github.com/goithamtenemdd358-cell/WeFile-Course-Demo/releases/tag/v0.1-course-demo](https://github.com/goithamtenemdd358-cell/WeFile-Course-Demo/releases/tag/v0.1-course-demo) 下载 `WeFile-Course-Demo-0.1.zip`。
 - 微信体验版：仅限管理员在微信小程序后台添加的体验成员，不能作为公开正式线上服务。
 
 课程提交所需的已实现功能、测试边界、人工处理、AI 辅助及开源依赖说明见 [COURSE_SUBMISSION.md](COURSE_SUBMISSION.md)。三分钟演示视频的人工录制脚本见 [DEMO_VIDEO_SCRIPT.md](DEMO_VIDEO_SCRIPT.md)。
@@ -36,3 +36,4 @@ node scripts/verify-native.mjs
 ## 当前验证状态
 
 本地应用测试于 2026-10-10 通过 68/68；工程打包检查与原生 WXML/WXSS 编译均已通过。真实微信身份桥的后续请求在最近一次回归中出现连接失败，因此当前不声称多人真机文件链路已稳定完成。详见 [COURSE_SUBMISSION.md](COURSE_SUBMISSION.md)。
+

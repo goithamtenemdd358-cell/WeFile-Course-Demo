@@ -2,8 +2,8 @@
 
 ## 访问方式
 
-- 源码仓库：发布后见本仓库 README 的 GitHub 链接。
-- 可下载运行包：发布后在 GitHub Releases 下载 `WeFile-Course-Demo-0.1.zip`。
+- 源码仓库：[https://github.com/goithamtenemdd358-cell/WeFile-Course-Demo](https://github.com/goithamtenemdd358-cell/WeFile-Course-Demo)。
+- 可下载运行包：[https://github.com/goithamtenemdd358-cell/WeFile-Course-Demo/releases/tag/v0.1-course-demo](https://github.com/goithamtenemdd358-cell/WeFile-Course-Demo/releases/tag/v0.1-course-demo) 中下载 `WeFile-Course-Demo-0.1.zip`。
 - 微信体验版：仅向已在微信小程序后台加入的体验成员开放；不是面向任何人的正式上线链接。
 
 ## 已实现
@@ -34,3 +34,4 @@
 5. 运行 `npm run verify:local`、`npm run verify:package`；有已登录官方工具时再运行 `node scripts/verify-native.mjs`。
 
 本包的部署说明旨在帮助课程复现，不提供任何可直接使用的账号、云资源、隧道或密钥。
+
